@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pavan B C — Portfolio</title>
+  <meta name="description" content="Pavan B C — Student Developer. Passionate about Python, C/C++, Flutter, and building cool things." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Page load bar -->
+  <div id="page-load-bar"></div>
+  <!-- Custom cursor -->
+  <div id="cursor-glow"></div>
+  <div id="cursor-dot"></div>
+
+  <!-- ========== NAV ========== -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#home" class="nav-logo">PBC<span class="dot">.</span></a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#certificates">Certificates</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#resume">Resume</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#certificates">Certificates</a>
+      <a href="#education">Education</a>
+      <a href="#resume">Resume</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section id="home" class="hero hero-cockpit">
+
+    <!-- Starfield canvas -->
+    <canvas id="star-canvas"></canvas>
+
+    <div class="container hero-cockpit-container">
+      
+      <!-- ── LEFT COLUMN: Developer Profile ── -->
+      <div class="hero-left-cockpit" id="hero-left">
+
+        <!-- Workspace status tag -->
+        <div class="cockpit-badge">
+          <span class="status-dot"></span>
+          <span>DEVELOPER WORKSPACE · ACTIVE</span>
+        </div>
+
+        <!-- Avatar & Name Row -->
+        <div class="hero-profile-row">
+          <div class="hero-avatar-wrap">
+            <div class="hero-avatar-ring hero-avatar-ring-1"></div>
+            <div class="hero-avatar-ring hero-avatar-ring-2"></div>
+            <div class="hero-avatar-glow"></div>
+            <div class="hero-avatar">
+              <img src="pavan-photo.jpg" alt="Pavan B C" class="hero-avatar-img"/>
+            </div>
+            <div class="avatar-status-badge">
+              <span class="status-dot"></span> Available
+            </div>
+          </div>
+          <div class="hero-name-group">
+            <p class="hero-greeting">Hello, I'm</p>
+            <h1 class="hero-name">
+              <span class="scramble-word" data-target="Pavan">Pavan</span>
+              <span class="scramble-word accent" data-target="B C">B C</span>
+            </h1>
+          </div>
+        </div>
+
+        <!-- Typewriter -->
+        <div class="hero-typewriter">
+          <span class="tw-prefix">$ </span><span id="typewriter"></span><span class="cursor">▊</span>
+        </div>
+
+        <!-- XP Bar -->
+        <div class="xp-bar-wrap">
+          <div class="xp-header">
+            <span class="xp-label">⚡ LVL <strong>3</strong> &nbsp;·&nbsp; Student Developer</span>
+            <span class="xp-pct">74 XP</span>
+          </div>
+          <div class="xp-track">
+            <div class="xp-fill" id="xp-fill" style="width:0%"></div>
+            <div class="xp-glow"></div>
+          </div>
+          <div class="xp-footer">
+            <span>0</span><span>Next level: Full-Stack Dev</span><span>100</span>
+          </div>
+        </div>
+
+        <!-- Description -->
+        <p class="hero-desc">
+          Passionate Computer Science student building autonomous <strong>Agentic AI</strong> systems, efficient software architectures, and modern web experiences.
+        </p>
+
+        <!-- Buttons -->
+        <div class="hero-btns">
+          <a href="#projects" class="btn btn-primary" id="hero-cta">Explore Projects</a>
+          <button class="btn btn-outline" id="hero-resume-trigger">View Resume</button>
+        </div>
+
+        <!-- Socials -->
+        <div class="hero-socials">
+          <a href="https://github.com/PavanCodeNexus" target="_blank" rel="noopener" aria-label="GitHub" class="social-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          </a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=pavanbc31@gmail.com" target="_blank" rel="noopener" aria-label="Email (Gmail)" class="social-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- ── RIGHT COLUMN: Interactive IDE Code Window ── -->
+      <div class="hero-right-cockpit">
+        <div class="ide-window">
+          <!-- IDE Top Bar -->
+          <div class="ide-header">
+            <div class="ide-controls">
+              <span class="dot-red"></span>
+              <span class="dot-amber"></span>
+              <span class="dot-green"></span>
+            </div>
+            <!-- Interactive File Tabs -->
+            <div class="ide-tabs">
+              <button class="ide-tab active" data-file="developer.py">
+                <span class="tab-icon">🐍</span> developer.py
+              </button>
+              <button class="ide-tab" data-file="skills.json">
+                <span class="tab-icon">📦</span> skills.json
+              </button>
+              <button class="ide-tab" data-file="ai_agent.py">
+                <span class="tab-icon">⚡</span> ai_agent.py
+              </button>
+            </div>
+          </div>
+
+          <!-- Code Body with Syntax Highlighting -->
+          <div class="ide-body">
+            <pre class="ide-code" id="ide-code-content"><code><span class="c-kw">class</span> <span class="c-cls">Developer</span>:
+    <span class="c-kw">def</span> <span class="c-fn">__init__</span>(<span class="c-self">self</span>):
+        <span class="c-self">self</span>.name     = <span class="c-str">"Pavan B C"</span>
+        <span class="c-self">self</span>.role     = <span class="c-str">"Student Developer"</span>
+        <span class="c-self">self</span>.college  = <span class="c-str">"Dayananda Sagar Institutions"</span>
+        <span class="c-self">self</span>.location = <span class="c-str">"Bengaluru, India"</span>
+        <span class="c-self">self</span>.stack    = [<span class="c-str">"Python"</span>, <span class="c-str">"C++"</span>, <span class="c-str">"Agentic AI"</span>, <span class="c-str">"Flutter"</span>]
+        <span class="c-self">self</span>.focus    = <span class="c-str">"Autonomous AI &amp; Software Systems"</span>
+
+    <span class="c-kw">def</span> <span class="c-fn">get_status</span>(<span class="c-self">self</span>):
+        <span class="c-kw">return</span> <span class="c-str">"🟢 Ready to build &amp; collaborate"</span>
+
+<span class="c-cmt"># Instance initialization</span>
+pavan = <span class="c-cls">Developer</span>()
+<span class="c-fn">print</span>(pavan.<span class="c-fn">get_status</span>())</code></pre>
+          </div>
+
+          <!-- IDE Bottom Status Bar -->
+          <div class="ide-footer">
+            <div class="ide-status-item">
+              <span class="ide-git-branch">⎇ main*</span>
+            </div>
+            <div class="ide-status-item">
+              <span>Python 3.12 · UTF-8 · Spaces: 4</span>
+            </div>
+          </div>
+        </div>
+        <!-- Ambient glow behind IDE -->
+        <div class="ide-ambient-glow"></div>
+      </div>
+
+    </div>
+
+    <!-- Scroll hint -->
+    <div class="hero-scroll-indicator">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+
+
+  <!-- ========== ABOUT ========== -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="section-tag">WHO I AM</div>
+      <h2 class="section-title">About <span class="accent">Me</span></h2>
+      <div class="about-grid">
+        <div class="about-avatar-wrap">
+          <div class="about-avatar">
+            <div class="avatar-initials">PBC</div>
+            <div class="avatar-ring"></div>
+            <div class="avatar-glow"></div>
+          </div>
+          <div class="about-stats">
+            <div class="stat-card">
+              <span class="stat-num">4</span>
+              <span class="stat-label">Projects</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-num">3+</span>
+              <span class="stat-label">Languages</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-num">∞</span>
+              <span class="stat-label">Curiosity</span>
+            </div>
+          </div>
+        </div>
+        <div class="about-text">
+          <p class="about-lead">Hi! I'm <strong>Pavan B C</strong>, a passionate student developer with a love for turning ideas into real-world applications.</p>
+          <p>Whether it's crafting efficient algorithms in C++, building intuitive mobile apps with Flutter, or automating tasks with Python — I enjoy the entire process of problem-solving and creation.</p>
+          <p>I'm continuously learning and growing, with a strong foundation in computer science fundamentals and a keen eye for clean, maintainable code.</p>
+          <div class="about-highlights">
+            <div class="highlight-item">
+              <span class="highlight-icon">🎓</span>
+              <span>Computer Science Student</span>
+            </div>
+            <div class="highlight-item">
+              <span class="highlight-icon">💡</span>
+              <span>Open Source Enthusiast</span>
+            </div>
+            <div class="highlight-item">
+              <span class="highlight-icon">🚀</span>
+              <span>Fast Learner & Problem Solver</span>
+            </div>
+            <div class="highlight-item">
+              <span class="highlight-icon">🤝</span>
+              <span>Team Player</span>
+            </div>
+          </div>
+          <a href="#contact" class="btn btn-primary mt-2">Let's Connect</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SKILLS ========== -->
+  <section id="skills" class="section section-alt">
+    <div class="container">
+      <div class="section-tag">WHAT I KNOW</div>
+      <h2 class="section-title">My <span class="accent">Skills</span></h2>
+      <p class="section-subtitle">Technologies and tools I bring to every project</p>
+
+      <div class="skills-grid">
+
+        <!-- Python -->
+        <div class="skill-card" data-percent="85" data-skill-color="#38BDF8">
+          <div class="skill-card-inner">
+            <div class="skill-ring-wrap">
+              <svg class="skill-ring-svg" viewBox="0 0 120 120">
+                <circle class="ring-track" cx="60" cy="60" r="50"/>
+                <circle class="ring-progress" cx="60" cy="60" r="50" data-pct="85"/>
+              </svg>
+              <div class="skill-center-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.26-.02.21-.01h5.34l.72-.05.59-.14.48-.22.38-.28.29-.33.22-.36.16-.36.1-.35.07-.32.04-.26.02-.2V5.77l.05-.63.13-.55.21-.46.26-.38.3-.31.33-.25.35-.19.35-.14.33-.1.3-.07.26-.04.21-.02.13-.01h5.84zm-6.1 1.05h-.01v-.01h.01v.01zm.01 2.9v-.01h-.01v.01h.01zm5.17-2.91l-.33.04-.3.1-.26.13-.24.18-.2.21-.17.25-.12.28-.1.3-.06.33-.03.34v1.98l-.02.32-.07.3-.12.26-.17.23-.21.18-.25.14-.28.1-.3.05-.32.02H9.5l-.32.02-.3.05-.28.1-.25.14-.21.18-.17.23-.12.26-.07.3-.02.32v1.98l.03.34.06.33.1.3.12.28.17.25.2.21.24.18.26.13.3.1.33.04h6.1l.33-.04.3-.1.26-.13.24-.18.2-.21.17-.25.12-.28.1-.3.06-.33.03-.34V8.73l.02-.32.07-.3.12-.26.17-.23.21-.18.25-.14.28-.1.3-.05.32-.02h2.93l.32-.02.3-.05.28-.1.25-.14.21-.18.17-.23.12-.26.07-.3.02-.32V5.77l-.03-.34-.06-.33-.1-.3-.12-.28-.17-.25-.2-.21-.24-.18-.26-.13-.3-.1-.33-.04H13.33zm-1.23 14.59a.9.9 0 1 1 0-1.8.9.9 0 0 1 0 1.8zm3.6 0a.9.9 0 1 1 0-1.8.9.9 0 0 1 0 1.8z"/></svg>
+              </div>
+              <div class="skill-pct-label">85%</div>
+            </div>
+            <div class="skill-meta">
+              <span class="skill-name">Python</span>
+              <span class="skill-level-badge">Advanced</span>
+            </div>
+          </div>
+          <div class="skill-card-glow"></div>
+        </div>
+
+        <!-- C / C++ -->
+        <div class="skill-card" data-percent="80" data-skill-color="#60A5FA">
+          <div class="skill-card-inner">
+            <div class="skill-ring-wrap">
+              <svg class="skill-ring-svg" viewBox="0 0 120 120">
+                <circle class="ring-track" cx="60" cy="60" r="50"/>
+                <circle class="ring-progress" cx="60" cy="60" r="50" data-pct="80"/>
+              </svg>
+              <div class="skill-center-icon skill-text-icon">C++</div>
+              <div class="skill-pct-label">80%</div>
+            </div>
+            <div class="skill-meta">
+              <span class="skill-name">C / C++</span>
+              <span class="skill-level-badge">Advanced</span>
+            </div>
+          </div>
+          <div class="skill-card-glow"></div>
+        </div>
+
+        <!-- HTML / CSS -->
+        <div class="skill-card" data-percent="78" data-skill-color="#FB923C">
+          <div class="skill-card-inner">
+            <div class="skill-ring-wrap">
+              <svg class="skill-ring-svg" viewBox="0 0 120 120">
+                <circle class="ring-track" cx="60" cy="60" r="50"/>
+                <circle class="ring-progress" cx="60" cy="60" r="50" data-pct="78"/>
+              </svg>
+              <div class="skill-center-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0zm17.09 4.413L5.41 4.41l.213 2.622 10.125.002-.255 2.716h-6.64l.24 2.573h6.182l-.366 3.523-2.91.804-2.956-.81-.188-2.11h-2.61l.29 3.855L12 19.288l5.373-1.53L18.59 4.414z"/></svg>
+              </div>
+              <div class="skill-pct-label">78%</div>
+            </div>
+            <div class="skill-meta">
+              <span class="skill-name">HTML / CSS</span>
+              <span class="skill-level-badge">Proficient</span>
+            </div>
+          </div>
+          <div class="skill-card-glow"></div>
+        </div>
+
+        <!-- Flutter / Dart -->
+        <div class="skill-card" data-percent="72" data-skill-color="#A78BFA">
+          <div class="skill-card-inner">
+            <div class="skill-ring-wrap">
+              <svg class="skill-ring-svg" viewBox="0 0 120 120">
+                <circle class="ring-track" cx="60" cy="60" r="50"/>
+                <circle class="ring-progress" cx="60" cy="60" r="50" data-pct="72"/>
+              </svg>
+              <div class="skill-center-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.314 0L2.3 12 6 15.7 21.684.013h-7.357zm.014 11.072L7.857 17.53l6.47 6.47H21.7l-6.46-6.468 6.46-6.46h-7.37z"/></svg>
+              </div>
+              <div class="skill-pct-label">72%</div>
+            </div>
+            <div class="skill-meta">
+              <span class="skill-name">Flutter / Dart</span>
+              <span class="skill-level-badge">Proficient</span>
+            </div>
+          </div>
+          <div class="skill-card-glow"></div>
+        </div>
+
+        <!-- Git / GitHub -->
+        <div class="skill-card" data-percent="82" data-skill-color="#34D399">
+          <div class="skill-card-inner">
+            <div class="skill-ring-wrap">
+              <svg class="skill-ring-svg" viewBox="0 0 120 120">
+                <circle class="ring-track" cx="60" cy="60" r="50"/>
+                <circle class="ring-progress" cx="60" cy="60" r="50" data-pct="82"/>
+              </svg>
+              <div class="skill-center-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.546 10.93L13.067.452c-.604-.603-1.582-.603-2.188 0L8.708 2.627l2.76 2.76c.645-.215 1.379-.07 1.889.441.516.515.658 1.258.438 1.9l2.658 2.66c.645-.223 1.387-.078 1.9.435.721.72.721 1.884 0 2.604-.719.719-1.881.719-2.6 0-.539-.541-.674-1.337-.404-1.996L12.86 8.955v6.525c.176.086.342.203.488.348.713.721.713 1.883 0 2.6-.719.721-1.889.721-2.609 0-.719-.719-.719-1.879 0-2.598.182-.18.387-.316.605-.406V8.835c-.217-.091-.424-.222-.6-.401-.545-.545-.676-1.342-.396-2.009L7.636 3.7.45 10.881c-.6.605-.6 1.584 0 2.189l10.48 10.477c.604.604 1.582.604 2.186 0l10.43-10.43c.605-.603.605-1.582 0-2.187"/></svg>
+              </div>
+              <div class="skill-pct-label">82%</div>
+            </div>
+            <div class="skill-meta">
+              <span class="skill-name">Git / GitHub</span>
+              <span class="skill-level-badge">Advanced</span>
+            </div>
+          </div>
+          <div class="skill-card-glow"></div>
+        </div>
+
+        <!-- Always Learning -->
+        <div class="skill-card skill-card-extra" data-percent="99" data-skill-color="#F472B6">
+          <div class="skill-card-inner">
+            <div class="skill-ring-wrap">
+              <svg class="skill-ring-svg" viewBox="0 0 120 120">
+                <circle class="ring-track" cx="60" cy="60" r="50"/>
+                <circle class="ring-progress" cx="60" cy="60" r="50" data-pct="99"/>
+              </svg>
+              <div class="skill-center-icon skill-text-icon" style="font-size:2rem;">∞</div>
+              <div class="skill-pct-label">∞</div>
+            </div>
+            <div class="skill-meta">
+              <span class="skill-name">Always Learning</span>
+              <span class="skill-level-badge extra-badge">DSA · OOP · Linux</span>
+            </div>
+          </div>
+          <div class="skill-card-glow"></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========== PROJECTS ========== -->
+  <section id="projects" class="section">
+    <div class="container">
+      <div class="section-tag">WHAT I'VE BUILT</div>
+      <h2 class="section-title">My <span class="accent">Projects</span></h2>
+      <p class="section-subtitle">A selection of things I've worked on</p>
+
+      <div class="projects-grid">
+
+        <!-- PROJECT 1: ITFOS -->
+        <article class="project-card">
+          <div class="project-header">
+            <div class="project-tag-list">
+              <span class="ptag">IoT</span>
+              <span class="ptag">Arduino</span>
+              <span class="ptag">Python</span>
+              <span class="ptag">Firebase</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/PavanCodeNexus/itfos-traffic-system" target="_blank" rel="noopener" aria-label="GitHub" class="proj-link">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+              </a>
+            </div>
+          </div>
+          <h3 class="project-title">ITFOS — Intelligent Traffic Flow Optimization System</h3>
+          <p class="project-desc">Developed an IoT-based intelligent traffic management system that dynamically controls traffic signals based on real-time vehicle density using Arduino Uno and HC-SR04 ultrasonic sensors. Built a cloud-connected web platform with separate User and Admin dashboards, live Bengaluru traffic map, Firebase Realtime Database integration, AI-based traffic prediction, voice traffic alerts, QR code-based vehicle identification, and live sensor data streaming through a Python bridge.</p>
+          <div class="project-footer">
+            <span class="project-status online">IoT · Web · AI</span>
+          </div>
+        </article>
+
+        <!-- PROJECT 2: Daily Current Affairs -->
+        <article class="project-card">
+          <div class="project-header">
+            <div class="project-tag-list">
+              <span class="ptag">Python</span>
+              <span class="ptag">Agentic AI</span>
+              <span class="ptag">Groq</span>
+              <span class="ptag">Llama</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/PavanCodeNexus/news-digest-agent" target="_blank" rel="noopener" aria-label="GitHub" class="proj-link">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+              </a>
+            </div>
+          </div>
+          <h3 class="project-title">Daily Current Affairs Digest — Agentic AI</h3>
+          <p class="project-desc">Designed and developed an autonomous AI-powered news aggregation and summarization system using Python. The application automatically collects news from eight trusted sources, classifies and summarizes articles using Llama 3.3 70B (Groq API), generates newspaper-style visual digests, and sends email alerts for critical news events.</p>
+          <div class="project-footer">
+            <span class="project-status online">Agentic AI</span>
+          </div>
+        </article>
+
+        <!-- PROJECT 3: AI PPT Generator -->
+        <article class="project-card">
+          <div class="project-header">
+            <div class="project-tag-list">
+              <span class="ptag">Python</span>
+              <span class="ptag">Agentic AI</span>
+              <span class="ptag">Groq</span>
+              <span class="ptag">HTML/PDF</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/PavanCodeNexus/AI-PPT-Generator" target="_blank" rel="noopener" aria-label="GitHub" class="proj-link">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+              </a>
+            </div>
+          </div>
+          <h3 class="project-title">AI PPT Generator — Agentic AI</h3>
+          <p class="project-desc">Built an Agentic AI-powered presentation generator that creates complete academic presentations from a topic and optional PDF study notes. The system automatically generates slide content using Groq/Llama 3.3 70B, applies customizable themes and transitions, fetches relevant images, and generates animated HTML presentations, PPTX files, and PDFs.</p>
+          <div class="project-footer">
+            <span class="project-status online">Agentic AI · Gen AI</span>
+          </div>
+        </article>
+
+        <!-- PROJECT 4: Farmer Marketplace -->
+        <article class="project-card">
+          <div class="project-header">
+            <div class="project-tag-list">
+              <span class="ptag">Python</span>
+              <span class="ptag">CLI</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/PavanCodeNexus/farmer-marketplace-cpp" target="_blank" rel="noopener" aria-label="GitHub" class="proj-link">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+              </a>
+            </div>
+          </div>
+          <h3 class="project-title">Farmer Marketplace &amp; Crop Price Tracker</h3>
+          <p class="project-desc">Console-based marketplace connecting farmers and buyers with real-time price statistics and order management. Simplifies direct trade by eliminating middlemen and giving farmers control over their listings.</p>
+          <div class="project-footer">
+            <span class="project-status online">Console App</span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CERTIFICATES ========== -->
+  <section id="certificates" class="section">
+    <div class="container">
+      <div class="section-tag">CREDENTIALS &amp; COURSES</div>
+      <h2 class="section-title">Certifi<span class="accent">cations</span></h2>
+      <p class="section-subtitle">Verified technical certifications and professional development programs</p>
+
+      <div class="cert-grid">
+
+        <!-- CERT 1: C Programming -->
+        <div class="cert-card">
+          <div class="cert-header">
+            <div class="cert-icon-wrap">
+              <span class="cert-emoji">⚡</span>
+            </div>
+            <span class="cert-issuer-badge">Infosys Springboard</span>
+          </div>
+          <h3 class="cert-title">C Programming Certificate</h3>
+          <p class="cert-desc">Mastered core C language fundamentals, pointer arithmetic, dynamic memory allocation, data structures, and modular algorithmic design.</p>
+          <div class="cert-tags">
+            <span>C</span><span>Pointers</span><span>Memory Mgmt</span><span>Algorithms</span>
+          </div>
+          <div class="cert-footer">
+            <span class="cert-status verified">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              Verified Certification
+            </span>
+          </div>
+        </div>
+
+        <!-- CERT 2: C++ Programming -->
+        <div class="cert-card">
+          <div class="cert-header">
+            <div class="cert-icon-wrap">
+              <span class="cert-emoji">💻</span>
+            </div>
+            <span class="cert-issuer-badge">Infosys Springboard</span>
+          </div>
+          <h3 class="cert-title">C++ Programming Certificate</h3>
+          <p class="cert-desc">Certified in Object-Oriented Programming (OOP) paradigms, classes, inheritance, polymorphism, templates, STL containers, and modern C++ practices.</p>
+          <div class="cert-tags">
+            <span>C++</span><span>OOP</span><span>STL</span><span>Templates</span>
+          </div>
+          <div class="cert-footer">
+            <span class="cert-status verified">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              Verified Certification
+            </span>
+          </div>
+        </div>
+
+        <!-- CERT 3: Git & GitHub -->
+        <div class="cert-card">
+          <div class="cert-header">
+            <div class="cert-icon-wrap">
+              <span class="cert-emoji">🐙</span>
+            </div>
+            <span class="cert-issuer-badge">Let's Upgrade</span>
+          </div>
+          <h3 class="cert-title">Git &amp; GitHub Certificate</h3>
+          <p class="cert-desc">Proficient in distributed version control, branch management, collaborative pull requests, merge conflict handling, and open-source GitHub workflows.</p>
+          <div class="cert-tags">
+            <span>Git</span><span>GitHub</span><span>Version Control</span><span>CI/CD</span>
+          </div>
+          <div class="cert-footer">
+            <span class="cert-status verified">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              Verified Certification
+            </span>
+          </div>
+        </div>
+
+        <!-- CERT 4: HTML -->
+        <div class="cert-card">
+          <div class="cert-header">
+            <div class="cert-icon-wrap">
+              <span class="cert-emoji">🌐</span>
+            </div>
+            <span class="cert-issuer-badge">Let's Upgrade</span>
+          </div>
+          <h3 class="cert-title">HTML Certificate</h3>
+          <p class="cert-desc">Certified in semantic HTML5 markup, accessible web standards, interactive forms, media integration, and modern frontend document architecture.</p>
+          <div class="cert-tags">
+            <span>HTML5</span><span>Web Semantics</span><span>Accessibility</span><span>DOM</span>
+          </div>
+          <div class="cert-footer">
+            <span class="cert-status verified">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              Verified Certification
+            </span>
+          </div>
+        </div>
+
+        <!-- CERT 5: Aspire Leader Program -->
+        <div class="cert-card cert-card-featured">
+          <div class="cert-header">
+            <div class="cert-icon-wrap">
+              <span class="cert-emoji">🌟</span>
+            </div>
+            <span class="cert-issuer-badge cert-featured-badge">Aspire Institute</span>
+          </div>
+          <h3 class="cert-title">Aspire Leader Program</h3>
+          <p class="cert-desc">Selected for the prestigious global leadership program focusing on leadership development, professional ethics, critical thinking, and social impact.</p>
+          <div class="cert-tags">
+            <span>Leadership</span><span>Professional Dev</span><span>Ethics</span><span>Impact</span>
+          </div>
+          <div class="cert-footer">
+            <span class="cert-status verified">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              Leadership &amp; Professional Development
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== EDUCATION ========== -->
+  <section id="education" class="section section-alt">
+    <div class="container">
+      <div class="section-tag">MY JOURNEY</div>
+      <h2 class="section-title">Edu<span class="accent">cation</span></h2>
+      <p class="section-subtitle">Where I've been building my foundation</p>
+
+      <div class="timeline">
+        <div class="timeline-item" id="edu-1">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-year">2025 — Present</div>
+            <h3 class="timeline-title">Bachelor of Engineering</h3>
+            <p class="timeline-subtitle">Computer Science &amp; Engineering · Dayananda Sagar Institutions, Bengaluru</p>
+            <p class="timeline-body">Pursuing B.E. in CSE at Dayananda Sagar Institutions, Bengaluru — with a focus on algorithms, data structures, software engineering, IoT, and AI-powered application development.</p>
+            <div class="timeline-tags">
+              <span>DSA</span><span>OOP</span><span>DBMS</span><span>IoT</span><span>AI/ML</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item" id="edu-2">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-year">2023 — 2025</div>
+            <h3 class="timeline-title">Pre-University College (PUC)</h3>
+            <p class="timeline-subtitle">Science Stream — PCMB · Brigade Pre-University College, Hassan</p>
+            <p class="timeline-body">Completed 12th grade in Science stream at Brigade Pre-University College, Hassan — with Physics, Chemistry, Math, and Biology. Built a strong analytical and scientific foundation.</p>
+            <div class="timeline-tags">
+              <span>Physics</span><span>Math</span><span>Chemistry</span><span>Biology</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== RESUME ========== -->
+  <section id="resume" class="section">
+    <div class="container">
+      <div class="section-tag">CURRICULUM VITAE</div>
+      <h2 class="section-title">My <span class="accent">Resume</span></h2>
+      <p class="section-subtitle">Explore my qualifications, technical toolkit, and development experience</p>
+
+      <div class="resume-card-wrap">
+        <div class="resume-card">
+
+          <div class="resume-card-header">
+            <div class="resume-user-info">
+              <div class="resume-avatar-mini">
+                <img src="pavan-photo.jpg" alt="Pavan B C" />
+              </div>
+              <div>
+                <h3 class="resume-user-name">Pavan B C</h3>
+                <p class="resume-user-role">Student Developer · CSE @ Dayananda Sagar Institutions</p>
+              </div>
+            </div>
+            <div class="resume-status-pill">
+              <span class="status-dot"></span> Ready to Work
+            </div>
+          </div>
+
+          <div class="resume-grid">
+            <div class="resume-block">
+              <h4>🎯 Core Focus</h4>
+              <p>Python · C/C++ · Agentic AI · Flutter · Data Structures · Algorithm Design</p>
+            </div>
+            <div class="resume-block">
+              <h4>🎓 Academic</h4>
+              <p>B.E. in Computer Science &amp; Engineering (Present) · PCMB Science (2023-2025)</p>
+            </div>
+            <div class="resume-block">
+              <h4>🏆 Key Accomplishments</h4>
+              <p>Agentic AI News Digest, AI PPT Generator, Aspire Leader Program, 4+ Verified Certifications</p>
+            </div>
+            <div class="resume-block">
+              <h4>📬 Location &amp; Contact</h4>
+              <p>Bengaluru / Hassan, Karnataka · <a href="https://mail.google.com/mail/?view=cm&fs=1&to=pavanbc31@gmail.com" target="_blank" class="resume-email-link">pavanbc31@gmail.com</a></p>
+            </div>
+          </div>
+
+          <div class="resume-card-actions">
+            <button class="btn btn-primary" id="open-resume-modal-btn">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+              <span>View Full Resume</span>
+            </button>
+            <a href="#contact" class="btn btn-outline">
+              <span>Get In Touch</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== CONTACT ========== -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="section-tag">REACH OUT</div>
+      <h2 class="section-title">Get In <span class="accent">Touch</span></h2>
+      <p class="section-subtitle">Have a project idea, a question, or just want to say hi? I'm always open to connecting!</p>
+
+      <div class="contact-wrap">
+        <div class="contact-info">
+          <div class="contact-card contact-card-email">
+            <div class="contact-card-icon">📬</div>
+            <h4>Email</h4>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=pavanbc31@gmail.com" target="_blank" class="contact-email-link" title="Open Gmail in Browser">pavanbc31@gmail.com</a>
+            <button type="button" class="btn-quick-copy" id="quick-copy-email-btn" title="Copy email address">
+              <span>📋 Copy Address</span>
+            </button>
+          </div>
+          <div class="contact-card">
+            <div class="contact-card-icon">💼</div>
+            <h4>LinkedIn</h4>
+            <a href="https://linkedin.com" target="_blank">linkedin.com/in/pavanbc</a>
+          </div>
+          <div class="contact-card">
+            <div class="contact-card-icon">🐙</div>
+            <h4>GitHub</h4>
+            <a href="https://github.com/PavanCodeNexus" target="_blank">github.com/PavanCodeNexus</a>
+          </div>
+        </div>
+
+        <form class="contact-form" id="contact-form" novalidate>
+          <div class="form-group">
+            <label for="cf-name">Your Name</label>
+            <input type="text" id="cf-name" name="name" placeholder="e.g. John Doe" required />
+          </div>
+          <div class="form-group">
+            <label for="cf-email">Your Email Address</label>
+            <input type="email" id="cf-email" name="email" placeholder="e.g. john@example.com" required />
+          </div>
+          <div class="form-group">
+            <label for="cf-subject">Subject</label>
+            <input type="text" id="cf-subject" name="subject" placeholder="e.g. Project Collaboration / Inquiry" />
+          </div>
+          <div class="form-group">
+            <label for="cf-message">Message</label>
+            <textarea id="cf-message" name="message" rows="5" placeholder="Hi Pavan, I would like to connect regarding..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" id="form-submit-btn">
+            <span class="btn-text">Send Message</span>
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+          </button>
+
+          <!-- Interactive Instant Delivery Modal/Banner -->
+          <div class="form-delivery-box" id="form-delivery-box" style="display:none;">
+            <div class="delivery-header">
+              <span class="delivery-icon">📬</span>
+              <h4>Message Ready for Pavan!</h4>
+            </div>
+            <p class="delivery-desc">
+              Your message to <strong>pavanbc31@gmail.com</strong> is prepared. Send via Gmail in 1 click:
+            </p>
+            <div class="delivery-actions">
+              <a href="#" id="send-via-gmail-btn" target="_blank" class="btn btn-primary btn-delivery">
+                <span>🚀 Open &amp; Send in Gmail</span>
+              </a>
+              <button type="button" id="copy-msg-btn" class="btn btn-outline btn-delivery">
+                <span>📋 Copy Full Message</span>
+              </button>
+            </div>
+            <div id="copy-toast" style="display:none; color:var(--accent); font-size:0.82rem; margin-top:0.6rem; font-family:var(--font-mono);">
+              ✓ Copied to clipboard!
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">PBC<span class="dot">.</span></div>
+        <p class="footer-copy">Designed & Built by <strong>Pavan B C</strong> · 2025</p>
+        <div class="footer-socials">
+          <a href="https://github.com" target="_blank" rel="noopener" aria-label="GitHub" class="social-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          </a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== RESUME MODAL ========== -->
+  <div class="resume-modal-backdrop" id="resume-modal" aria-hidden="true">
+    <div class="resume-modal-window">
+      <!-- Modal Toolbar -->
+      <div class="resume-modal-toolbar">
+        <div class="modal-toolbar-title">
+          <span>📄</span>
+          <span>Pavan_BC_Resume.pdf</span>
+        </div>
+        <div class="modal-toolbar-actions">
+          <button class="btn-modal-close" id="close-resume-modal-btn" aria-label="Close modal">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Printable Resume Paper -->
+      <div class="resume-sheet" id="resume-sheet">
+        <!-- Header -->
+        <div class="rs-header">
+          <div class="rs-title-area">
+            <h1 class="rs-name">PAVAN B C</h1>
+            <p class="rs-subtitle">Student Developer · Computer Science &amp; Engineering</p>
+          </div>
+          <div class="rs-contact-info">
+            <div class="rs-contact-item">📧 <a href="https://mail.google.com/mail/?view=cm&fs=1&to=pavanbc31@gmail.com" target="_blank">pavanbc31@gmail.com</a></div>
+            <div class="rs-contact-item">🐙 <a href="https://github.com/PavanCodeNexus" target="_blank">github.com/PavanCodeNexus</a></div>
+            <div class="rs-contact-item">💼 <a href="https://linkedin.com" target="_blank">linkedin.com/in/pavanbc</a></div>
+            <div class="rs-contact-item">📍 Bengaluru / Hassan, Karnataka, India</div>
+          </div>
+        </div>
+
+        <!-- Section: Summary -->
+        <div class="rs-section">
+          <h2 class="rs-section-title">Professional Summary</h2>
+          <p class="rs-text">Passionate and motivated Computer Science student at Dayananda Sagar Institutions, Bengaluru. Proficient in Python, C, C++, and Frontend development, with active hands-on experience building autonomous Agentic AI applications and algorithmic solutions. Committed to continuous learning, leadership excellence, and collaborative software development.</p>
+        </div>
+
+        <!-- Section: Education -->
+        <div class="rs-section">
+          <h2 class="rs-section-title">Education</h2>
+          <div class="rs-entry">
+            <div class="rs-entry-header">
+              <strong>Bachelor of Engineering (B.E.) — Computer Science &amp; Engineering</strong>
+              <span class="rs-date">2025 — Present</span>
+            </div>
+            <p class="rs-inst">Dayananda Sagar Institutions, Bengaluru, Karnataka</p>
+            <p class="rs-desc">Core coursework: Data Structures &amp; Algorithms, Object-Oriented Programming, Database Management, IoT, and AI Systems.</p>
+          </div>
+          <div class="rs-entry">
+            <div class="rs-entry-header">
+              <strong>Pre-University College (PUC) — Science Stream (PCMB)</strong>
+              <span class="rs-date">2023 — 2025</span>
+            </div>
+            <p class="rs-inst">Brigade Pre-University College, Hassan, Karnataka</p>
+            <p class="rs-desc">Physics, Chemistry, Mathematics, and Biology with strong analytical and problem-solving foundation.</p>
+          </div>
+        </div>
+
+        <!-- Section: Technical Skills -->
+        <div class="rs-section">
+          <h2 class="rs-section-title">Technical Skills</h2>
+          <div class="rs-skills-grid">
+            <div class="rs-skill-group"><strong>Programming:</strong> Python, C, C++, HTML5, CSS3, JavaScript</div>
+            <div class="rs-skill-group"><strong>AI &amp; Frameworks:</strong> Agentic AI, Llama 3.3 (Groq API), Flutter basics, Prompt Engineering</div>
+            <div class="rs-skill-group"><strong>Tools &amp; Platforms:</strong> Git, GitHub, VS Code, Linux CLI, PowerPoint/PDF Automation</div>
+            <div class="rs-skill-group"><strong>Core Competencies:</strong> OOP, Data Structures, Problem Solving, Distributed Version Control</div>
+          </div>
+        </div>
+
+        <!-- Section: Projects -->
+        <div class="rs-section">
+          <h2 class="rs-section-title">Key Projects</h2>
+          <div class="rs-entry">
+            <div class="rs-entry-header">
+              <strong>Daily Current Affairs Digest — Agentic AI</strong>
+              <span class="rs-date">Python · Llama 3.3 · Groq API</span>
+            </div>
+            <p class="rs-desc">Engineered an autonomous AI agent aggregating from 8 verified news APIs, classifying critical headlines, generating formatted newspaper-style digests, and automating instant email dispatch.</p>
+          </div>
+          <div class="rs-entry">
+            <div class="rs-entry-header">
+              <strong>AI PPT Generator — Agentic AI</strong>
+              <span class="rs-date">Python · Groq API · PDF Automation</span>
+            </div>
+            <p class="rs-desc">Developed an intelligent presentation generator producing multi-slide academic decks from raw text/PDF notes with customizable layouts, image integration, and export to HTML/PPTX/PDF.</p>
+          </div>
+          <div class="rs-entry">
+            <div class="rs-entry-header">
+              <strong>Farmer Marketplace &amp; Crop Tracker</strong>
+              <span class="rs-date">C++ / Python · CLI System</span>
+            </div>
+            <p class="rs-desc">Built a console-based marketplace linking agricultural producers directly with buyers, featuring price trend monitoring, inventory control, and transaction records.</p>
+          </div>
+        </div>
+
+        <!-- Section: Certifications & Programs -->
+        <div class="rs-section">
+          <h2 class="rs-section-title">Certifications &amp; Leadership</h2>
+          <ul class="rs-bullet-list">
+            <li><strong>Aspire Leader Program</strong> — Aspire Institute (Global leadership development, ethics, and community impact)</li>
+            <li><strong>C Programming Certificate</strong> — Infosys Springboard (Pointers, Memory Allocation, and Algorithms)</li>
+            <li><strong>C++ Programming Certificate</strong> — Infosys Springboard (OOP, STL Containers, and Design Patterns)</li>
+            <li><strong>Git &amp; GitHub Certificate</strong> — Let's Upgrade (Version control, branching, PR workflows, and collaboration)</li>
+            <li><strong>HTML Certificate</strong> — Let's Upgrade (Semantic structure, modern web standards, and accessibility)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
