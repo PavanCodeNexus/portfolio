@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=3.0" />
+  <link rel="stylesheet" href="style.css?v=3.1" />
 </head>
 <body>
 
@@ -88,7 +88,7 @@
 
         <!-- Typewriter Line -->
         <div class="hero-typewriter">
-          <span class="tw-prefix">$ </span><span id="typewriter"></span><span class="cursor">▊</span>
+          <span class="tw-prefix">$ </span><span id="typewriter">Student Developer 🎓</span><span class="cursor">▊</span>
         </div>
 
         <!-- Level XP Progression Bar -->
@@ -98,7 +98,7 @@
             <span class="xp-pct">74 XP</span>
           </div>
           <div class="xp-track">
-            <div class="xp-fill" id="xp-fill" style="width:0%"></div>
+            <div class="xp-fill" id="xp-fill" style="width:74%"></div>
             <div class="xp-glow"></div>
           </div>
           <div class="xp-footer">
@@ -167,7 +167,21 @@
 
           <!-- Code View Area -->
           <div class="ide-body">
-            <pre class="ide-code"><code id="ide-code-content"></code></pre>
+            <pre class="ide-code"><code id="ide-code-content"><span class="c-kw">class</span> <span class="c-cls">Developer</span>:
+    <span class="c-kw">def</span> <span class="c-fn">__init__</span>(<span class="c-self">self</span>):
+        <span class="c-self">self</span>.name     = <span class="c-str">"Pavan B C"</span>
+        <span class="c-self">self</span>.role     = <span class="c-str">"Student Developer"</span>
+        <span class="c-self">self</span>.college  = <span class="c-str">"Dayananda Sagar Institutions"</span>
+        <span class="c-self">self</span>.location = <span class="c-str">"Bengaluru, India"</span>
+        <span class="c-self">self</span>.stack    = [<span class="c-str">"Python"</span>, <span class="c-str">"C++"</span>, <span class="c-str">"Agentic AI"</span>]
+        <span class="c-self">self</span>.focus    = <span class="c-str">"Autonomous AI &amp; Software Systems"</span>
+
+    <span class="c-kw">def</span> <span class="c-fn">get_status</span>(<span class="c-self">self</span>):
+        <span class="c-kw">return</span> <span class="c-str">"🟢 Ready to build &amp; collaborate"</span>
+
+<span class="c-cmt"># Instance initialization</span>
+pavan = <span class="c-cls">Developer</span>()
+<span class="c-fn">print</span>(pavan.<span class="c-fn">get_status</span>())</code></pre>
           </div>
 
           <!-- Window Status Footer -->
@@ -905,7 +919,7 @@
     </div>
   </div>
 
-  <script src="script.js?v=3.0"></script>
+  <script src="script.js?v=3.1"></script>
 </body>
 </html>
 

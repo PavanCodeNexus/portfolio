@@ -100,6 +100,7 @@
 
 // ── SCRAMBLE DECODE Name Animation ────────────────────────
 function scrambleDecode(element, finalText, duration = 1200) {
+  if (!element || !finalText) return;
   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*';
   const len   = finalText.length;
   let  frame  = 0;
@@ -124,7 +125,10 @@ function scrambleDecode(element, finalText, duration = 1200) {
     element.setAttribute('data-text', display);
     element.textContent = display;
     frame++;
-    if (frame > totalFrames) clearInterval(raf);
+    if (frame > totalFrames) {
+      clearInterval(raf);
+      element.textContent = finalText;
+    }
   }, 40);
 }
 

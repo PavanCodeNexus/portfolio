@@ -371,6 +371,7 @@ a { color: inherit; text-decoration: none; }
 }
 
 .scramble-word {
+  color: #FEF3C7;
   background: linear-gradient(135deg, #FEF3C7 20%, var(--accent) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -379,8 +380,10 @@ a { color: inherit; text-decoration: none; }
 }
 
 .scramble-word.accent {
+  color: var(--accent);
   background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
   -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   background-clip: text;
   filter: drop-shadow(0 0 25px rgba(245, 158, 11, 0.55));
 }
