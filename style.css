@@ -466,407 +466,303 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* =========================================================
-   HERO — DEVELOPER COCKPIT (2-Column Grid)
+   HERO — 3D COSMIC ORBIT & GRAVITY STARFIELD
    ========================================================= */
-.hero-cockpit {
+.hero-cosmic {
   position: relative;
   min-height: 100vh;
   display: flex;
   align-items: center;
+  justify-content: center;
   overflow: hidden;
   background: var(--bg);
-  padding: 100px 0 60px;
+  padding: 130px 1.5rem 80px;
 }
 
-/* Starfield canvas overlay */
-#star-canvas {
+/* Deep Ambient Nebula Glows */
+.nebula-glow {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+  border-radius: 50%;
   pointer-events: none;
-  z-index: 1;
-}
-
-.hero-cockpit-container {
-  display: grid;
-  grid-template-columns: 1fr 1.05fr;
-  gap: 3.5rem;
-  align-items: center;
-  position: relative;
-  z-index: 2;
-}
-
-/* ── LEFT COLUMN: Developer Profile ── */
-.hero-left-cockpit {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-}
-
-.cockpit-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.15em;
-  color: var(--accent);
-  background: rgba(245, 158, 11, 0.08);
-  border: 1px solid rgba(245, 158, 11, 0.25);
-  padding: 0.35rem 0.85rem;
-  border-radius: 50px;
-  margin-bottom: 1.4rem;
-}
-
-.hero-profile-row {
-  display: flex;
-  align-items: center;
-  gap: 1.4rem;
-  margin-bottom: 1.2rem;
-  flex-wrap: wrap;
-}
-
-.hero-profile-row .hero-avatar-wrap {
-  width: 110px;
-  height: 110px;
-  margin: 0;
-  flex-shrink: 0;
-}
-
-.hero-name-group {
-  display: flex;
-  flex-direction: column;
-}
-
-.hero-left-cockpit .hero-greeting {
-  font-family: var(--font-mono);
-  font-size: 1rem;
-  color: var(--accent2);
-  letter-spacing: 0.1em;
-  margin-bottom: 0.2rem;
-}
-
-.hero-left-cockpit .hero-name {
-  font-size: clamp(2.6rem, 5vw, 4.2rem);
-  font-weight: 900;
-  line-height: 1.05;
-  letter-spacing: -0.01em;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.3em;
-  text-shadow: 0 0 30px rgba(245, 158, 11, 0.35);
-  margin-bottom: 0;
-}
-
-.hero-left-cockpit .hero-typewriter {
-  font-family: var(--font-mono);
-  font-size: clamp(0.95rem, 2vw, 1.2rem);
-  color: var(--text-dim);
-  margin: 1rem 0;
-  display: flex;
-  align-items: center;
-  gap: 0.15rem;
-}
-
-.hero-left-cockpit .xp-bar-wrap {
-  width: 100%;
-  max-width: 480px;
-  margin: 0.5rem 0 1.4rem;
-  padding: 0.8rem 1.1rem;
-  background: rgba(245, 158, 11, 0.04);
-  border: 1px solid rgba(245, 158, 11, 0.2);
-  border-radius: 12px;
-  backdrop-filter: blur(12px);
-}
-
-.hero-left-cockpit .hero-desc {
-  font-size: 0.95rem;
-  color: var(--text-dim);
-  line-height: 1.65;
-  max-width: 480px;
-  margin-bottom: 1.8rem;
-}
-
-.hero-left-cockpit .hero-btns {
-  display: flex;
-  gap: 1.1rem;
-  flex-wrap: wrap;
-  margin-bottom: 1.6rem;
-}
-
-.hero-left-cockpit .hero-socials {
-  display: flex;
-  gap: 0.85rem;
-}
-
-/* ── RIGHT COLUMN: Interactive IDE Window ── */
-.hero-right-cockpit {
-  position: relative;
-}
-
-.ide-window {
-  background: #0E0A06;
-  border: 1px solid rgba(245, 158, 11, 0.25);
-  border-radius: 14px;
-  overflow: hidden;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.75), 0 0 35px rgba(245, 158, 11, 0.18);
-  position: relative;
-  z-index: 2;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.ide-window:hover {
-  border-color: rgba(245, 158, 11, 0.5);
-  box-shadow: 0 25px 65px rgba(0, 0, 0, 0.85), 0 0 45px rgba(245, 158, 11, 0.28);
-}
-
-.ide-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: #17110A;
-  border-bottom: 1px solid rgba(245, 158, 11, 0.18);
-  padding: 0.65rem 1rem;
-}
-
-.ide-controls {
-  display: flex;
-  gap: 7px;
-}
-
-.dot-red   { width: 11px; height: 11px; border-radius: 50%; background: #EF4444; }
-.dot-amber { width: 11px; height: 11px; border-radius: 50%; background: #F59E0B; }
-.dot-green { width: 11px; height: 11px; border-radius: 50%; background: #10B981; }
-
-.ide-tabs {
-  display: flex;
-  gap: 4px;
-}
-
-.ide-tab {
-  background: transparent;
-  border: 1px solid transparent;
-  color: var(--text-dim);
-  font-family: var(--font-mono);
-  font-size: 0.74rem;
-  padding: 0.28rem 0.7rem;
-  border-radius: 6px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  transition: var(--transition);
-}
-
-.ide-tab:hover {
-  color: var(--text);
-  background: rgba(245, 158, 11, 0.08);
-}
-
-.ide-tab.active {
-  color: var(--accent);
-  background: rgba(245, 158, 11, 0.16);
-  border-color: rgba(245, 158, 11, 0.35);
-}
-
-.ide-body {
-  padding: 1.4rem 1.6rem;
-  font-family: var(--font-mono);
-  font-size: 0.84rem;
-  line-height: 1.7;
-  overflow-x: auto;
-  background: #0A0805;
-}
-
-.ide-code {
-  margin: 0;
-  color: var(--text);
-}
-
-/* Syntax Highlighting Colors */
-.c-kw   { color: #FB923C; font-weight: 700; }
-.c-cls  { color: #FBBF24; font-weight: 700; }
-.c-fn   { color: #60A5FA; }
-.c-self { color: #F472B6; }
-.c-str  { color: #34D399; }
-.c-cmt  { color: #78716C; font-style: italic; }
-
-.ide-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.45rem 1rem;
-  background: #120D06;
-  border-top: 1px solid rgba(245, 158, 11, 0.12);
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  color: var(--text-dimmer);
-}
-
-.ide-git-branch {
-  color: var(--accent2);
-}
-
-.ide-ambient-glow {
-  position: absolute;
-  inset: -35px;
-  border-radius: 30px;
-  background: radial-gradient(ellipse at center, rgba(245, 158, 11, 0.18) 0%, rgba(251, 146, 60, 0.08) 50%, transparent 75%);
-  filter: blur(40px);
   z-index: 0;
-  pointer-events: none;
 }
 
-/* ── Centered Glowing Avatar ── */
-.hero-avatar-wrap {
+.nebula-1 {
+  width: clamp(380px, 55vw, 650px);
+  height: clamp(380px, 55vw, 650px);
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.16) 0%, rgba(251, 146, 60, 0.05) 50%, transparent 75%);
+  filter: blur(80px);
+  top: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.nebula-2 {
+  width: clamp(280px, 40vw, 480px);
+  height: clamp(280px, 40vw, 480px);
+  background: radial-gradient(circle, rgba(251, 146, 60, 0.12) 0%, transparent 70%);
+  filter: blur(65px);
+  bottom: 12%;
+  left: 20%;
+}
+
+.hero-cosmic-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 840px;
+  width: 100%;
   position: relative;
-  width: 110px;
-  height: 110px;
+  z-index: 2;
+  margin: 0 auto;
+}
+
+/* ── 3D Cosmic Orbit Portrait Stage ── */
+.cosmic-avatar-stage {
+  position: relative;
+  width: clamp(180px, 26vw, 220px);
+  height: clamp(180px, 26vw, 220px);
+  margin: 0 auto 2.2rem;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.hero-avatar {
+/* Concentric Orbit Rings */
+.orbit-ring {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.orbit-ring-1 {
+  inset: -14px;
+  border: 1.5px dashed rgba(245, 158, 11, 0.55);
+  border-top-color: var(--accent3);
+  animation: spinOrbitClockwise 10s linear infinite;
+}
+
+.orbit-ring-2 {
+  inset: -32px;
+  border: 1.2px solid rgba(251, 146, 60, 0.35);
+  border-bottom-color: var(--accent);
+  border-left-color: transparent;
+  animation: spinOrbitCounter 16s linear infinite;
+}
+
+.orbit-ring-3 {
+  inset: -52px;
+  border: 1px dashed rgba(245, 158, 11, 0.22);
+  border-right-color: var(--accent3);
+  animation: spinOrbitClockwise 24s linear infinite;
+}
+
+/* Orbiting Satellite Dots */
+.orbit-satellite {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.orbit-sat-1 {
+  top: -4px;
+  right: 28px;
+  width: 8px;
+  height: 8px;
+  background: #FBBF24;
+  box-shadow: 0 0 10px #FBBF24, 0 0 20px rgba(251, 191, 36, 0.6);
+}
+
+.orbit-sat-2 {
+  bottom: -5px;
+  left: 35px;
+  width: 10px;
+  height: 10px;
+  background: #FB923C;
+  box-shadow: 0 0 12px #FB923C, 0 0 24px rgba(251, 146, 60, 0.6);
+}
+
+.orbit-sat-3 {
+  top: 40px;
+  left: -6px;
+  width: 7px;
+  height: 7px;
+  background: #FEF3C7;
+  box-shadow: 0 0 8px #FEF3C7, 0 0 16px rgba(254, 243, 199, 0.7);
+}
+
+/* Solar Core Ambient Glow */
+.cosmic-core-glow {
+  position: absolute;
+  inset: -35px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.45) 0%, rgba(251, 146, 60, 0.15) 50%, transparent 75%);
+  filter: blur(28px);
+  z-index: 0;
+  animation: cosmicPulse 4s ease-in-out infinite;
+}
+
+/* High-Res Portrait Circular Frame */
+.cosmic-avatar-disc {
   position: relative;
-  width: 100%;
-  height: 100%;
+  width: clamp(140px, 20vw, 165px);
+  height: clamp(140px, 20vw, 165px);
   border-radius: 50%;
   overflow: hidden;
-  border: 3px solid var(--accent);
+  border: 3.5px solid var(--accent);
   box-shadow:
-    0 0 0 4px rgba(245, 158, 11, 0.15),
-    0 15px 35px rgba(0, 0, 0, 0.7),
-    0 0 35px rgba(245, 158, 11, 0.4);
+    0 0 0 5px rgba(245, 158, 11, 0.18),
+    0 20px 45px rgba(0, 0, 0, 0.85),
+    0 0 45px rgba(245, 158, 11, 0.45);
   background: var(--bg2);
   z-index: 2;
   transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
 }
 
-.hero-avatar-wrap:hover .hero-avatar {
-  transform: scale(1.05);
+.cosmic-avatar-disc:hover {
+  transform: scale(1.06);
   border-color: var(--accent3);
   box-shadow:
-    0 0 0 6px rgba(245, 158, 11, 0.25),
-    0 20px 45px rgba(0, 0, 0, 0.8),
-    0 0 50px rgba(245, 158, 11, 0.6);
+    0 0 0 7px rgba(245, 158, 11, 0.3),
+    0 25px 55px rgba(0, 0, 0, 0.9),
+    0 0 60px rgba(245, 158, 11, 0.65);
 }
 
-.hero-avatar-img {
+.cosmic-avatar-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center 20%;
   display: block;
-  filter: contrast(1.08) brightness(1.02);
+  filter: contrast(1.08) brightness(1.03);
   transition: transform 0.5s ease;
 }
 
-.hero-avatar-wrap:hover .hero-avatar-img {
+.cosmic-avatar-disc:hover .cosmic-avatar-img {
   transform: scale(1.08);
 }
 
-/* Rotating Orbit Rings */
-.hero-avatar-ring {
+/* Status Pill */
+.cosmic-status-pill {
   position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.hero-avatar-ring-1 {
-  inset: -8px;
-  border: 1.5px dashed rgba(245, 158, 11, 0.45);
-  border-top-color: var(--accent3);
-  animation: spinRing 12s linear infinite;
-}
-
-.hero-avatar-ring-2 {
-  inset: -16px;
-  border: 1px dashed rgba(251, 146, 60, 0.3);
-  border-bottom-color: var(--accent2);
-  animation: spinRing 18s linear infinite reverse;
-}
-
-@keyframes spinRing {
-  to { transform: rotate(360deg); }
-}
-
-/* Ambient Radial Glow */
-.hero-avatar-glow {
-  position: absolute;
-  inset: -25px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(245, 158, 11, 0.3) 0%, rgba(251, 146, 60, 0.1) 40%, transparent 70%);
-  filter: blur(20px);
-  z-index: 0;
-  animation: heroGlowPulse 4s ease-in-out infinite;
-}
-
-@keyframes heroGlowPulse {
-  0%, 100% { opacity: 0.6; transform: scale(0.95); }
-  50%      { opacity: 1;   transform: scale(1.1); }
-}
-
-/* Status badge */
-.avatar-status-badge {
-  position: absolute;
-  bottom: -5px;
+  bottom: -10px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(18, 13, 5, 0.92);
-  border: 1px solid rgba(245, 158, 11, 0.45);
+  background: rgba(18, 13, 5, 0.95);
+  border: 1px solid rgba(245, 158, 11, 0.5);
   border-radius: 50px;
-  padding: 0.2rem 0.65rem;
+  padding: 0.28rem 0.9rem;
   font-size: 0.68rem;
   font-family: var(--font-mono);
   color: var(--accent2);
   display: flex;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.45rem;
   white-space: nowrap;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
-  z-index: 5;
-  letter-spacing: 0.05em;
-  backdrop-filter: blur(8px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
+  z-index: 6;
+  letter-spacing: 0.08em;
+  backdrop-filter: blur(10px);
 }
 
-.status-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #10B981;
-  box-shadow: 0 0 8px #10B981;
+/* ── Centered Cosmic Content ── */
+.cosmic-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 760px;
+  width: 100%;
+}
+
+.cosmic-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  background: rgba(245, 158, 11, 0.06);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  padding: 0.4rem 1.1rem;
+  border-radius: 50px;
+  margin-bottom: 1.1rem;
+}
+
+.cosmic-sparkle {
+  color: var(--accent2);
+  font-size: 0.8rem;
   animation: statusPulse 2s ease-in-out infinite;
 }
 
-@keyframes statusPulse {
-  0%, 100% { box-shadow: 0 0 4px #10B981; }
-  50%      { box-shadow: 0 0 12px #10B981, 0 0 24px rgba(16, 185, 129, 0.4); }
+.cosmic-chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin: 0.4rem 0 1.2rem;
 }
 
-/* Responsive */
-@media (max-width: 960px) {
-  .hero-cockpit-container {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-  .hero-left-cockpit {
-    align-items: center;
-    text-align: center;
-  }
-  .hero-profile-row {
-    justify-content: center;
-  }
-  .hero-left-cockpit .hero-name {
-    justify-content: center;
-  }
-  .hero-left-cockpit .hero-btns,
-  .hero-left-cockpit .hero-socials {
-    justify-content: center;
-  }
+.cosmic-chip {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--text-dim);
+  background: rgba(245, 158, 11, 0.04);
+  border: 1px solid rgba(245, 158, 11, 0.18);
+  padding: 0.32rem 0.85rem;
+  border-radius: 30px;
+  transition: var(--transition);
+}
+
+.cosmic-chip:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(245, 158, 11, 0.12);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.2);
+}
+
+.hero-cosmic .hero-desc {
+  font-size: 1rem;
+  color: var(--text-dim);
+  line-height: 1.7;
+  max-width: 620px;
+  margin: 0 auto 1.4rem;
+}
+
+.hero-cosmic .xp-bar-wrap {
+  margin: 0 auto 1.8rem;
+}
+
+.hero-cosmic .hero-btns {
+  display: flex;
+  gap: 1.2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 1.8rem;
+}
+
+.hero-cosmic .hero-socials {
+  display: flex;
+  gap: 0.9rem;
+  justify-content: center;
+}
+
+@keyframes spinOrbitClockwise {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes spinOrbitCounter {
+  to { transform: rotate(-360deg); }
+}
+
+@keyframes cosmicPulse {
+  0%, 100% { transform: scale(0.96); opacity: 0.6; }
+  50%      { transform: scale(1.1);  opacity: 1;   }
 }
 
 
