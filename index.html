@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pavan B C — Portfolio</title>
-  <meta name="description" content="Pavan B C — Student Developer. Passionate about Python, C/C++, Flutter, and building cool things." />
+  <meta name="description" content="Pavan B C — Student Developer. Passionate about Python, C/C++, Agentic AI, and building cool things." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -46,178 +46,121 @@
     </div>
   </nav>
 
-  <!-- ========== HERO (Cyberpunk Neon Terminal & Audio Waves) ========== -->
-  <section id="home" class="hero hero-cyber">
+  <!-- ========== HERO (Stripe / Vercel Style Clean Aurora) ========== -->
+  <section id="home" class="hero hero-aurora">
 
-    <!-- Cyberpunk grid canvas -->
+    <!-- Ambient Aurora Top Glow & Starfield -->
+    <div class="aurora-beam"></div>
+    <div class="aurora-ambient-flare-1"></div>
+    <div class="aurora-ambient-flare-2"></div>
     <canvas id="star-canvas"></canvas>
-    <div class="cyber-grid-overlay"></div>
-    <div class="cyber-ambient-flare"></div>
 
-    <div class="container hero-cyber-container">
+    <div class="container hero-aurora-container">
       
-      <!-- ── LEFT: Cyberpunk HUD Portrait Card & Audio Visualizer ── -->
-      <div class="cyber-hud-column">
-        <div class="cyber-hud-card">
-          
-          <!-- Corner HUD brackets -->
-          <div class="hud-corner hud-tl"></div>
-          <div class="hud-corner hud-tr"></div>
-          <div class="hud-corner hud-bl"></div>
-          <div class="hud-corner hud-br"></div>
-
-          <!-- Top HUD Telemetry Bar -->
-          <div class="hud-card-header">
-            <span class="hud-dot"></span>
-            <span class="hud-title">PBC_BIO_NODE // V2.6</span>
-            <span class="hud-status-badge">ONLINE</span>
-          </div>
-
-          <!-- Portrait with Scanline Layer -->
-          <div class="hud-avatar-frame">
-            <img src="pavan-photo.jpg" alt="Pavan B C" class="hud-avatar-img"/>
-            <div class="hud-scanline"></div>
-            <div class="hud-target-reticle"></div>
-          </div>
-
-          <!-- Animated Audio Equalizer Waveform -->
-          <div class="hud-audio-visualizer">
-            <div class="audio-label">
-              <span class="audio-icon">⚡</span>
-              <span>SYNAPSE AUDIO FREQ</span>
-            </div>
-            <div class="eq-bars">
-              <span class="eq-bar"></span>
-              <span class="eq-bar"></span>
-              <span class="eq-bar"></span>
-              <span class="eq-bar"></span>
-              <span class="eq-bar"></span>
-              <span class="eq-bar"></span>
-              <span class="eq-bar"></span>
-              <span class="eq-bar"></span>
-              <span class="eq-bar"></span>
-              <span class="eq-bar"></span>
-              <span class="eq-bar"></span>
-              <span class="eq-bar"></span>
-              <span class="eq-bar"></span>
-              <span class="eq-bar"></span>
-            </div>
-          </div>
-
-          <!-- Bottom HUD Metrics -->
-          <div class="hud-card-footer">
-            <div class="hud-stat-item">
-              <span class="hud-stat-lbl">CORE</span>
-              <span class="hud-stat-val">AGENTIC AI</span>
-            </div>
-            <div class="hud-stat-item">
-              <span class="hud-stat-lbl">STATUS</span>
-              <span class="hud-stat-val">READY</span>
-            </div>
-            <div class="hud-stat-item">
-              <span class="hud-stat-lbl">BASE</span>
-              <span class="hud-stat-val">BLR, IN</span>
-            </div>
-          </div>
-
+      <!-- ── LEFT: Clean Headline & Identity ── -->
+      <div class="aurora-left">
+        
+        <!-- Category Pill -->
+        <div class="aurora-badge">
+          <span class="aurora-badge-dot"></span>
+          <span>CSE @ DAYANANDA SAGAR · AGENTIC AI</span>
         </div>
+
+        <!-- Headline & Name -->
+        <p class="hero-greeting">Hello, I'm</p>
+        <h1 class="hero-name aurora-name">
+          <span class="scramble-word" data-target="Pavan">Pavan</span>
+          <span class="scramble-word accent" data-target="B C">B C</span>
+        </h1>
+
+        <!-- Typewriter line -->
+        <div class="hero-typewriter aurora-typewriter">
+          <span class="tw-prefix">$ </span><span id="typewriter"></span><span class="cursor">▊</span>
+        </div>
+
+        <!-- Description -->
+        <p class="hero-desc aurora-desc">
+          Passionate Computer Science student building autonomous <strong>Agentic AI</strong> systems, efficient software architectures, and high-performance applications.
+        </p>
+
+        <!-- Floating Stack Chips -->
+        <div class="aurora-chips">
+          <span class="aurora-chip">⚡ Agentic AI</span>
+          <span class="aurora-chip">🐍 Python</span>
+          <span class="aurora-chip">⚙️ C &amp; C++</span>
+          <span class="aurora-chip">📜 5x Certified</span>
+        </div>
+
+        <!-- Level Progression Bar -->
+        <div class="xp-bar-wrap aurora-xp-wrap">
+          <div class="xp-header">
+            <span class="xp-label">⚡ LVL <strong>3</strong> &nbsp;·&nbsp; Student Developer</span>
+            <span class="xp-pct">74 XP</span>
+          </div>
+          <div class="xp-track">
+            <div class="xp-fill" id="xp-fill" style="width:0%"></div>
+            <div class="xp-glow"></div>
+          </div>
+          <div class="xp-footer">
+            <span>0 XP</span><span>Next level: Full-Stack Engineer</span><span>100 XP</span>
+          </div>
+        </div>
+
+        <!-- Action CTA Buttons -->
+        <div class="hero-btns aurora-btns">
+          <a href="#projects" class="btn btn-primary aurora-btn" id="hero-cta">
+            <span>Explore Projects</span>
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <button class="btn btn-outline aurora-btn-alt" id="hero-resume-trigger">
+            <span>View Full Resume</span>
+          </button>
+        </div>
+
+        <!-- Social Channels -->
+        <div class="hero-socials aurora-socials">
+          <a href="https://github.com/PavanCodeNexus" target="_blank" rel="noopener" aria-label="GitHub" class="social-link" title="GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/pavan-b-c-313b83385" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-link" title="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=pavanbc31@gmail.com" target="_blank" rel="noopener" aria-label="Email" class="social-link" title="Email (Gmail)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </a>
+        </div>
+
       </div>
 
-      <!-- ── RIGHT: Cyber Command Terminal & Identity ── -->
-      <div class="cyber-terminal-column">
-        <div class="cyber-terminal-panel">
+      <!-- ── RIGHT: Clean Floating Portrait with Ambient Backlight ── -->
+      <div class="aurora-right">
+        <div class="aurora-portrait-stage">
           
-          <!-- Terminal Header Bar -->
-          <div class="terminal-bar">
-            <div class="terminal-dots">
-              <span class="t-dot t-red"></span>
-              <span class="t-dot t-amber"></span>
-              <span class="t-dot t-green"></span>
-            </div>
-            <div class="terminal-title">bash — pavan@nexus:~$</div>
-            <div class="terminal-badge">LIVE SESSION</div>
+          <!-- Ambient Backlight Aura -->
+          <div class="aurora-portrait-glow"></div>
+          
+          <!-- Floating Status Pills -->
+          <div class="aurora-float-pill pill-top">
+            <span class="pill-icon">🚀</span>
+            <span>4+ Key AI Projects</span>
           </div>
 
-          <!-- Terminal Content Body -->
-          <div class="terminal-body">
-            
-            <div class="cyber-badge">
-              <span class="cyber-status-pulse"></span>
-              <span>AI ENGINEER &amp; SOFTWARE DEVELOPER</span>
-            </div>
-
-            <p class="cyber-greeting">&gt; INITIALIZING DEVELOPER PROTOCOL...</p>
-            
-            <h1 class="hero-name cyber-name">
-              <span class="scramble-word" data-target="Pavan">Pavan</span>
-              <span class="scramble-word accent" data-target="B C">B C</span>
-            </h1>
-
-            <div class="hero-typewriter cyber-typewriter">
-              <span class="tw-prefix">$ </span><span id="typewriter"></span><span class="cursor">▊</span>
-            </div>
-
-            <!-- Description -->
-            <p class="hero-desc cyber-desc">
-              Passionate Computer Science student building autonomous <strong>Agentic AI</strong> systems, efficient software architectures, and modern web experiences.
-            </p>
-
-            <!-- Cyber HUD Quick Stats -->
-            <div class="cyber-stats-row">
-              <div class="cyber-stat-box">
-                <span class="stat-digit">04+</span>
-                <span class="stat-tag">AI &amp; Systems Projects</span>
-              </div>
-              <div class="cyber-stat-box">
-                <span class="stat-digit">05</span>
-                <span class="stat-tag">Verified Credentials</span>
-              </div>
-              <div class="cyber-stat-box">
-                <span class="stat-digit">CSE</span>
-                <span class="stat-tag">Dayananda Sagar</span>
-              </div>
-            </div>
-
-            <!-- XP Level Bar -->
-            <div class="xp-bar-wrap cyber-xp-wrap">
-              <div class="xp-header">
-                <span class="xp-label">⚡ LVL <strong>3</strong> &nbsp;·&nbsp; Autonomous AI &amp; Systems</span>
-                <span class="xp-pct">74 XP</span>
-              </div>
-              <div class="xp-track">
-                <div class="xp-fill" id="xp-fill" style="width:0%"></div>
-                <div class="xp-glow"></div>
-              </div>
-              <div class="xp-footer">
-                <span>0 XP</span><span>Rank: Student Developer</span><span>100 XP</span>
-              </div>
-            </div>
-
-            <!-- Cyber Action Buttons -->
-            <div class="hero-btns cyber-btns">
-              <a href="#projects" class="btn btn-primary cyber-btn" id="hero-cta">
-                <span>EXPLORE PROJECTS</span>
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </a>
-              <button class="btn btn-outline cyber-btn-alt" id="hero-resume-trigger">
-                <span>VIEW FULL RESUME</span>
-              </button>
-            </div>
-
-            <!-- Cyber Social Links -->
-            <div class="hero-socials cyber-socials">
-              <a href="https://github.com/PavanCodeNexus" target="_blank" rel="noopener" aria-label="GitHub" class="social-link" title="GitHub">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-              </a>
-              <a href="https://www.linkedin.com/in/pavan-b-c-313b83385" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-link" title="LinkedIn">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-              </a>
-              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=pavanbc31@gmail.com" target="_blank" rel="noopener" aria-label="Email" class="social-link" title="Email (Gmail)">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              </a>
-            </div>
-
+          <div class="aurora-float-pill pill-bottom">
+            <span class="status-dot"></span>
+            <span>Available for Opportunities</span>
           </div>
+
+          <!-- Circular Portrait Frame -->
+          <div class="aurora-portrait-frame">
+            <img src="pavan-photo.jpg" alt="Pavan B C" class="aurora-portrait-img"/>
+          </div>
+
+          <!-- Side metric pill -->
+          <div class="aurora-float-pill pill-side">
+            <span class="pill-icon">🎓</span>
+            <span>Dayananda Sagar CSE</span>
+          </div>
+
         </div>
       </div>
 
@@ -261,7 +204,7 @@
         </div>
         <div class="about-text">
           <p class="about-lead">Hi! I'm <strong>Pavan B C</strong>, a passionate student developer with a love for turning ideas into real-world applications.</p>
-          <p>Whether it's crafting efficient algorithms in C++, building intuitive mobile apps with Flutter, or automating tasks with Python — I enjoy the entire process of problem-solving and creation.</p>
+          <p>Whether it's crafting efficient algorithms in C++, developing autonomous Agentic AI systems, or automating tasks with Python — I enjoy the entire process of problem-solving and creation.</p>
           <p>I'm continuously learning and growing, with a strong foundation in computer science fundamentals and a keen eye for clean, maintainable code.</p>
           <div class="about-highlights">
             <div class="highlight-item">
@@ -357,22 +300,22 @@
           <div class="skill-card-glow"></div>
         </div>
 
-        <!-- Flutter / Dart -->
-        <div class="skill-card" data-percent="72" data-skill-color="#A78BFA">
+        <!-- Agentic AI / LLMs -->
+        <div class="skill-card" data-percent="85" data-skill-color="#F59E0B">
           <div class="skill-card-inner">
             <div class="skill-ring-wrap">
               <svg class="skill-ring-svg" viewBox="0 0 120 120">
                 <circle class="ring-track" cx="60" cy="60" r="50"/>
-                <circle class="ring-progress" cx="60" cy="60" r="50" data-pct="72"/>
+                <circle class="ring-progress" cx="60" cy="60" r="50" data-pct="85"/>
               </svg>
               <div class="skill-center-icon">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.314 0L2.3 12 6 15.7 21.684.013h-7.357zm.014 11.072L7.857 17.53l6.47 6.47H21.7l-6.46-6.468 6.46-6.46h-7.37z"/></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2M7.5 13A2.5 2.5 0 0 0 5 15.5 2.5 2.5 0 0 0 7.5 18a2.5 2.5 0 0 0 2.5-2.5A2.5 2.5 0 0 0 7.5 13m9 0a2.5 2.5 0 0 0-2.5 2.5 2.5 2.5 0 0 0 2.5 2.5 2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5z"/></svg>
               </div>
-              <div class="skill-pct-label">72%</div>
+              <div class="skill-pct-label">85%</div>
             </div>
             <div class="skill-meta">
-              <span class="skill-name">Flutter / Dart</span>
-              <span class="skill-level-badge">Proficient</span>
+              <span class="skill-name">Agentic AI</span>
+              <span class="skill-level-badge">Advanced</span>
             </div>
           </div>
           <div class="skill-card-glow"></div>
@@ -705,7 +648,7 @@
           <div class="resume-grid">
             <div class="resume-block">
               <h4>🎯 Core Focus</h4>
-              <p>Python · C/C++ · Agentic AI · Flutter · Data Structures · Algorithm Design</p>
+              <p>Python · C/C++ · Agentic AI · Data Structures · Algorithm Design</p>
             </div>
             <div class="resume-block">
               <h4>🎓 Academic</h4>
@@ -896,7 +839,7 @@
           <h2 class="rs-section-title">Technical Skills</h2>
           <div class="rs-skills-grid">
             <div class="rs-skill-group"><strong>Programming:</strong> Python, C, C++, HTML5, CSS3</div>
-            <div class="rs-skill-group"><strong>AI &amp; Frameworks:</strong> Agentic AI, Llama 3.3 (Groq API), Flutter basics, Prompt Engineering</div>
+            <div class="rs-skill-group"><strong>AI &amp; Frameworks:</strong> Agentic AI, Llama 3.3 (Groq API), Prompt Engineering, LangChain</div>
             <div class="rs-skill-group"><strong>Tools &amp; Platforms:</strong> Git, GitHub, VS Code, Linux CLI, PowerPoint/PDF Automation</div>
             <div class="rs-skill-group"><strong>Core Competencies:</strong> OOP, Data Structures, Problem Solving, Distributed Version Control</div>
           </div>

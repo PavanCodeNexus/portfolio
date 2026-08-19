@@ -187,7 +187,7 @@ function updateActiveNavLink() {
 const phrases = [
   'Student Developer 🎓',
   'Python Enthusiast 🐍',
-  'Flutter Builder 📱',
+  'Agentic AI Developer 🤖',
   'C++ Problem Solver ⚡',
   'Open Source Fan 🌍',
 ];
@@ -226,7 +226,7 @@ setTimeout(typeWriter, 1200);
         <span class="c-self">self</span>.role     = <span class="c-str">"Student Developer"</span>
         <span class="c-self">self</span>.college  = <span class="c-str">"Dayananda Sagar Institutions"</span>
         <span class="c-self">self</span>.location = <span class="c-str">"Bengaluru, India"</span>
-        <span class="c-self">self</span>.stack    = [<span class="c-str">"Python"</span>, <span class="c-str">"C++"</span>, <span class="c-str">"Agentic AI"</span>, <span class="c-str">"Flutter"</span>]
+        <span class="c-self">self</span>.stack    = [<span class="c-str">"Python"</span>, <span class="c-str">"C++"</span>, <span class="c-str">"Agentic AI"</span>]
         <span class="c-self">self</span>.focus    = <span class="c-str">"Autonomous AI &amp; Software Systems"</span>
 
     <span class="c-kw">def</span> <span class="c-fn">get_status</span>(<span class="c-self">self</span>):
