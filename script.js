@@ -263,8 +263,9 @@ pavan = <span class="c-cls">Developer</span>()
         <span class="c-kw">return</span> response.choices[<span class="c-kw">0</span>].message.content`
   };
 
-  const tabs = document.querySelectorAll('.ide-tab');
-  const codeContainer = document.getElementById('ide-code-content');
+  if (codeContainer && codeFiles['developer.py']) {
+    codeContainer.innerHTML = codeFiles['developer.py'];
+  }
 
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {

@@ -46,53 +46,53 @@
     </div>
   </nav>
 
-  <!-- ========== HERO (Stripe / Vercel Style Clean Aurora) ========== -->
-  <section id="home" class="hero hero-aurora">
+  <!-- ========== HERO (Developer Workspace / Cockpit) ========== -->
+  <section id="home" class="hero hero-cockpit">
 
-    <!-- Ambient Aurora Top Glow & Starfield -->
-    <div class="aurora-beam"></div>
-    <div class="aurora-ambient-flare-1"></div>
-    <div class="aurora-ambient-flare-2"></div>
+    <!-- Starfield canvas overlay -->
     <canvas id="star-canvas"></canvas>
 
-    <div class="container hero-aurora-container">
+    <div class="container hero-cockpit-container">
       
-      <!-- ── LEFT: Clean Headline & Identity ── -->
-      <div class="aurora-left">
+      <!-- ── LEFT COLUMN: Developer Profile ── -->
+      <div class="hero-left-cockpit">
         
-        <!-- Category Pill -->
-        <div class="aurora-badge">
-          <span class="aurora-badge-dot"></span>
-          <span>CSE @ DAYANANDA SAGAR · AGENTIC AI</span>
+        <!-- Status badge -->
+        <div class="cockpit-badge">
+          <span class="status-dot"></span>
+          <span>DEVELOPER WORKSPACE · ACTIVE</span>
         </div>
 
-        <!-- Headline & Name -->
-        <p class="hero-greeting">Hello, I'm</p>
-        <h1 class="hero-name aurora-name">
-          <span class="scramble-word" data-target="Pavan">Pavan</span>
-          <span class="scramble-word accent" data-target="B C">B C</span>
-        </h1>
+        <!-- Avatar & Name in a Flex Row -->
+        <div class="hero-profile-row">
+          <div class="hero-avatar-wrap">
+            <div class="hero-avatar-glow"></div>
+            <div class="hero-avatar-ring hero-avatar-ring-1"></div>
+            <div class="hero-avatar-ring hero-avatar-ring-2"></div>
+            <div class="hero-avatar">
+              <img src="pavan-photo.jpg" alt="Pavan B C" class="hero-avatar-img"/>
+            </div>
+            <div class="avatar-status-badge">
+              <span class="status-dot"></span> Available
+            </div>
+          </div>
 
-        <!-- Typewriter line -->
-        <div class="hero-typewriter aurora-typewriter">
+          <div class="hero-name-group">
+            <p class="hero-greeting">Hello, I'm</p>
+            <h1 class="hero-name">
+              <span class="scramble-word" data-target="Pavan">Pavan</span>
+              <span class="scramble-word accent" data-target="B C">B C</span>
+            </h1>
+          </div>
+        </div>
+
+        <!-- Typewriter Line -->
+        <div class="hero-typewriter">
           <span class="tw-prefix">$ </span><span id="typewriter"></span><span class="cursor">▊</span>
         </div>
 
-        <!-- Description -->
-        <p class="hero-desc aurora-desc">
-          Passionate Computer Science student building autonomous <strong>Agentic AI</strong> systems, efficient software architectures, and high-performance applications.
-        </p>
-
-        <!-- Floating Stack Chips -->
-        <div class="aurora-chips">
-          <span class="aurora-chip">⚡ Agentic AI</span>
-          <span class="aurora-chip">🐍 Python</span>
-          <span class="aurora-chip">⚙️ C &amp; C++</span>
-          <span class="aurora-chip">📜 5x Certified</span>
-        </div>
-
-        <!-- Level Progression Bar -->
-        <div class="xp-bar-wrap aurora-xp-wrap">
+        <!-- Level XP Progression Bar -->
+        <div class="xp-bar-wrap">
           <div class="xp-header">
             <span class="xp-label">⚡ LVL <strong>3</strong> &nbsp;·&nbsp; Student Developer</span>
             <span class="xp-pct">74 XP</span>
@@ -102,23 +102,28 @@
             <div class="xp-glow"></div>
           </div>
           <div class="xp-footer">
-            <span>0 XP</span><span>Next level: Full-Stack Engineer</span><span>100 XP</span>
+            <span>0</span><span>Next level: Full-Stack Dev</span><span>100</span>
           </div>
         </div>
 
+        <!-- Description -->
+        <p class="hero-desc">
+          Passionate Computer Science student building autonomous <strong>Agentic AI</strong> systems, efficient software architectures, and modern web experiences.
+        </p>
+
         <!-- Action CTA Buttons -->
-        <div class="hero-btns aurora-btns">
-          <a href="#projects" class="btn btn-primary aurora-btn" id="hero-cta">
+        <div class="hero-btns">
+          <a href="#projects" class="btn btn-primary" id="hero-cta">
             <span>Explore Projects</span>
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
-          <button class="btn btn-outline aurora-btn-alt" id="hero-resume-trigger">
-            <span>View Full Resume</span>
+          <button class="btn btn-outline" id="hero-resume-trigger">
+            <span>View Resume</span>
           </button>
         </div>
 
-        <!-- Social Channels -->
-        <div class="hero-socials aurora-socials">
+        <!-- Social Icons -->
+        <div class="hero-socials">
           <a href="https://github.com/PavanCodeNexus" target="_blank" rel="noopener" aria-label="GitHub" class="social-link" title="GitHub">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
           </a>
@@ -132,33 +137,47 @@
 
       </div>
 
-      <!-- ── RIGHT: Clean Floating Portrait with Ambient Backlight ── -->
-      <div class="aurora-right">
-        <div class="aurora-portrait-stage">
+      <!-- ── RIGHT COLUMN: Interactive IDE Window ── -->
+      <div class="hero-right-cockpit">
+        <div class="ide-ambient-glow"></div>
+        <div class="ide-window">
           
-          <!-- Ambient Backlight Aura -->
-          <div class="aurora-portrait-glow"></div>
-          
-          <!-- Floating Status Pills -->
-          <div class="aurora-float-pill pill-top">
-            <span class="pill-icon">🚀</span>
-            <span>4+ Key AI Projects</span>
+          <!-- Window Header with Tabs -->
+          <div class="ide-header">
+            <div class="ide-controls">
+              <span class="dot-red"></span>
+              <span class="dot-amber"></span>
+              <span class="dot-green"></span>
+            </div>
+            <div class="ide-tabs">
+              <button class="ide-tab active" data-file="developer.py">
+                <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14.5h-2v-2h2zm0-4h-2V7h2z"/></svg>
+                <span>developer.py</span>
+              </button>
+              <button class="ide-tab" data-file="skills.json">
+                <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M4 4h16v16H4z"/></svg>
+                <span>skills.json</span>
+              </button>
+              <button class="ide-tab" data-file="ai_agent.py">
+                <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                <span>ai_agent.py</span>
+              </button>
+            </div>
           </div>
 
-          <div class="aurora-float-pill pill-bottom">
-            <span class="status-dot"></span>
-            <span>Available for Opportunities</span>
+          <!-- Code View Area -->
+          <div class="ide-body">
+            <pre class="ide-code"><code id="ide-code-content"></code></pre>
           </div>
 
-          <!-- Circular Portrait Frame -->
-          <div class="aurora-portrait-frame">
-            <img src="pavan-photo.jpg" alt="Pavan B C" class="aurora-portrait-img"/>
-          </div>
-
-          <!-- Side metric pill -->
-          <div class="aurora-float-pill pill-side">
-            <span class="pill-icon">🎓</span>
-            <span>Dayananda Sagar CSE</span>
+          <!-- Window Status Footer -->
+          <div class="ide-footer">
+            <div class="ide-footer-left">
+              <span class="ide-git-branch">⎇ main*</span>
+            </div>
+            <div class="ide-footer-right">
+              <span id="ide-file-type">Python 3.12 · UTF-8 · Spaces: 4</span>
+            </div>
           </div>
 
         </div>
@@ -168,7 +187,7 @@
 
     <!-- Scroll hint -->
     <div class="hero-scroll-indicator">
-      <span>Scroll</span>
+      <span>SCROLL</span>
       <div class="scroll-line"></div>
     </div>
   </section>
