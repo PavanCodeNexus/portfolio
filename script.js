@@ -27,8 +27,8 @@
   }
 })();
 
-// ── 3D GRAVITY STARFIELD & CONSTELLATION CANVAS ─────────────
-(function initGravityStarfield() {
+// ── STARFIELD Canvas (Depth Parallax on Mouse Move) ───────
+(function initStarfield() {
   const canvas = document.getElementById('star-canvas');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
@@ -41,103 +41,57 @@
   resize();
   window.addEventListener('resize', resize);
 
-  // Generate cosmic particles
-  const STAR_COUNT = Math.min(180, Math.floor(window.innerWidth / 7));
-  const stars = Array.from({ length: STAR_COUNT }, () => {
-    const x = Math.random() * window.innerWidth;
-    const y = Math.random() * window.innerHeight;
-    return {
-      x: x,
-      y: y,
-      originX: x,
-      originY: y,
-      vx: (Math.random() - 0.5) * 0.4,
-      vy: (Math.random() - 0.5) * 0.4,
-      z: Math.random() * 2 + 0.6,
-      r: Math.random() * 1.6 + 0.6,
-      alpha: Math.random() * 0.7 + 0.3,
-      twinklePhase: Math.random() * Math.PI * 2,
-      color: Math.random() > 0.4 ? '245, 158, 11' : (Math.random() > 0.6 ? '251, 146, 60' : '254, 243, 199')
-    };
-  });
+  // Generate 3 layers of stars with depth (z: 0.5 to 2.5)
+  const STAR_COUNT = 150;
+  const stars = Array.from({ length: STAR_COUNT }, () => ({
+    x: (Math.random() - 0.5) * (window.innerWidth + 400),
+    y: (Math.random() - 0.5) * (window.innerHeight + 400),
+    z: Math.random() * 2 + 0.5, // depth layer
+    r: Math.random() * 1.5 + 0.6,
+    alpha: Math.random() * 0.7 + 0.3,
+    twinklePhase: Math.random() * Math.PI * 2,
+    color: Math.random() > 0.3 ? '245, 158, 11' : (Math.random() > 0.5 ? '251, 146, 60' : '254, 243, 199')
+  }));
 
-  let mouseX = -9999, mouseY = -9999;
-  let isMouseActive = false;
+  let mouseX = 0, mouseY = 0;
+  let targetMouseX = 0, targetMouseY = 0;
 
   window.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    isMouseActive = true;
-  });
-
-  window.addEventListener('mouseleave', () => {
-    isMouseActive = false;
-    mouseX = -9999;
-    mouseY = -9999;
+    targetMouseX = (e.clientX / window.innerWidth - 0.5) * 70;
+    targetMouseY = (e.clientY / window.innerHeight - 0.5) * 70;
   });
 
   function draw() {
     ctx.clearRect(0, 0, width, height);
+
+    // Smooth lerp for parallax
+    mouseX += (targetMouseX - mouseX) * 0.06;
+    mouseY += (targetMouseY - mouseY) * 0.06;
+
+    const cx = width / 2;
+    const cy = height / 2;
     const t = Date.now() * 0.001;
-    const GRAVITY_RADIUS = 160;
-    const CONNECT_RADIUS = 85;
 
-    // Update & draw particles
-    for (let i = 0; i < stars.length; i++) {
-      const s = stars[i];
+    stars.forEach(star => {
+      // Depth parallax offset
+      const px = cx + star.x + (mouseX * star.z);
+      const py = cy + star.y + (mouseY * star.z);
 
-      // Drift
-      s.x += s.vx;
-      s.y += s.vy;
+      if (px < -20 || px > width + 20 || py < -20 || py > height + 20) return;
 
-      // Wrap around borders
-      if (s.x < 0) s.x = width;
-      if (s.x > width) s.x = 0;
-      if (s.y < 0) s.y = height;
-      if (s.y > height) s.y = 0;
-
-      // Cursor gravity effect
-      if (isMouseActive) {
-        const dx = mouseX - s.x;
-        const dy = mouseY - s.y;
-        const dist = Math.hypot(dx, dy);
-
-        if (dist < GRAVITY_RADIUS && dist > 1) {
-          const force = (1 - dist / GRAVITY_RADIUS) * 0.06 * s.z;
-          s.x += dx * force;
-          s.y += dy * force;
-        }
-      }
-
-      // Twinkle & Glow
-      const twinkle = 0.5 + 0.5 * Math.sin(t * 2.5 + s.twinklePhase);
-      const currentAlpha = s.alpha * (0.6 + 0.4 * twinkle);
+      const twinkle = 0.5 + 0.5 * Math.sin(t * 2.5 + star.twinklePhase);
+      const currentAlpha = star.alpha * (0.6 + 0.4 * twinkle);
 
       ctx.beginPath();
-      ctx.arc(s.x, s.y, s.r * (0.8 + 0.2 * twinkle), 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(${s.color}, ${currentAlpha})`;
-      if (s.z > 1.8) {
-        ctx.shadowColor = `rgba(${s.color}, 0.8)`;
-        ctx.shadowBlur = 6;
+      ctx.arc(px, py, star.r * star.z * 0.8, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${star.color}, ${currentAlpha})`;
+      if (star.z > 1.8) {
+        ctx.shadowColor = `rgba(${star.color}, 0.8)`;
+        ctx.shadowBlur = 8;
       }
       ctx.fill();
       ctx.shadowBlur = 0;
-
-      // Draw constellation lines to nearby particles
-      for (let j = i + 1; j < stars.length; j++) {
-        const s2 = stars[j];
-        const dist = Math.hypot(s.x - s2.x, s.y - s2.y);
-        if (dist < CONNECT_RADIUS) {
-          const lineAlpha = (1 - dist / CONNECT_RADIUS) * 0.18 * Math.min(s.alpha, s2.alpha);
-          ctx.beginPath();
-          ctx.moveTo(s.x, s.y);
-          ctx.lineTo(s2.x, s2.y);
-          ctx.strokeStyle = `rgba(245, 158, 11, ${lineAlpha})`;
-          ctx.lineWidth = 0.75;
-          ctx.stroke();
-        }
-      }
-    }
+    });
 
     requestAnimationFrame(draw);
   }
@@ -265,7 +219,6 @@ setTimeout(typeWriter, 1200);
 
 // ── INTERACTIVE IDE CODE VIEWER ───────────────────────────
 (function initIdeViewer() {
-  if (!document.querySelector('.ide-tab')) return;
   const codeFiles = {
     'developer.py': `<span class="c-kw">class</span> <span class="c-cls">Developer</span>:
     <span class="c-kw">def</span> <span class="c-fn">__init__</span>(<span class="c-self">self</span>):
