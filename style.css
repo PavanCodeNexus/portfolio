@@ -872,7 +872,95 @@ a { color: inherit; text-decoration: none; }
   }
 }
 
+/* =========================================================
+   INFINITE TECH MARQUEE (Kage Cinematic Feature)
+   ========================================================= */
+.tech-marquee-section {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 1.4rem 0;
+  background: rgba(14, 14, 18, 0.85);
+  border-top: 1px solid rgba(245, 158, 11, 0.15);
+  border-bottom: 1px solid rgba(245, 158, 11, 0.15);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  z-index: 5;
 }
+
+.tech-marquee-section::before,
+.tech-marquee-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 120px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.tech-marquee-section::before {
+  left: 0;
+  background: linear-gradient(90deg, var(--bg) 0%, transparent 100%);
+}
+
+.tech-marquee-section::after {
+  right: 0;
+  background: linear-gradient(90deg, transparent 0%, var(--bg) 100%);
+}
+
+.tech-marquee-track {
+  display: flex;
+  width: max-content;
+  user-select: none;
+}
+
+.tech-marquee-group {
+  display: flex;
+  align-items: center;
+  gap: 2.2rem;
+  padding-right: 2.2rem;
+  animation: marqueeSlide 28s linear infinite;
+  will-change: transform;
+}
+
+.tech-marquee-section:hover .tech-marquee-group {
+  animation-play-state: paused;
+}
+
+.tech-marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--text);
+  white-space: nowrap;
+  transition: var(--transition);
+}
+
+.tech-marquee-item:hover {
+  color: var(--accent);
+  transform: scale(1.08);
+}
+
+.marquee-icon {
+  font-size: 1.15rem;
+}
+
+.tech-marquee-dot {
+  color: var(--accent);
+  font-size: 0.55rem;
+  opacity: 0.6;
+}
+
+@keyframes marqueeSlide {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
 /* =========================================================
    ABOUT
    ========================================================= */
