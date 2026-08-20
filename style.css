@@ -1405,8 +1405,51 @@ section .container {
   clip-path: none;
 }
 
+/* =========================================================
+   STEPPED STOP-MOTION / FILM FRAME TRANSITIONS
+   ========================================================= */
+.skill-card-modern,
+.project-card,
+.cert-card,
+.timeline-card,
+.stat-card,
+.highlight-item,
+.ide-tab,
+.kage-btn-solid,
+.kage-btn-glass,
+.kage-nav-resume-btn,
+.kage-nav-icon,
+.btn,
+.social-link,
+.footer-badge-link {
+  transition:
+    transform 0.28s steps(6, end),
+    border-color 0.28s steps(4, end),
+    box-shadow 0.28s steps(6, end),
+    background 0.28s steps(4, end),
+    color 0.28s steps(4, end);
+}
 
+/* Film Frame Shutter Flash on Hover */
+.project-card:hover,
+.skill-card-modern:hover,
+.cert-card:hover,
+.timeline-card:hover {
+  animation: frameShutterTick 0.35s steps(5, end);
+}
 
+@keyframes frameShutterTick {
+  0% {
+    filter: brightness(1.35) contrast(1.15);
+    box-shadow: 0 0 0 1.5px rgba(245, 158, 11, 0.6), 0 0 25px rgba(245, 158, 11, 0.25);
+  }
+  40% {
+    filter: brightness(0.92) contrast(1.05);
+  }
+  100% {
+    filter: brightness(1) contrast(1);
+  }
+}
 
 /* =========================================================
    PROJECTS
@@ -1424,10 +1467,10 @@ section .container {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  transition: var(--transition);
   position: relative;
   overflow: hidden;
 }
+
 .project-card::after {
   content: '';
   position: absolute;
