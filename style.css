@@ -1,30 +1,31 @@
 /* =========================================================
    PAVAN B C — PORTFOLIO  |  style.css
-   GOLDEN HOUR THEME · Deep Charcoal · Amber · Warm Orange
+   SCROLLTIDE KAGE CINEMATIC THEME · Deep Obsidian · Amber Ember
    ========================================================= */
 
 /* ---------- RESET & BASE ---------- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  /* ── Golden Hour Palette ── */
-  --bg:           #0A0805;   /* deep charcoal black */
-  --bg2:          #130E06;   /* warm dark brown-black */
-  --bg3:          #1C1409;   /* card base */
-  --accent:       #F59E0B;   /* amber gold */
-  --accent2:      #FB923C;   /* warm orange */
+  /* ── Scrolltide Kage Obsidian Palette ── */
+  --bg:           #060608;   /* pure deep obsidian black */
+  --bg2:          #0C0C10;   /* dark obsidian slate */
+  --bg3:          #121218;   /* obsidian card layer */
+  --accent:       #F59E0B;   /* amber ember */
+  --accent2:      #FB923C;   /* sunset orange */
   --accent3:      #FBBF24;   /* bright gold highlight */
-  --accent-glow:  rgba(245, 158, 11, 0.22);
-  --accent2-glow: rgba(251, 146, 60, 0.18);
-  --text:         #FEF3C7;   /* warm cream white */
-  --text-dim:     #C4965A;   /* muted amber */
-  --text-dimmer:  #6B4F2A;   /* very dim warm brown */
-  --border:       #2A1A06;   /* warm dark border */
-  --card-bg:      #120D05;   /* card background */
-  --card-hover:   rgba(245, 158, 11, 0.06);
+  --accent-glow:  rgba(245, 158, 11, 0.28);
+  --accent2-glow: rgba(251, 146, 60, 0.22);
+  --text:         #F8FAFC;   /* crisp modern silver-white */
+  --text-dim:     #94A3B8;   /* clean slate dim */
+  --text-dimmer:  #475569;   /* deep muted slate */
+  --border:       rgba(255, 255, 255, 0.09); /* razor frosted glass border */
+  --border-amber: rgba(245, 158, 11, 0.22);
+  --card-bg:      rgba(12, 12, 16, 0.82);   /* Kage frosted dark glass */
+  --card-hover:   rgba(245, 158, 11, 0.08);
   --radius:       16px;
   --radius-sm:    8px;
-  --transition:   0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition:   0.3s cubic-bezier(0.22, 1, 0.36, 1);
   --font:         'Outfit', sans-serif;
   --font-mono:    'JetBrains Mono', monospace;
 }
@@ -37,24 +38,39 @@ body {
   color: var(--text);
   line-height: 1.65;
   overflow-x: hidden;
+  position: relative;
 }
 
-/* Warm Golden Hour sunset ambient lighting mesh */
-body::before {
-  content: '';
+/* ── KAGE SPOTLIGHT & PERSPECTIVE GRID ── */
+.kage-spotlight {
+  position: fixed;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 950px;
+  height: 650px;
+  background: radial-gradient(ellipse at center, rgba(245, 158, 11, 0.24) 0%, rgba(251, 146, 60, 0.09) 45%, transparent 70%);
+  filter: blur(70px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.kage-grid-bg {
   position: fixed;
   inset: 0;
-  background:
-    radial-gradient(ellipse 70% 50% at 15% 15%, rgba(245, 158, 11, 0.08) 0%, transparent 65%),
-    radial-gradient(ellipse 65% 65% at 85% 75%, rgba(251, 146, 60, 0.07) 0%, transparent 65%),
-    radial-gradient(ellipse 50% 40% at 50% 45%, rgba(251, 191, 36, 0.04) 0%, transparent 70%);
+  background-image: 
+    linear-gradient(to right, rgba(245, 158, 11, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(245, 158, 11, 0.04) 1px, transparent 1px);
+  background-size: 55px 55px;
+  mask-image: radial-gradient(ellipse 80% 65% at 50% 30%, black 30%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 65% at 50% 30%, black 30%, transparent 85%);
   pointer-events: none;
   z-index: 0;
 }
 
 ::selection { background: var(--accent); color: #000; }
 
-/* ---------- PAGE LOAD BAR & CURSOR ---------- */
+/* ---------- PAGE LOAD BAR ---------- */
 #page-load-bar {
   position: fixed;
   top: 0; left: 0;
@@ -72,6 +88,7 @@ body::before {
   background: linear-gradient(180deg, var(--accent), var(--accent2));
   border-radius: 3px;
 }
+
 
 /* ---------- TYPOGRAPHY ---------- */
 h1,h2,h3,h4 { line-height: 1.2; font-weight: 700; }
@@ -590,28 +607,31 @@ a { color: inherit; text-decoration: none; }
 }
 
 .ide-window {
-  background: #0E0A06;
-  border: 1px solid rgba(245, 158, 11, 0.25);
-  border-radius: 14px;
+  background: rgba(10, 10, 14, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.75), 0 0 35px rgba(245, 158, 11, 0.18);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.9), 0 0 45px rgba(245, 158, 11, 0.15);
   position: relative;
   z-index: 2;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .ide-window:hover {
-  border-color: rgba(245, 158, 11, 0.5);
-  box-shadow: 0 25px 65px rgba(0, 0, 0, 0.85), 0 0 45px rgba(245, 158, 11, 0.28);
+  border-color: rgba(245, 158, 11, 0.45);
+  box-shadow: 0 35px 85px rgba(0, 0, 0, 0.95), 0 0 60px rgba(245, 158, 11, 0.25);
+  transform: translateY(-2px);
 }
 
 .ide-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #17110A;
-  border-bottom: 1px solid rgba(245, 158, 11, 0.18);
-  padding: 0.65rem 1rem;
+  background: rgba(16, 16, 22, 0.92);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.75rem 1.1rem;
 }
 
 .ide-controls {
@@ -660,7 +680,7 @@ a { color: inherit; text-decoration: none; }
   font-size: 0.84rem;
   line-height: 1.7;
   overflow-x: auto;
-  background: #0A0805;
+  background: rgba(8, 8, 12, 0.95);
 }
 
 .ide-code {
@@ -674,15 +694,15 @@ a { color: inherit; text-decoration: none; }
 .c-fn   { color: #60A5FA; }
 .c-self { color: #F472B6; }
 .c-str  { color: #34D399; }
-.c-cmt  { color: #78716C; font-style: italic; }
+.c-cmt  { color: #94A3B8; font-style: italic; }
 
 .ide-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0.45rem 1rem;
-  background: #120D06;
-  border-top: 1px solid rgba(245, 158, 11, 0.12);
+  background: rgba(14, 14, 18, 0.92);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
   font-family: var(--font-mono);
   font-size: 0.68rem;
   color: var(--text-dimmer);
