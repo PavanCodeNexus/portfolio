@@ -223,6 +223,16 @@ setTimeout(typeWriter, 1200);
 
 // ── INTERACTIVE IDE CODE VIEWER ───────────────────────────
 (function initIdeViewer() {
+  const tabs          = document.querySelectorAll('.ide-tab');
+  const codeContainer = document.getElementById('ide-code-content');
+  const fileTypeLabel = document.getElementById('ide-file-type');
+
+  const fileTypeMap = {
+    'developer.py': 'Python 3.12 · UTF-8 · Spaces: 4',
+    'skills.json':  'JSON · UTF-8 · Spaces: 2',
+    'ai_agent.py':  'Python 3.12 · UTF-8 · Spaces: 4'
+  };
+
   const codeFiles = {
     'developer.py': `<span class="c-kw">class</span> <span class="c-cls">Developer</span>:
     <span class="c-kw">def</span> <span class="c-fn">__init__</span>(<span class="c-self">self</span>):
@@ -276,6 +286,9 @@ pavan = <span class="c-cls">Developer</span>()
       tabs.forEach(t => t.classList.remove('active'));
       tab.classList.add('active');
       const filename = tab.getAttribute('data-file');
+      if (fileTypeLabel && fileTypeMap[filename]) {
+        fileTypeLabel.textContent = fileTypeMap[filename];
+      }
       if (codeFiles[filename] && codeContainer) {
         codeContainer.style.opacity = '0';
         codeContainer.style.transform = 'translateY(4px)';
@@ -289,6 +302,7 @@ pavan = <span class="c-cls">Developer</span>()
     });
   });
 })();
+
 
 // ── SCROLL REVEAL — Tech Zoom & Rim Flash ─────────────────
 const revealEls = document.querySelectorAll(
