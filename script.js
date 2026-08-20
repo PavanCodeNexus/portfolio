@@ -448,37 +448,8 @@ if (loadBar) {
   });
 }
 
-// ── Custom Cursor (Smooth Lerp Follow) ────────────────────
-const cursorGlow = document.getElementById('cursor-glow');
-const cursorDot  = document.getElementById('cursor-dot');
-let mouseX = window.innerWidth / 2;
-let mouseY = window.innerHeight / 2;
-let glowX  = mouseX, glowY = mouseY;
 
-document.addEventListener('mousemove', (e) => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-  if (cursorDot) {
-    cursorDot.style.left = mouseX + 'px';
-    cursorDot.style.top  = mouseY + 'px';
-  }
-});
 
-(function lerpGlow() {
-  glowX += (mouseX - glowX) * 0.08;
-  glowY += (mouseY - glowY) * 0.08;
-  if (cursorGlow) {
-    cursorGlow.style.left = glowX + 'px';
-    cursorGlow.style.top  = glowY + 'px';
-  }
-  requestAnimationFrame(lerpGlow);
-})();
-
-// Hide cursor elements on mobile
-if ('ontouchstart' in window) {
-  if (cursorGlow) cursorGlow.style.display = 'none';
-  if (cursorDot)  cursorDot.style.display  = 'none';
-}
 
 // ── Animated Stat Counters ────────────────────────────────
 function animateCounter(el, target, suffix = '') {
