@@ -607,6 +607,7 @@ if (footerEl) {
   const modal         = document.getElementById('resume-modal');
   const openBtn       = document.getElementById('open-resume-modal-btn');
   const heroResumeBtn = document.getElementById('hero-resume-trigger');
+  const navResumeBtn  = document.getElementById('nav-resume-trigger');
   const closeBtn      = document.getElementById('close-resume-modal-btn');
 
   if (!modal) return;
@@ -625,6 +626,7 @@ if (footerEl) {
 
   if (openBtn)       openBtn.addEventListener('click', openModal);
   if (heroResumeBtn) heroResumeBtn.addEventListener('click', openModal);
+  if (navResumeBtn)  navResumeBtn.addEventListener('click', openModal);
   if (closeBtn)      closeBtn.addEventListener('click', closeModal);
 
   // Close on backdrop click outside the window
