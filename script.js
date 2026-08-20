@@ -295,7 +295,7 @@ const revealEls = document.querySelectorAll(
   '.about-grid, .section-title, .section-subtitle, .section-tag, ' +
   '.skill-card, .project-card, .cert-card, .resume-card, .contact-wrap, .footer-inner, .timeline-item'
 );
-revealEls.forEach(el => el.classList.add('reveal'));
+revealEls.forEach(el => el.classList.add('reveal', 'visible'));
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -307,7 +307,7 @@ const observer = new IntersectionObserver((entries) => {
       observer.unobserve(entry.target);
     }
   });
-}, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+}, { threshold: 0.05, rootMargin: '50px 0px 50px 0px' });
 
 revealEls.forEach(el => observer.observe(el));
 

@@ -1183,138 +1183,19 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* =========================================================
-   SECTION SMOOTH TRANSITIONS
+   SECTION SMOOTH TRANSITIONS & VISIBILITY
    ========================================================= */
 
-/* Every section fades + slides in from below */
-section {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
-}
-section.section-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Each section's children stagger in */
-section.section-visible .section-tag   { transition-delay: 0.05s; }
-section.section-visible .section-title { transition-delay: 0.12s; }
-section.section-visible .section-subtitle { transition-delay: 0.18s; }
-
-/* Smooth gradient overlap between sections */
-.section::before {
-  content: none; /* only used for specific sections below */
-}
-
-/* =========================================================
-   UNIQUE PER-SECTION CLIP-PATH TRANSITIONS (Container-Targeted)
-   ========================================================= */
-
-/* Base: all sections have standard layout visibility, but their inner containers start hidden */
 section {
   opacity: 1;
-  overflow: visible;
+  transform: none;
+  position: relative;
 }
 
 section .container {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1),
-              transform 1.2s cubic-bezier(0.25, 1, 0.5, 1),
-              clip-path 1.4s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-section.section-visible .container {
   opacity: 1;
-  transform: translateY(0);
-}
-
-/* #about  — slides in from LEFT */
-#about .container {
-  clip-path: inset(0 100% 0 0);
-  transform: translateX(-40px);
-}
-#about.section-visible .container {
-  clip-path: inset(0 0 0 0);
-  transform: translateX(0);
-}
-
-/* #skills — slides in from RIGHT */
-#skills .container {
-  clip-path: inset(0 0 0 100%);
-  transform: translateX(40px);
-}
-#skills.section-visible .container {
-  clip-path: inset(0 0 0 0);
-  transform: translateX(0);
-}
-
-/* #projects — diagonal wipe top-left → bottom-right */
-#projects .container {
-  clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
-  transform: translateY(35px);
-}
-#projects.section-visible .container {
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-  transform: translateY(0);
-}
-
-/* #education — sweeps in from bottom */
-#education .container {
-  clip-path: inset(100% 0 0 0);
-  transform: translateY(50px);
-}
-#education.section-visible .container {
-  clip-path: inset(0% 0 0 0);
-  transform: translateY(0);
-}
-
-/* #contact — scales + fades in from center */
-#contact .container {
-  clip-path: inset(20% 15% 20% 15% round 20px);
-  transform: scale(0.95);
-}
-#contact.section-visible .container {
-  clip-path: inset(0% 0% 0% 0% round 0px);
-  transform: scale(1);
-}
-
-/* Child stagger after section becomes visible */
-section.section-visible .section-tag      { transition-delay: 0.08s; }
-section.section-visible .section-title    { transition-delay: 0.16s; }
-section.section-visible .section-subtitle { transition-delay: 0.24s; }
-
-/* Gradient blends */
-#about, #projects, #contact, #skills, #education { position: relative; }
-#about::before, #projects::before, #contact::before {
-  content: '';
-  position: absolute;
-  top: -60px; left: 0; right: 0; height: 60px;
-  background: linear-gradient(to bottom, transparent, var(--bg));
-  pointer-events: none; z-index: 1;
-}
-#skills::before, #education::before {
-  content: '';
-  position: absolute;
-  top: -60px; left: 0; right: 0; height: 60px;
-  background: linear-gradient(to bottom, transparent, var(--bg2));
-  pointer-events: none; z-index: 1;
-}
-
-/* Mobile: disable clip-path for performance */
-@media (max-width: 768px) {
-  #about .container, #skills .container, #projects .container, #education .container, #contact .container {
-    clip-path: none !important;
-    transform: translateY(30px) !important;
-    opacity: 0;
-    transition: opacity 0.8s ease, transform 0.8s ease !important;
-  }
-  section.section-visible .container {
-    transform: translateY(0) !important;
-    opacity: 1 !important;
-  }
+  transform: none;
+  clip-path: none;
 }
 
 
@@ -1638,8 +1519,8 @@ section.section-visible .section-subtitle { transition-delay: 0.24s; }
    SCROLL REVEAL
    ========================================================= */
 .reveal {
-  opacity: 0;
-  transform: translateY(30px);
+  opacity: 1;
+  transform: translateY(0);
   transition: opacity 0.7s ease, transform 0.7s ease;
 }
 .reveal.visible {
