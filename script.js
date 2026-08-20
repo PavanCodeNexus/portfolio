@@ -304,26 +304,53 @@ pavan = <span class="c-cls">Developer</span>()
 })();
 
 
-// ── SCROLL REVEAL — Tech Zoom & Rim Flash ─────────────────
-const revealEls = document.querySelectorAll(
+// ── SCROLL REVEAL & STAGGERED FRAME TRANSITIONS ──────────
+const revealElements = document.querySelectorAll(
   '.about-grid, .section-title, .section-subtitle, .section-tag, ' +
-  '.skill-card, .project-card, .cert-card, .resume-card, .contact-wrap, .footer-inner, .timeline-item'
+  '.skill-card-modern, .project-card, .cert-card, .resume-card, .contact-wrap, .timeline-card, .bento-card'
 );
-revealEls.forEach(el => el.classList.add('reveal', 'visible'));
 
-const observer = new IntersectionObserver((entries) => {
+revealElements.forEach(el => el.classList.add('reveal-frame'));
+
+const frameScrollObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      entry.target.classList.add('visible', 'rim-flash');
-      if (entry.target.classList.contains('skill-card')) {
-        entry.target.classList.add('animate');
-      }
-      observer.unobserve(entry.target);
+      entry.target.classList.add('revealed');
+      frameScrollObserver.unobserve(entry.target);
     }
   });
-}, { threshold: 0.05, rootMargin: '50px 0px 50px 0px' });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
-revealEls.forEach(el => observer.observe(el));
+revealElements.forEach(el => frameScrollObserver.observe(el));
+
+// Fallback: Ensure everything is revealed after 2 seconds
+setTimeout(() => {
+  revealElements.forEach(el => el.classList.add('revealed'));
+}, 2000);
+
+// ── Active Navbar Link Highlighting on Scroll ─────────────
+const navSections = document.querySelectorAll('section[id]');
+const navLinkItems = document.querySelectorAll('.kage-nav-links a');
+
+window.addEventListener('scroll', () => {
+  let currentSec = '';
+  const scrollPos = window.pageYOffset + 200;
+
+  navSections.forEach(section => {
+    const top = section.offsetTop;
+    const height = section.offsetHeight;
+    if (scrollPos >= top && scrollPos < top + height) {
+      currentSec = section.getAttribute('id');
+    }
+  });
+
+  navLinkItems.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === `#${currentSec}`) {
+      link.classList.add('active');
+    }
+  });
+});
 
 
 
