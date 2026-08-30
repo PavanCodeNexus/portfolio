@@ -968,4 +968,111 @@ if (footerEl) {
   });
 })();
 
+// =========================================================
+// CYBER HOLOGRAPHIC WARP PORTAL COUNTDOWN REDIRECT
+// =========================================================
+(function initWarpPortalModal() {
+  const modal = document.getElementById('warp-portal-modal');
+  if (!modal) return;
+
+  const closeBtn       = document.getElementById('warp-close-btn');
+  const cancelBtn      = document.getElementById('warp-cancel-btn');
+  const launchBtn      = document.getElementById('warp-instant-launch-btn');
+  const digitEl        = document.getElementById('warp-countdown-digit');
+  const circleEl       = document.getElementById('warp-progress-circle');
+  const targetTitleEl  = document.getElementById('warp-target-title');
+  const targetUrlEl    = document.getElementById('warp-target-url');
+
+  let activeUrl = '';
+  let countdownTimer = null;
+  let remainingSeconds = 3;
+  const totalCircleStroke = 326;
+
+  function openPortal(url, title) {
+    activeUrl = url;
+    remainingSeconds = 3;
+
+    if (targetTitleEl) targetTitleEl.textContent = title || 'External Platform Redirect';
+    if (targetUrlEl) targetUrlEl.textContent = url;
+    if (digitEl) digitEl.textContent = '3';
+    if (circleEl) circleEl.style.strokeDashoffset = '0';
+
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+
+    // Trigger 3D Camera Warp in background
+    if (window.trigger3DCameraWarp) {
+      window.trigger3DCameraWarp();
+    }
+
+    startCountdown();
+  }
+
+  function closePortal() {
+    if (countdownTimer) clearInterval(countdownTimer);
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  function launchDestination() {
+    if (countdownTimer) clearInterval(countdownTimer);
+    if (activeUrl) {
+      window.open(activeUrl, '_blank', 'noopener,noreferrer');
+    }
+    setTimeout(closePortal, 250);
+  }
+
+  function startCountdown() {
+    if (countdownTimer) clearInterval(countdownTimer);
+
+    countdownTimer = setInterval(() => {
+      remainingSeconds -= 1;
+
+      if (remainingSeconds > 0) {
+        if (digitEl) digitEl.textContent = remainingSeconds;
+        if (circleEl) {
+          const offset = totalCircleStroke * (1 - remainingSeconds / 3);
+          circleEl.style.strokeDashoffset = offset;
+        }
+      } else if (remainingSeconds === 0) {
+        if (digitEl) digitEl.textContent = '🚀';
+        if (circleEl) circleEl.style.strokeDashoffset = totalCircleStroke;
+        setTimeout(launchDestination, 300);
+      }
+    }, 1000);
+  }
+
+  // Intercept all external hyperlinks
+  document.querySelectorAll('a[href^="http"]').forEach(link => {
+    const href = link.getAttribute('href');
+    if (href && !href.includes('#')) {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const customTitle = link.getAttribute('title') || 
+                            link.getAttribute('aria-label') || 
+                            link.closest('.project-card')?.querySelector('.project-title')?.textContent ||
+                            'Secure Destination';
+        openPortal(href, customTitle);
+      });
+    }
+  });
+
+  if (closeBtn) closeBtn.addEventListener('click', closePortal);
+  if (cancelBtn) cancelBtn.addEventListener('click', closePortal);
+  if (launchBtn) launchBtn.addEventListener('click', launchDestination);
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closePortal();
+  });
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+      closePortal();
+    }
+  });
+})();
+
+
 
