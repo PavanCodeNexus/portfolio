@@ -748,35 +748,8 @@ if (footerEl) {
   const particleSystem = new THREE.Points(geometry, particleMaterial);
   scene.add(particleSystem);
 
-  // 2. Floating 3D Geometric AI Core (Wireframe Icosahedron & Octahedron)
-  const coreGroup = new THREE.Group();
-  coreGroup.position.set(130, 20, 40); // Offset into right ambient space
-
-  const icoGeo = new THREE.IcosahedronGeometry(36, 1);
-  const icoMat = new THREE.MeshBasicMaterial({
-    color: 0xF59E0B,
-    wireframe: true,
-    transparent: true,
-    opacity: 0.22,
-    blending: THREE.AdditiveBlending
-  });
-  const icoMesh = new THREE.Mesh(icoGeo, icoMat);
-  coreGroup.add(icoMesh);
-
-  const innerGeo = new THREE.OctahedronGeometry(18, 0);
-  const innerMat = new THREE.MeshBasicMaterial({
-    color: 0x38BDF8,
-    wireframe: true,
-    transparent: true,
-    opacity: 0.45,
-    blending: THREE.AdditiveBlending
-  });
-  const innerMesh = new THREE.Mesh(innerGeo, innerMat);
-  coreGroup.add(innerMesh);
-
-  scene.add(coreGroup);
-
   // Mouse Interaction & LERP Damping
+
   let mouseX = 0;
   let mouseY = 0;
   let targetX = 0;
@@ -855,15 +828,8 @@ if (footerEl) {
       particleSystem.scale.lerp(new THREE.Vector3(1, 1, 1), 0.05);
     }
 
-    // Rotate AI Core
-    coreGroup.rotation.x = elapsedTime * 0.35 + targetY * 0.01;
-    coreGroup.rotation.y = elapsedTime * 0.45 + targetX * 0.01;
-    coreGroup.position.y = 20 + Math.sin(elapsedTime * 1.5) * 8;
-
-    innerMesh.rotation.x = -elapsedTime * 0.6;
-    innerMesh.rotation.z = elapsedTime * 0.5;
-
     // Scroll-Linked Camera Gliding
+
     camera.position.x = targetX * 0.4;
     camera.position.y = -targetY * 0.4 - (scrollProgress * 60);
     camera.position.z = 320 - (scrollProgress * 80);
