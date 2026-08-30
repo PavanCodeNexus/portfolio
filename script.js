@@ -796,6 +796,25 @@ if (footerEl) {
     scrollProgress = maxScroll > 0 ? window.pageYOffset / maxScroll : 0;
   });
 
+  // 3D Camera Warp Speed State
+  let isWarping = false;
+  let warpFactor = 1.0;
+  let targetFOV = 60;
+
+  window.trigger3DCameraWarp = function() {
+    isWarping = true;
+    warpFactor = 9.0;
+    targetFOV = 82;
+
+    setTimeout(() => {
+      warpFactor = 1.0;
+      targetFOV = 60;
+      setTimeout(() => {
+        isWarping = false;
+      }, 500);
+    }, 450);
+  };
+
   // Resize Handler
   window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;
@@ -812,14 +831,29 @@ if (footerEl) {
     if (document.hidden) return;
 
     const elapsedTime = clock.getElapsedTime();
+    const delta = clock.getDelta();
 
     // Smooth Mouse Physics (LERP)
     targetX += (mouseX - targetX) * 0.04;
     targetY += (mouseY - targetY) * 0.04;
 
-    // Rotate Particles
-    particleSystem.rotation.y = elapsedTime * 0.04 + targetX * 0.002;
-    particleSystem.rotation.x = elapsedTime * 0.02 + targetY * 0.002;
+    // FOV Warp LERP
+    if (Math.abs(camera.fov - targetFOV) > 0.1) {
+      camera.fov += (targetFOV - camera.fov) * 0.08;
+      camera.updateProjectionMatrix();
+    }
+
+    // Rotate Particles with Warp Multiplier
+    const currentSpeed = (isWarping ? warpFactor : 1.0);
+    particleSystem.rotation.y += (0.0015 * currentSpeed) + (targetX * 0.0001);
+    particleSystem.rotation.x += (0.0008 * currentSpeed) + (targetY * 0.0001);
+
+    // Particle Scale pulse during warp
+    if (isWarping) {
+      particleSystem.scale.set(1.15, 1.15, 1.15);
+    } else {
+      particleSystem.scale.lerp(new THREE.Vector3(1, 1, 1), 0.05);
+    }
 
     // Rotate AI Core
     coreGroup.rotation.x = elapsedTime * 0.35 + targetY * 0.01;
@@ -840,6 +874,50 @@ if (footerEl) {
 
   animate();
 })();
+
+// =========================================================
+// CINEMATIC 3D WARP SMOOTH SECTION NAVIGATION
+// =========================================================
+(function initCinematicNav() {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if (!targetId || targetId === '#') return;
+
+      const targetEl = document.querySelector(targetId);
+      if (!targetEl) return;
+
+      e.preventDefault();
+
+      // Trigger 3D Camera Warp
+      if (window.trigger3DCameraWarp) {
+        window.trigger3DCameraWarp();
+      }
+
+      // Smooth scroll to section
+      const headerOffset = 70;
+      const elementPosition = targetEl.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+
+      // Close mobile menu if open
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (mobileMenu) mobileMenu.classList.remove('open');
+
+      // Add arrival frame shutter flash on target section
+      setTimeout(() => {
+        targetEl.classList.remove('rim-flash');
+        void targetEl.offsetWidth; // trigger reflow
+        targetEl.classList.add('rim-flash');
+      }, 500);
+    });
+  });
+})();
+
 
 // =========================================================
 // SPATIAL 3D CARD TILT & SPECULAR GLARE ENGINE
