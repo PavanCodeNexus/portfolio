@@ -669,3 +669,225 @@ if (footerEl) {
   });
 })();
 
+// =========================================================
+// THREE.JS 3D WEBGL AMBIENT NEURAL CONSTELLATION & AI CORE
+// =========================================================
+(function init3DWebGLScene() {
+  const canvas = document.getElementById('webgl-3d-canvas');
+  if (!canvas || typeof THREE === 'undefined') return;
+
+  // Scene & Camera
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 2000);
+  camera.position.z = 320;
+
+  // Renderer
+  const renderer = new THREE.WebGLRenderer({
+    canvas: canvas,
+    alpha: true,
+    antialias: true,
+    powerPreference: 'high-performance'
+  });
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+  // 1. 3D Particle Constellation (Neural Swarm)
+  const particleCount = 750;
+  const geometry = new THREE.BufferGeometry();
+  const positions = new Float32Array(particleCount * 3);
+  const colors = new Float32Array(particleCount * 3);
+
+  const colorAmber = new THREE.Color(0xF59E0B);
+  const colorCyan  = new THREE.Color(0x38BDF8);
+  const colorWhite = new THREE.Color(0xFFFFFF);
+
+  for (let i = 0; i < particleCount; i++) {
+    // Spherical / Cloud Distribution
+    const radius = 180 + Math.random() * 260;
+    const theta = Math.random() * Math.PI * 2;
+    const phi = Math.acos((Math.random() * 2) - 1);
+
+    positions[i * 3]     = radius * Math.sin(phi) * Math.cos(theta);
+    positions[i * 3 + 1] = radius * Math.sin(phi) * Math.sin(theta);
+    positions[i * 3 + 2] = radius * Math.cos(phi);
+
+    // Dynamic Palette
+    const randColor = Math.random();
+    const c = randColor > 0.6 ? colorAmber : (randColor > 0.25 ? colorCyan : colorWhite);
+    colors[i * 3]     = c.r;
+    colors[i * 3 + 1] = c.g;
+    colors[i * 3 + 2] = c.b;
+  }
+
+  geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+  // Create subtle circular particle texture
+  const particleCanvas = document.createElement('canvas');
+  particleCanvas.width = 32;
+  particleCanvas.height = 32;
+  const pCtx = particleCanvas.getContext('2d');
+  const grad = pCtx.createRadialGradient(16, 16, 0, 16, 16, 16);
+  grad.addColorStop(0, 'rgba(255,255,255,1)');
+  grad.addColorStop(0.3, 'rgba(245,158,11,0.8)');
+  grad.addColorStop(1, 'rgba(0,0,0,0)');
+  pCtx.fillStyle = grad;
+  pCtx.fillRect(0, 0, 32, 32);
+  const particleTexture = new THREE.CanvasTexture(particleCanvas);
+
+  const particleMaterial = new THREE.PointsMaterial({
+    size: 4.5,
+    vertexColors: true,
+    map: particleTexture,
+    transparent: true,
+    opacity: 0.75,
+    blending: THREE.AdditiveBlending,
+    depthWrite: false
+  });
+
+  const particleSystem = new THREE.Points(geometry, particleMaterial);
+  scene.add(particleSystem);
+
+  // 2. Floating 3D Geometric AI Core (Wireframe Icosahedron & Octahedron)
+  const coreGroup = new THREE.Group();
+  coreGroup.position.set(130, 20, 40); // Offset into right ambient space
+
+  const icoGeo = new THREE.IcosahedronGeometry(36, 1);
+  const icoMat = new THREE.MeshBasicMaterial({
+    color: 0xF59E0B,
+    wireframe: true,
+    transparent: true,
+    opacity: 0.22,
+    blending: THREE.AdditiveBlending
+  });
+  const icoMesh = new THREE.Mesh(icoGeo, icoMat);
+  coreGroup.add(icoMesh);
+
+  const innerGeo = new THREE.OctahedronGeometry(18, 0);
+  const innerMat = new THREE.MeshBasicMaterial({
+    color: 0x38BDF8,
+    wireframe: true,
+    transparent: true,
+    opacity: 0.45,
+    blending: THREE.AdditiveBlending
+  });
+  const innerMesh = new THREE.Mesh(innerGeo, innerMat);
+  coreGroup.add(innerMesh);
+
+  scene.add(coreGroup);
+
+  // Mouse Interaction & LERP Damping
+  let mouseX = 0;
+  let mouseY = 0;
+  let targetX = 0;
+  let targetY = 0;
+  const windowHalfX = window.innerWidth / 2;
+  const windowHalfY = window.innerHeight / 2;
+
+  window.addEventListener('mousemove', (e) => {
+    mouseX = (e.clientX - windowHalfX) * 0.12;
+    mouseY = (e.clientY - windowHalfY) * 0.12;
+  });
+
+  // Scroll Tracking for 3D Camera Travel
+  let scrollProgress = 0;
+  window.addEventListener('scroll', () => {
+    const maxScroll = document.body.scrollHeight - window.innerHeight;
+    scrollProgress = maxScroll > 0 ? window.pageYOffset / maxScroll : 0;
+  });
+
+  // Resize Handler
+  window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+
+  // Animation Loop (60fps with Visibility Check)
+  let clock = new THREE.Clock();
+
+  function animate() {
+    requestAnimationFrame(animate);
+
+    if (document.hidden) return;
+
+    const elapsedTime = clock.getElapsedTime();
+
+    // Smooth Mouse Physics (LERP)
+    targetX += (mouseX - targetX) * 0.04;
+    targetY += (mouseY - targetY) * 0.04;
+
+    // Rotate Particles
+    particleSystem.rotation.y = elapsedTime * 0.04 + targetX * 0.002;
+    particleSystem.rotation.x = elapsedTime * 0.02 + targetY * 0.002;
+
+    // Rotate AI Core
+    coreGroup.rotation.x = elapsedTime * 0.35 + targetY * 0.01;
+    coreGroup.rotation.y = elapsedTime * 0.45 + targetX * 0.01;
+    coreGroup.position.y = 20 + Math.sin(elapsedTime * 1.5) * 8;
+
+    innerMesh.rotation.x = -elapsedTime * 0.6;
+    innerMesh.rotation.z = elapsedTime * 0.5;
+
+    // Scroll-Linked Camera Gliding
+    camera.position.x = targetX * 0.4;
+    camera.position.y = -targetY * 0.4 - (scrollProgress * 60);
+    camera.position.z = 320 - (scrollProgress * 80);
+    camera.lookAt(scene.position);
+
+    renderer.render(scene, camera);
+  }
+
+  animate();
+})();
+
+// =========================================================
+// SPATIAL 3D CARD TILT & SPECULAR GLARE ENGINE
+// =========================================================
+(function initSpatial3DTilt() {
+  const tiltCards = document.querySelectorAll(
+    '[data-tilt-3d], .skill-card-modern, .project-card, .cert-card, .stat-card, .timeline-card, .hero-left-cockpit, .hero-right-cockpit .ide-window'
+  );
+
+  tiltCards.forEach(card => {
+    // Invert if already exists
+    if (!card.querySelector('.card-3d-glare')) {
+      const glare = document.createElement('div');
+      glare.className = 'card-3d-glare';
+      card.appendChild(glare);
+    }
+
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left; // x position within card
+      const y = e.clientY - rect.top;  // y position within card
+
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      // Max tilt angle (degrees)
+      const maxTilt = 9;
+      const rotateX = ((y - centerY) / centerY) * -maxTilt;
+      const rotateY = ((x - centerX) / centerX) * maxTilt;
+
+      // Specular glare position percentage
+      const glareX = (x / rect.width) * 100;
+      const glareY = (y / rect.height) * 100;
+
+      card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-4px)`;
+      card.style.setProperty('--glare-x', `${glareX}%`);
+      card.style.setProperty('--glare-y', `${glareY}%`);
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+      card.style.transition = 'transform 0.5s cubic-bezier(0.22, 1, 0.36, 1)';
+    });
+
+    card.addEventListener('mouseenter', () => {
+      card.style.transition = 'none'; // Instant responsiveness while hovering
+    });
+  });
+})();
+
+

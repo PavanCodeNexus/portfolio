@@ -68,7 +68,20 @@ body {
   z-index: 0;
 }
 
+/* ---------- THREE.JS 3D WEBGL AMBIENT CANVAS ---------- */
+#webgl-3d-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.92;
+  mix-blend-mode: screen;
+}
+
 ::selection { background: var(--accent); color: #000; }
+
 
 /* ---------- PAGE LOAD BAR ---------- */
 #page-load-bar {
@@ -1436,6 +1449,108 @@ section .container {
 .projects-grid .project-card:nth-child(4) { transition-delay: 0.32s; }
 
 /* =========================================================
+   SPATIAL 3D TILT & Z-DEPTH POP-OUT ENGINE
+   ========================================================= */
+.skills-grid,
+.projects-grid,
+.about-grid,
+.hero-cockpit-container,
+.cert-grid,
+.timeline-track {
+  perspective: 1200px;
+}
+
+[data-tilt-3d],
+.skill-card-modern,
+.project-card,
+.cert-card,
+.stat-card,
+.timeline-card,
+.hero-left-cockpit,
+.hero-right-cockpit .ide-window {
+  transform-style: preserve-3d;
+  will-change: transform;
+  position: relative;
+}
+
+/* Children Z-axis elevation */
+.skill-card-modern .skill-card-top,
+.skill-card-modern .skill-icon-box {
+  transform: translateZ(32px);
+  transition: transform 0.2s ease;
+}
+
+.skill-card-modern .skill-card-title {
+  transform: translateZ(26px);
+  transition: transform 0.2s ease;
+}
+
+.skill-card-modern .skill-card-desc {
+  transform: translateZ(18px);
+  transition: transform 0.2s ease;
+}
+
+.project-card .project-header,
+.project-card .project-title {
+  transform: translateZ(30px);
+  transition: transform 0.2s ease;
+}
+
+.project-card .project-desc {
+  transform: translateZ(20px);
+  transition: transform 0.2s ease;
+}
+
+.project-card .project-tag-list,
+.project-card .project-links {
+  transform: translateZ(34px);
+  transition: transform 0.2s ease;
+}
+
+.hero-profile-row,
+.hero-avatar-wrap {
+  transform: translateZ(36px);
+}
+
+.hero-stats-row {
+  transform: translateZ(24px);
+}
+
+.ide-header,
+.ide-tabs {
+  transform: translateZ(25px);
+}
+
+.ide-code-container,
+.ide-live-preview {
+  transform: translateZ(15px);
+}
+
+/* Dynamic Specular 3D Glass Glare */
+.card-3d-glare {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(
+    circle at var(--glare-x, 50%) var(--glare-y, 50%),
+    rgba(255, 255, 255, 0.16) 0%,
+    rgba(245, 158, 11, 0.06) 35%,
+    transparent 65%
+  );
+  transition: opacity 0.35s ease;
+  z-index: 10;
+  mix-blend-mode: overlay;
+}
+
+[data-tilt-3d]:hover .card-3d-glare,
+.skill-card-modern:hover .card-3d-glare,
+.project-card:hover .card-3d-glare {
+  opacity: 1;
+}
+
+/* =========================================================
    STEPPED STOP-MOTION / FILM FRAME TRANSITIONS
    ========================================================= */
 .skill-card-modern,
@@ -1445,6 +1560,7 @@ section .container {
 .stat-card,
 .highlight-item,
 .ide-tab,
+
 .kage-btn-solid,
 .kage-btn-glass,
 .kage-nav-resume-btn,
