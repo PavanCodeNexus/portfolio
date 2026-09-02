@@ -283,8 +283,12 @@ pavan = <span class="c-cls">Developer</span>()
 
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
+      tabs.forEach(t => {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+      });
       tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
       const filename = tab.getAttribute('data-file');
       if (fileTypeLabel && fileTypeMap[filename]) {
         fileTypeLabel.textContent = fileTypeMap[filename];
@@ -842,9 +846,65 @@ if (footerEl) {
 })();
 
 // =========================================================
-// CINEMATIC 3D WARP SMOOTH SECTION NAVIGATION
+// 3D SPATIAL SLIDE DECK SNAP & KINETIC GESTURE CONTROLLER
 // =========================================================
-(function initCinematicNav() {
+(function initSlideDeckEngine() {
+  const slides = Array.from(document.querySelectorAll('.deck-slide'));
+  const hudDots = Array.from(document.querySelectorAll('.hud-dot'));
+  const navLinks = Array.from(document.querySelectorAll('.kage-nav-links a, .mobile-menu a'));
+
+  if (!slides.length) return;
+
+  let currentSlideIndex = 0;
+  let isThrottled = false;
+
+  function updateActiveStates(index) {
+    if (index < 0 || index >= slides.length) return;
+    currentSlideIndex = index;
+
+    // Update HUD dots
+    hudDots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === index);
+    });
+
+    // Update Navbar links
+    const activeSectionId = slides[index].getAttribute('id');
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      link.classList.toggle('active', href === `#${activeSectionId}`);
+    });
+  }
+
+  function goToSlide(index, skipWarp = false) {
+    if (index < 0 || index >= slides.length) return;
+    currentSlideIndex = index;
+    updateActiveStates(index);
+
+    if (!skipWarp && window.trigger3DCameraWarp) {
+      window.trigger3DCameraWarp();
+    }
+
+    const targetEl = slides[index];
+    targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    // Trigger arrival shutter flash
+    setTimeout(() => {
+      targetEl.classList.remove('rim-flash');
+      void targetEl.offsetWidth;
+      targetEl.classList.add('rim-flash');
+    }, 450);
+  }
+
+  // Click on HUD Dots
+  hudDots.forEach(dot => {
+    dot.addEventListener('click', (e) => {
+      e.preventDefault();
+      const slideIdx = parseInt(dot.getAttribute('data-slide-index'), 10);
+      if (!isNaN(slideIdx)) goToSlide(slideIdx);
+    });
+  });
+
+  // Click on Anchor links (#...)
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       const targetId = this.getAttribute('href');
@@ -853,36 +913,95 @@ if (footerEl) {
       const targetEl = document.querySelector(targetId);
       if (!targetEl) return;
 
-      e.preventDefault();
+      const slideIdx = slides.indexOf(targetEl);
+      if (slideIdx !== -1) {
+        e.preventDefault();
+        goToSlide(slideIdx);
 
-      // Trigger 3D Camera Warp
-      if (window.trigger3DCameraWarp) {
-        window.trigger3DCameraWarp();
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenu) mobileMenu.classList.remove('open');
       }
-
-      // Smooth scroll to section
-      const headerOffset = 70;
-      const elementPosition = targetEl.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-
-      // Close mobile menu if open
-      const mobileMenu = document.getElementById('mobile-menu');
-      if (mobileMenu) mobileMenu.classList.remove('open');
-
-      // Add arrival frame shutter flash on target section
-      setTimeout(() => {
-        targetEl.classList.remove('rim-flash');
-        void targetEl.offsetWidth; // trigger reflow
-        targetEl.classList.add('rim-flash');
-      }, 500);
     });
   });
+
+  // Wheel Gesture Debounced Controller (Transitions 1 full section at a time)
+  window.addEventListener('wheel', (e) => {
+    if (isThrottled) return;
+    if (document.querySelector('.warp-portal-modal.active') || document.querySelector('.resume-modal.active')) return;
+
+    if (Math.abs(e.deltaY) > 28) {
+      isThrottled = true;
+      if (e.deltaY > 0) {
+        if (currentSlideIndex < slides.length - 1) {
+          goToSlide(currentSlideIndex + 1);
+        }
+      } else {
+        if (currentSlideIndex > 0) {
+          goToSlide(currentSlideIndex - 1);
+        }
+      }
+      setTimeout(() => {
+        isThrottled = false;
+      }, 750);
+    }
+  }, { passive: true });
+
+  // Keyboard Controller (Arrow keys & Page keys)
+  window.addEventListener('keydown', (e) => {
+    if (document.querySelector('.warp-portal-modal.active') || document.querySelector('.resume-modal.active')) return;
+    if (['ArrowDown', 'PageDown', ' '].includes(e.key)) {
+      if (e.key === ' ' && e.target.tagName === 'INPUT') return;
+      if (currentSlideIndex < slides.length - 1) {
+        e.preventDefault();
+        goToSlide(currentSlideIndex + 1);
+      }
+    } else if (['ArrowUp', 'PageUp'].includes(e.key)) {
+      if (currentSlideIndex > 0) {
+        e.preventDefault();
+        goToSlide(currentSlideIndex - 1);
+      }
+    }
+  });
+
+  // Touch Swipe Controller
+  let touchStartY = 0;
+  window.addEventListener('touchstart', (e) => {
+    touchStartY = e.touches[0].clientY;
+  }, { passive: true });
+
+  window.addEventListener('touchend', (e) => {
+    if (isThrottled) return;
+    const touchEndY = e.changedTouches[0].clientY;
+    const diffY = touchStartY - touchEndY;
+
+    if (Math.abs(diffY) > 50) {
+      isThrottled = true;
+      if (diffY > 0 && currentSlideIndex < slides.length - 1) {
+        goToSlide(currentSlideIndex + 1);
+      } else if (diffY < 0 && currentSlideIndex > 0) {
+        goToSlide(currentSlideIndex - 1);
+      }
+      setTimeout(() => {
+        isThrottled = false;
+      }, 650);
+    }
+  }, { passive: true });
+
+  // IntersectionObserver to keep HUD & Navbar in sync with natural snap
+  const slideObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const idx = slides.indexOf(entry.target);
+        if (idx !== -1) {
+          updateActiveStates(idx);
+        }
+      }
+    });
+  }, { threshold: 0.55 });
+
+  slides.forEach(slide => slideObserver.observe(slide));
 })();
+
 
 
 // =========================================================
