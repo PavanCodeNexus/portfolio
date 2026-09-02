@@ -54,7 +54,7 @@
 }
 
 /* =========================================================
-   3D SPATIAL DECK & FULLSCREEN SLIDE SNAP
+   HYPERSPACE 3D WARP DRIFT & SMOOTH SLIDE DECK TRANSITIONS
    ========================================================= */
 html {
   scroll-behavior: smooth;
@@ -71,6 +71,12 @@ body {
   overflow-x: hidden;
   position: relative;
   height: 100vh;
+  transition: filter 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Subtle cinematic motion blur & brightness drift during 3D warp */
+body.hyperspace-drifting {
+  filter: blur(1px) brightness(1.06);
 }
 
 section.deck-slide {
@@ -82,6 +88,24 @@ section.deck-slide {
   justify-content: center;
   position: relative;
   padding: 100px 1.5rem 60px;
+  opacity: 0.82;
+  transform: scale(0.985) translateY(12px);
+  filter: blur(0.8px);
+  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity, filter;
+}
+
+section.deck-slide.active-slide {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  filter: blur(0);
+}
+
+section.deck-slide .container > * {
+  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* 3D Vertical Slide Deck HUD */

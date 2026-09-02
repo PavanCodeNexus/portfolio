@@ -773,23 +773,30 @@ if (footerEl) {
     scrollProgress = maxScroll > 0 ? window.pageYOffset / maxScroll : 0;
   });
 
-  // 3D Camera Warp Speed State
+  // 3D Hyperspace Warp Drift State
   let isWarping = false;
   let warpFactor = 1.0;
   let targetFOV = 60;
+  let targetCamZ = 320;
+  let currentDriftSpeed = 1.0;
 
-  window.trigger3DCameraWarp = function() {
+  window.trigger3DCameraWarp = function(direction = 'down') {
     isWarping = true;
-    warpFactor = 9.0;
-    targetFOV = 82;
+    warpFactor = 7.0;
+    targetFOV = direction === 'down' ? 76 : 52;
+    targetCamZ = direction === 'down' ? 275 : 355; // Depth surge
+
+    document.body.classList.add('hyperspace-drifting');
 
     setTimeout(() => {
       warpFactor = 1.0;
       targetFOV = 60;
+      targetCamZ = 320;
       setTimeout(() => {
         isWarping = false;
-      }, 500);
-    }, 450);
+        document.body.classList.remove('hyperspace-drifting');
+      }, 450);
+    }, 380);
   };
 
   // Resize Handler
@@ -814,29 +821,29 @@ if (footerEl) {
     targetX += (mouseX - targetX) * 0.04;
     targetY += (mouseY - targetY) * 0.04;
 
-    // FOV Warp LERP
-    if (Math.abs(camera.fov - targetFOV) > 0.1) {
-      camera.fov += (targetFOV - camera.fov) * 0.08;
+    // Smooth FOV Warp Drift LERP
+    if (Math.abs(camera.fov - targetFOV) > 0.05) {
+      camera.fov += (targetFOV - camera.fov) * 0.06;
       camera.updateProjectionMatrix();
     }
 
-    // Rotate Particles with Warp Multiplier
-    const currentSpeed = (isWarping ? warpFactor : 1.0);
-    particleSystem.rotation.y += (0.0015 * currentSpeed) + (targetX * 0.0001);
-    particleSystem.rotation.x += (0.0008 * currentSpeed) + (targetY * 0.0001);
+    // Smooth Particle Stream Acceleration with LERP
+    currentDriftSpeed += ((isWarping ? warpFactor : 1.0) - currentDriftSpeed) * 0.07;
+    particleSystem.rotation.y += (0.0012 * currentDriftSpeed) + (targetX * 0.0001);
+    particleSystem.rotation.x += (0.0006 * currentDriftSpeed) + (targetY * 0.0001);
 
-    // Particle Scale pulse during warp
+    // Particle Stretch & Scale during Hyperspace Drift
     if (isWarping) {
-      particleSystem.scale.set(1.15, 1.15, 1.15);
+      particleSystem.scale.lerp(new THREE.Vector3(1.06, 1.06, 1.22), 0.06);
     } else {
-      particleSystem.scale.lerp(new THREE.Vector3(1, 1, 1), 0.05);
+      particleSystem.scale.lerp(new THREE.Vector3(1, 1, 1), 0.04);
     }
 
-    // Scroll-Linked Camera Gliding
-
-    camera.position.x = targetX * 0.4;
-    camera.position.y = -targetY * 0.4 - (scrollProgress * 60);
-    camera.position.z = 320 - (scrollProgress * 80);
+    // Scroll-Linked Camera Gliding with Smooth Depth Drift
+    const targetBaseZ = targetCamZ - (scrollProgress * 80);
+    camera.position.x += (targetX * 0.4 - camera.position.x) * 0.05;
+    camera.position.y += (-targetY * 0.4 - (scrollProgress * 60) - camera.position.y) * 0.05;
+    camera.position.z += (targetBaseZ - camera.position.z) * 0.05;
     camera.lookAt(scene.position);
 
     renderer.render(scene, camera);
@@ -877,23 +884,32 @@ if (footerEl) {
 
   function goToSlide(index, skipWarp = false) {
     if (index < 0 || index >= slides.length) return;
+    const direction = index >= currentSlideIndex ? 'down' : 'up';
     currentSlideIndex = index;
     updateActiveStates(index);
 
     if (!skipWarp && window.trigger3DCameraWarp) {
-      window.trigger3DCameraWarp();
+      window.trigger3DCameraWarp(direction);
     }
 
     const targetEl = slides[index];
     targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-    // Trigger arrival shutter flash
+    // Smooth active slide emergence
+    slides.forEach((s, idx) => {
+      s.classList.toggle('active-slide', idx === index);
+    });
+
+    // Gentle arrival flash
     setTimeout(() => {
       targetEl.classList.remove('rim-flash');
       void targetEl.offsetWidth;
       targetEl.classList.add('rim-flash');
     }, 450);
   }
+
+  // Set initial active slide
+  if (slides[0]) slides[0].classList.add('active-slide');
 
   // Click on HUD Dots
   hudDots.forEach(dot => {
