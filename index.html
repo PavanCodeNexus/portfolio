@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=20.0" />
+  <link rel="stylesheet" href="style.css?v=21.0" />
 </head>
 <body>
   <!-- KAGE CINEMATIC AMBIENT LIGHTING & GRID -->
@@ -58,52 +58,13 @@
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
-      <a href="#certificates">Certificates</a>
       <a href="#education">Education</a>
       <a href="#contact">Contact</a>
     </div>
   </nav>
 
-  <!-- ========== 3D VERTICAL SLIDE DECK HUD ========== -->
-  <aside class="slide-deck-hud" id="slide-deck-hud" aria-label="Slide Navigation">
-    <div class="hud-line"></div>
-    <button class="hud-dot active" data-slide-index="0" title="01 // Home">
-      <span class="hud-dot-inner"></span>
-      <span class="hud-label">01 // HOME</span>
-    </button>
-    <button class="hud-dot" data-slide-index="1" title="02 // Workspace">
-      <span class="hud-dot-inner"></span>
-      <span class="hud-label">02 // WORKSPACE</span>
-    </button>
-    <button class="hud-dot" data-slide-index="2" title="03 // About">
-      <span class="hud-dot-inner"></span>
-      <span class="hud-label">03 // ABOUT</span>
-    </button>
-    <button class="hud-dot" data-slide-index="3" title="04 // Skills">
-      <span class="hud-dot-inner"></span>
-      <span class="hud-label">04 // SKILLS</span>
-    </button>
-    <button class="hud-dot" data-slide-index="4" title="05 // Projects">
-      <span class="hud-dot-inner"></span>
-      <span class="hud-label">05 // PROJECTS</span>
-    </button>
-    <button class="hud-dot" data-slide-index="5" title="06 // Certificates">
-      <span class="hud-dot-inner"></span>
-      <span class="hud-label">06 // CREDENTIALS</span>
-    </button>
-    <button class="hud-dot" data-slide-index="6" title="07 // Education">
-      <span class="hud-dot-inner"></span>
-      <span class="hud-label">07 // EDUCATION</span>
-    </button>
-    <button class="hud-dot" data-slide-index="7" title="08 // Contact">
-      <span class="hud-dot-inner"></span>
-      <span class="hud-label">08 // CONTACT</span>
-    </button>
-  </aside>
-
   <!-- ========== SCROLLTIDE KAGE CINEMATIC LANDSCAPE HERO ========== -->
-  <section id="home" class="kage-hero-section deck-slide" data-slide-index="0">
-
+  <section id="home" class="kage-hero-section">
     <!-- Cinematic Mountain Backdrop -->
     <div class="kage-hero-bg" style="background-image: url('kage-bg.jpg');"></div>
     <div class="kage-hero-overlay"></div>
@@ -155,8 +116,7 @@
   </section>
 
   <!-- ========== DEVELOPER WORKSPACE COCKPIT ========== -->
-  <section id="workspace" class="workspace-section deck-slide" data-slide-index="1">
-
+  <section id="workspace" class="workspace-section">
     <div class="container">
       <div class="section-tag">DEVELOPER ENVIRONMENT</div>
       <h2 class="section-title">Interactive <span class="accent">Cockpit</span></h2>
@@ -186,10 +146,10 @@
 
             <div class="hero-name-group">
               <p class="hero-greeting">Hello, I'm</p>
-              <h2 class="hero-name" style="font-size: 2.2rem;">
+              <h1 class="hero-name" style="font-size: 2.2rem;">
                 <span class="scramble-word" data-target="Pavan">Pavan</span>
                 <span class="scramble-word accent" data-target="B C">B C</span>
-              </h2>
+              </h1>
             </div>
           </div>
 
@@ -239,16 +199,16 @@
                 <span class="dot-amber"></span>
                 <span class="dot-green"></span>
               </div>
-              <div class="ide-tabs" role="tablist" aria-label="Code files">
-                <button class="ide-tab active" role="tab" aria-selected="true" aria-controls="ide-code-content" data-file="developer.py">
+              <div class="ide-tabs">
+                <button class="ide-tab active" data-file="developer.py">
                   <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14.5h-2v-2h2zm0-4h-2V7h2z"/></svg>
                   <span>developer.py</span>
                 </button>
-                <button class="ide-tab" role="tab" aria-selected="false" aria-controls="ide-code-content" data-file="skills.json">
+                <button class="ide-tab" data-file="skills.json">
                   <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M4 4h16v16H4z"/></svg>
                   <span>skills.json</span>
                 </button>
-                <button class="ide-tab" role="tab" aria-selected="false" aria-controls="ide-code-content" data-file="ai_agent.py">
+                <button class="ide-tab" data-file="ai_agent.py">
                   <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
                   <span>ai_agent.py</span>
                 </button>
@@ -336,7 +296,7 @@ pavan = <span class="c-cls">Developer</span>()
   </div>
 
   <!-- ========== ABOUT ========== -->
-  <section id="about" class="section deck-slide" data-slide-index="2">
+  <section id="about" class="section">
     <div class="container">
       <div class="section-tag">WHO I AM</div>
       <h2 class="section-title">About <span class="accent">Me</span></h2>
@@ -391,8 +351,7 @@ pavan = <span class="c-cls">Developer</span>()
   </section>
 
   <!-- ========== SKILLS ========== -->
-  <section id="skills" class="section section-alt deck-slide" data-slide-index="3">
-
+  <section id="skills" class="section section-alt">
     <div class="container">
       <div class="section-tag">TECH STACK &amp; PROFICIENCY</div>
       <h2 class="section-title">My <span class="accent">Skills</span></h2>
@@ -478,7 +437,7 @@ pavan = <span class="c-cls">Developer</span>()
 
 
   <!-- ========== PROJECTS ========== -->
-  <section id="projects" class="section deck-slide" data-slide-index="4">
+  <section id="projects" class="section">
     <div class="container">
       <div class="section-tag">WHAT I'VE BUILT</div>
       <h2 class="section-title">My <span class="accent">Projects</span></h2>
@@ -577,7 +536,7 @@ pavan = <span class="c-cls">Developer</span>()
   </section>
 
   <!-- ========== CERTIFICATES ========== -->
-  <section id="certificates" class="section deck-slide" data-slide-index="5">
+  <section id="certificates" class="section">
     <div class="container">
       <div class="section-tag">CREDENTIALS &amp; COURSES</div>
       <h2 class="section-title">Certifi<span class="accent">cations</span></h2>
@@ -695,7 +654,7 @@ pavan = <span class="c-cls">Developer</span>()
   </section>
 
   <!-- ========== EDUCATION ========== -->
-  <section id="education" class="section section-alt deck-slide" data-slide-index="6">
+  <section id="education" class="section section-alt">
     <div class="container">
       <div class="section-tag">MY JOURNEY</div>
       <h2 class="section-title">Edu<span class="accent">cation</span></h2>
@@ -752,25 +711,33 @@ pavan = <span class="c-cls">Developer</span>()
               </div>
             </div>
             <div class="resume-status-pill">
-              <span class="status-dot"></span> Verified Profile
+              <span class="status-dot"></span> Ready to Work
             </div>
           </div>
 
           <div class="resume-grid">
             <div class="resume-block">
-              <h4>🎯 Focus Areas</h4>
-              <p>Python · C/C++ · Agentic AI · Algorithm Architecture</p>
+              <h4>🎯 Core Focus</h4>
+              <p>Python · C/C++ · Agentic AI · Data Structures · Algorithm Design</p>
             </div>
             <div class="resume-block">
-              <h4>🎓 Education</h4>
-              <p>B.E. Computer Science &amp; Engineering (Present) · PCMB Science</p>
+              <h4>🎓 Academic</h4>
+              <p>B.E. in Computer Science &amp; Engineering (Present) · PCMB Science (2023-2025)</p>
+            </div>
+            <div class="resume-block">
+              <h4>🏆 Key Accomplishments</h4>
+              <p>Agentic AI News Digest, AI PPT Generator, Aspire Leader Program, 4+ Verified Certifications</p>
+            </div>
+            <div class="resume-block">
+              <h4>📬 Location &amp; Contact</h4>
+              <p>Bengaluru / Hassan, Karnataka · <a href="https://mail.google.com/mail/?view=cm&fs=1&to=pavanbc31@gmail.com" target="_blank" class="resume-email-link">pavanbc31@gmail.com</a></p>
             </div>
           </div>
 
           <div class="resume-card-actions">
             <button class="btn btn-primary" id="open-resume-modal-btn">
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
-              <span>View Full Interactive Resume</span>
+              <span>View Full Resume</span>
             </button>
             <a href="#contact" class="btn btn-outline">
               <span>Get In Touch</span>
@@ -784,8 +751,7 @@ pavan = <span class="c-cls">Developer</span>()
   </section>
 
   <!-- ========== CONTACT ========== -->
-  <section id="contact" class="section deck-slide" data-slide-index="7">
-
+  <section id="contact" class="section">
     <div class="container">
       <div class="section-tag">REACH OUT</div>
       <h2 class="section-title">Get In <span class="accent">Touch</span></h2>
@@ -795,7 +761,7 @@ pavan = <span class="c-cls">Developer</span>()
         <div class="contact-info">
           <div class="contact-card contact-card-email">
             <div class="contact-card-icon">📬</div>
-            <h3>Email</h3>
+            <h4>Email</h4>
             <a href="https://mail.google.com/mail/?view=cm&fs=1&to=pavanbc31@gmail.com" target="_blank" class="contact-email-link" title="Open Gmail in Browser">pavanbc31@gmail.com</a>
             <button type="button" class="btn-quick-copy" id="quick-copy-email-btn" title="Copy email address">
               <span>📋 Copy Address</span>
@@ -803,12 +769,12 @@ pavan = <span class="c-cls">Developer</span>()
           </div>
           <div class="contact-card">
             <div class="contact-card-icon">💼</div>
-            <h3>LinkedIn</h3>
+            <h4>LinkedIn</h4>
             <a href="https://www.linkedin.com/in/pavan-b-c-313b83385" target="_blank" rel="noopener">linkedin.com/in/pavan-b-c</a>
           </div>
           <div class="contact-card">
             <div class="contact-card-icon">🐙</div>
-            <h3>GitHub</h3>
+            <h4>GitHub</h4>
             <a href="https://github.com/PavanCodeNexus" target="_blank">github.com/PavanCodeNexus</a>
           </div>
         </div>
@@ -1028,7 +994,7 @@ pavan = <span class="c-cls">Developer</span>()
       <div class="warp-portal-header">
         <div class="warp-header-title">
           <span class="warp-pulse-dot"></span>
-          <span>Cyberspace Warp Portal // External Redirect</span>
+          <span>CYBERSPACE WARP PORTAL // EXTERNAL REDIRECT</span>
         </div>
         <button class="warp-close-btn" id="warp-close-btn" aria-label="Close modal">✕</button>
       </div>
@@ -1080,7 +1046,7 @@ pavan = <span class="c-cls">Developer</span>()
 
   <!-- Three.js 3D WebGL Engine -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="script.js?v=20.0"></script>
+  <script src="script.js?v=21.0"></script>
 </body>
 </html>
 

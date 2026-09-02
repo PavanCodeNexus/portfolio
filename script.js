@@ -283,12 +283,8 @@ pavan = <span class="c-cls">Developer</span>()
 
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
-      tabs.forEach(t => {
-        t.classList.remove('active');
-        t.setAttribute('aria-selected', 'false');
-      });
+      tabs.forEach(t => t.classList.remove('active'));
       tab.classList.add('active');
-      tab.setAttribute('aria-selected', 'true');
       const filename = tab.getAttribute('data-file');
       if (fileTypeLabel && fileTypeMap[filename]) {
         fileTypeLabel.textContent = fileTypeMap[filename];
@@ -773,30 +769,23 @@ if (footerEl) {
     scrollProgress = maxScroll > 0 ? window.pageYOffset / maxScroll : 0;
   });
 
-  // 3D Hyperspace Warp Drift State
+  // 3D Camera Warp Speed State
   let isWarping = false;
   let warpFactor = 1.0;
   let targetFOV = 60;
-  let targetCamZ = 320;
-  let currentDriftSpeed = 1.0;
 
-  window.trigger3DCameraWarp = function(direction = 'down') {
+  window.trigger3DCameraWarp = function() {
     isWarping = true;
-    warpFactor = 7.0;
-    targetFOV = direction === 'down' ? 76 : 52;
-    targetCamZ = direction === 'down' ? 275 : 355; // Depth surge
-
-    document.body.classList.add('hyperspace-drifting');
+    warpFactor = 9.0;
+    targetFOV = 82;
 
     setTimeout(() => {
       warpFactor = 1.0;
       targetFOV = 60;
-      targetCamZ = 320;
       setTimeout(() => {
         isWarping = false;
-        document.body.classList.remove('hyperspace-drifting');
-      }, 450);
-    }, 380);
+      }, 500);
+    }, 450);
   };
 
   // Resize Handler
@@ -821,29 +810,29 @@ if (footerEl) {
     targetX += (mouseX - targetX) * 0.04;
     targetY += (mouseY - targetY) * 0.04;
 
-    // Smooth FOV Warp Drift LERP
-    if (Math.abs(camera.fov - targetFOV) > 0.05) {
-      camera.fov += (targetFOV - camera.fov) * 0.06;
+    // FOV Warp LERP
+    if (Math.abs(camera.fov - targetFOV) > 0.1) {
+      camera.fov += (targetFOV - camera.fov) * 0.08;
       camera.updateProjectionMatrix();
     }
 
-    // Smooth Particle Stream Acceleration with LERP
-    currentDriftSpeed += ((isWarping ? warpFactor : 1.0) - currentDriftSpeed) * 0.07;
-    particleSystem.rotation.y += (0.0012 * currentDriftSpeed) + (targetX * 0.0001);
-    particleSystem.rotation.x += (0.0006 * currentDriftSpeed) + (targetY * 0.0001);
+    // Rotate Particles with Warp Multiplier
+    const currentSpeed = (isWarping ? warpFactor : 1.0);
+    particleSystem.rotation.y += (0.0015 * currentSpeed) + (targetX * 0.0001);
+    particleSystem.rotation.x += (0.0008 * currentSpeed) + (targetY * 0.0001);
 
-    // Particle Stretch & Scale during Hyperspace Drift
+    // Particle Scale pulse during warp
     if (isWarping) {
-      particleSystem.scale.lerp(new THREE.Vector3(1.06, 1.06, 1.22), 0.06);
+      particleSystem.scale.set(1.15, 1.15, 1.15);
     } else {
-      particleSystem.scale.lerp(new THREE.Vector3(1, 1, 1), 0.04);
+      particleSystem.scale.lerp(new THREE.Vector3(1, 1, 1), 0.05);
     }
 
-    // Scroll-Linked Camera Gliding with Smooth Depth Drift
-    const targetBaseZ = targetCamZ - (scrollProgress * 80);
-    camera.position.x += (targetX * 0.4 - camera.position.x) * 0.05;
-    camera.position.y += (-targetY * 0.4 - (scrollProgress * 60) - camera.position.y) * 0.05;
-    camera.position.z += (targetBaseZ - camera.position.z) * 0.05;
+    // Scroll-Linked Camera Gliding
+
+    camera.position.x = targetX * 0.4;
+    camera.position.y = -targetY * 0.4 - (scrollProgress * 60);
+    camera.position.z = 320 - (scrollProgress * 80);
     camera.lookAt(scene.position);
 
     renderer.render(scene, camera);
@@ -853,74 +842,9 @@ if (footerEl) {
 })();
 
 // =========================================================
-// 3D SPATIAL SLIDE DECK SNAP & KINETIC GESTURE CONTROLLER
+// CINEMATIC 3D WARP SMOOTH SECTION NAVIGATION
 // =========================================================
-(function initSlideDeckEngine() {
-  const slides = Array.from(document.querySelectorAll('.deck-slide'));
-  const hudDots = Array.from(document.querySelectorAll('.hud-dot'));
-  const navLinks = Array.from(document.querySelectorAll('.kage-nav-links a, .mobile-menu a'));
-
-  if (!slides.length) return;
-
-  let currentSlideIndex = 0;
-  let isThrottled = false;
-
-  function updateActiveStates(index) {
-    if (index < 0 || index >= slides.length) return;
-    currentSlideIndex = index;
-
-    // Update HUD dots
-    hudDots.forEach((dot, i) => {
-      dot.classList.toggle('active', i === index);
-    });
-
-    // Update Navbar links
-    const activeSectionId = slides[index].getAttribute('id');
-    navLinks.forEach(link => {
-      const href = link.getAttribute('href');
-      link.classList.toggle('active', href === `#${activeSectionId}`);
-    });
-  }
-
-  function goToSlide(index, skipWarp = false) {
-    if (index < 0 || index >= slides.length) return;
-    const direction = index >= currentSlideIndex ? 'down' : 'up';
-    currentSlideIndex = index;
-    updateActiveStates(index);
-
-    if (!skipWarp && window.trigger3DCameraWarp) {
-      window.trigger3DCameraWarp(direction);
-    }
-
-    const targetEl = slides[index];
-    targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-    // Smooth active slide emergence
-    slides.forEach((s, idx) => {
-      s.classList.toggle('active-slide', idx === index);
-    });
-
-    // Gentle arrival flash
-    setTimeout(() => {
-      targetEl.classList.remove('rim-flash');
-      void targetEl.offsetWidth;
-      targetEl.classList.add('rim-flash');
-    }, 450);
-  }
-
-  // Set initial active slide
-  if (slides[0]) slides[0].classList.add('active-slide');
-
-  // Click on HUD Dots
-  hudDots.forEach(dot => {
-    dot.addEventListener('click', (e) => {
-      e.preventDefault();
-      const slideIdx = parseInt(dot.getAttribute('data-slide-index'), 10);
-      if (!isNaN(slideIdx)) goToSlide(slideIdx);
-    });
-  });
-
-  // Click on Anchor links (#...)
+(function initCinematicNav() {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       const targetId = this.getAttribute('href');
@@ -929,95 +853,36 @@ if (footerEl) {
       const targetEl = document.querySelector(targetId);
       if (!targetEl) return;
 
-      const slideIdx = slides.indexOf(targetEl);
-      if (slideIdx !== -1) {
-        e.preventDefault();
-        goToSlide(slideIdx);
+      e.preventDefault();
 
-        const mobileMenu = document.getElementById('mobile-menu');
-        if (mobileMenu) mobileMenu.classList.remove('open');
+      // Trigger 3D Camera Warp
+      if (window.trigger3DCameraWarp) {
+        window.trigger3DCameraWarp();
       }
+
+      // Smooth scroll to section
+      const headerOffset = 70;
+      const elementPosition = targetEl.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+
+      // Close mobile menu if open
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (mobileMenu) mobileMenu.classList.remove('open');
+
+      // Add arrival frame shutter flash on target section
+      setTimeout(() => {
+        targetEl.classList.remove('rim-flash');
+        void targetEl.offsetWidth; // trigger reflow
+        targetEl.classList.add('rim-flash');
+      }, 500);
     });
   });
-
-  // Wheel Gesture Debounced Controller (Transitions 1 full section at a time)
-  window.addEventListener('wheel', (e) => {
-    if (isThrottled) return;
-    if (document.querySelector('.warp-portal-modal.active') || document.querySelector('.resume-modal.active')) return;
-
-    if (Math.abs(e.deltaY) > 28) {
-      isThrottled = true;
-      if (e.deltaY > 0) {
-        if (currentSlideIndex < slides.length - 1) {
-          goToSlide(currentSlideIndex + 1);
-        }
-      } else {
-        if (currentSlideIndex > 0) {
-          goToSlide(currentSlideIndex - 1);
-        }
-      }
-      setTimeout(() => {
-        isThrottled = false;
-      }, 750);
-    }
-  }, { passive: true });
-
-  // Keyboard Controller (Arrow keys & Page keys)
-  window.addEventListener('keydown', (e) => {
-    if (document.querySelector('.warp-portal-modal.active') || document.querySelector('.resume-modal.active')) return;
-    if (['ArrowDown', 'PageDown', ' '].includes(e.key)) {
-      if (e.key === ' ' && e.target.tagName === 'INPUT') return;
-      if (currentSlideIndex < slides.length - 1) {
-        e.preventDefault();
-        goToSlide(currentSlideIndex + 1);
-      }
-    } else if (['ArrowUp', 'PageUp'].includes(e.key)) {
-      if (currentSlideIndex > 0) {
-        e.preventDefault();
-        goToSlide(currentSlideIndex - 1);
-      }
-    }
-  });
-
-  // Touch Swipe Controller
-  let touchStartY = 0;
-  window.addEventListener('touchstart', (e) => {
-    touchStartY = e.touches[0].clientY;
-  }, { passive: true });
-
-  window.addEventListener('touchend', (e) => {
-    if (isThrottled) return;
-    const touchEndY = e.changedTouches[0].clientY;
-    const diffY = touchStartY - touchEndY;
-
-    if (Math.abs(diffY) > 50) {
-      isThrottled = true;
-      if (diffY > 0 && currentSlideIndex < slides.length - 1) {
-        goToSlide(currentSlideIndex + 1);
-      } else if (diffY < 0 && currentSlideIndex > 0) {
-        goToSlide(currentSlideIndex - 1);
-      }
-      setTimeout(() => {
-        isThrottled = false;
-      }, 650);
-    }
-  }, { passive: true });
-
-  // IntersectionObserver to keep HUD & Navbar in sync with natural snap
-  const slideObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const idx = slides.indexOf(entry.target);
-        if (idx !== -1) {
-          updateActiveStates(idx);
-        }
-      }
-    });
-  }, { threshold: 0.55 });
-
-  slides.forEach(slide => slideObserver.observe(slide));
 })();
-
 
 
 // =========================================================
