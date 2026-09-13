@@ -669,6 +669,48 @@ if (footerEl) {
   });
 })();
 
+// ── StockAI Agent Detailed Project Modal Logic ───────────
+(function initStockAiModal() {
+  const modal      = document.getElementById('stockai-modal');
+  const openBtns   = document.querySelectorAll('.open-stockai-modal');
+  const closeBtn   = document.getElementById('close-stockai-modal-btn');
+
+  if (!modal) return;
+
+  function openModal() {
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  openBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal();
+    });
+  });
+
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+
+  // Close on backdrop click outside the window
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  // Close on Escape key
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+      closeModal();
+    }
+  });
+})();
+
 // =========================================================
 // THREE.JS 3D WEBGL AMBIENT NEURAL CONSTELLATION & AI CORE
 // =========================================================

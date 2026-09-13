@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=21.0" />
+  <link rel="stylesheet" href="style.css?v=22.0" />
 </head>
 <body>
   <!-- KAGE CINEMATIC AMBIENT LIGHTING & GRID -->
@@ -309,7 +309,7 @@ pavan = <span class="c-cls">Developer</span>()
           </div>
           <div class="about-stats">
             <div class="stat-card">
-              <span class="stat-num">4</span>
+              <span class="stat-num">5</span>
               <span class="stat-label">Projects</span>
             </div>
             <div class="stat-card">
@@ -445,7 +445,99 @@ pavan = <span class="c-cls">Developer</span>()
 
       <div class="projects-grid">
 
-        <!-- PROJECT 1: ITFOS -->
+        <!-- PROJECT 1: StockAI Agent (Flagship Multi-Agent Platform) -->
+        <article class="project-card project-card-featured">
+          <div class="project-media-banner">
+            <div class="media-banner-top">
+              <div class="media-banner-badge">
+                <span class="pulse-green"></span>
+                <span>NSE · BSE LIVE INTELLIGENCE</span>
+              </div>
+              <span class="media-banner-chip">6-AGENT LANGGRAPH WORKFLOW</span>
+            </div>
+            <div class="media-chart-visual">
+              <svg viewBox="0 0 540 120" preserveAspectRatio="none" class="chart-svg" aria-hidden="true">
+                <defs>
+                  <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#F59E0B" stop-opacity="0.35" />
+                    <stop offset="70%" stop-color="#F59E0B" stop-opacity="0.08" />
+                    <stop offset="100%" stop-color="#F59E0B" stop-opacity="0.0" />
+                  </linearGradient>
+                  <linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stop-color="#F59E0B" />
+                    <stop offset="45%" stop-color="#FB923C" />
+                    <stop offset="80%" stop-color="#34D399" />
+                    <stop offset="100%" stop-color="#10B981" />
+                  </linearGradient>
+                </defs>
+                <line x1="0" y1="30" x2="540" y2="30" stroke="rgba(255,255,255,0.05)" stroke-dasharray="4,4" />
+                <line x1="0" y1="60" x2="540" y2="60" stroke="rgba(255,255,255,0.05)" stroke-dasharray="4,4" />
+                <line x1="0" y1="90" x2="540" y2="90" stroke="rgba(255,255,255,0.05)" stroke-dasharray="4,4" />
+                <path d="M0,95 Q45,85 85,65 T170,75 T255,40 T340,55 T425,22 T500,30 T540,12 L540,120 L0,120 Z" fill="url(#chartGrad)" />
+                <path d="M0,95 Q45,85 85,65 T170,75 T255,40 T340,55 T425,22 T500,30 T540,12" fill="none" stroke="url(#lineGrad)" stroke-width="2.5" stroke-linecap="round" />
+                <circle cx="255" cy="40" r="4.5" fill="#F59E0B" />
+                <circle cx="425" cy="22" r="4.5" fill="#34D399" />
+                <circle cx="540" cy="12" r="5" fill="#10B981" />
+              </svg>
+            </div>
+            <div class="media-banner-footer">
+              <div class="media-agent-flow">
+                <span class="flow-pill"><span class="pill-dot"></span> Planner</span>
+                <span class="flow-arrow">→</span>
+                <span class="flow-pill"><span class="pill-dot"></span> Collector</span>
+                <span class="flow-arrow">→</span>
+                <span class="flow-pill"><span class="pill-dot"></span> Analyzer</span>
+                <span class="flow-arrow">→</span>
+                <span class="flow-pill"><span class="pill-dot"></span> Verifier</span>
+                <span class="flow-arrow">→</span>
+                <span class="flow-pill"><span class="pill-dot"></span> Risk</span>
+                <span class="flow-arrow">→</span>
+                <span class="flow-pill flow-signal">BUY/HOLD/SELL</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-header">
+            <div class="project-tag-list">
+              <span class="ptag">Next.js 16</span>
+              <span class="ptag">React 19</span>
+              <span class="ptag">LangGraph</span>
+              <span class="ptag">Groq Cloud</span>
+              <span class="ptag">FastAPI</span>
+              <span class="ptag">Python</span>
+              <span class="ptag">Supabase</span>
+              <span class="ptag">TradingView</span>
+            </div>
+            <div class="project-links">
+              <button class="proj-link open-stockai-modal" id="card-stockai-details-btn" title="View 6-Agent Architecture & Details" aria-label="View Project Architecture">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              </button>
+              <a href="https://github.com/PavanCodeNexus/stock-ai-agent" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub Repository" class="proj-link">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+              </a>
+              <a href="https://stock-ai-agent-ten.vercel.app/" target="_blank" rel="noopener" aria-label="Live Demo" title="StockAI Agent Live Demo" class="proj-link">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <h3 class="project-title">StockAI Agent — Multi-Agent Indian Market Intelligence</h3>
+          <p class="project-desc">An AI-powered Multi-Agent platform for Indian Stock Market (NSE/BSE) intelligence, combining market data, technical analysis, risk evaluation, and structured AI research. Orchestrates a 6-agent LangGraph workflow on Groq Cloud to analyze technical indicators (RSI, MACD, EMA 20/50), company financials, and news sentiment before producing structured BUY / HOLD / SELL research signals with cross-verification to reduce LLM hallucination risk.</p>
+
+          <div class="project-footer project-footer-actions">
+            <span class="project-status online">6-Agent LangGraph · Live App</span>
+            <div class="project-action-btns">
+              <button class="btn-card-action open-stockai-modal" id="open-stockai-modal-btn">
+                <span>6-Agent Architecture</span> ↗
+              </button>
+              <a href="https://stock-ai-agent-ten.vercel.app/" target="_blank" rel="noopener" class="btn-card-action btn-card-live" title="StockAI Agent Live Demo">
+                <span>Live Demo</span> ↗
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- PROJECT 2: ITFOS -->
         <article class="project-card">
           <div class="project-header">
             <div class="project-tag-list">
@@ -951,6 +1043,13 @@ pavan = <span class="c-cls">Developer</span>()
           <h2 class="rs-section-title">Key Projects</h2>
           <div class="rs-entry">
             <div class="rs-entry-header">
+              <strong>StockAI Agent — Multi-Agent Indian Market Intelligence</strong>
+              <span class="rs-date">Next.js 16 · LangGraph · Groq · FastAPI</span>
+            </div>
+            <p class="rs-desc">Architected an autonomous 6-agent AI workflow for NSE/BSE stock intelligence, technical analysis (RSI/MACD/EMA), financial metrics, cross-verification to reduce LLM hallucination risk, and BUY/HOLD/SELL signals.</p>
+          </div>
+          <div class="rs-entry">
+            <div class="rs-entry-header">
               <strong>Daily Current Affairs Digest — Agentic AI</strong>
               <span class="rs-date">Python · Llama 3.3 · Groq API</span>
             </div>
@@ -982,6 +1081,220 @@ pavan = <span class="c-cls">Developer</span>()
             <li><strong>Git &amp; GitHub Certificate</strong> — Let's Upgrade (Version control, branching, PR workflows, and collaboration)</li>
             <li><strong>HTML Certificate</strong> — Let's Upgrade (Semantic structure, modern web standards, and accessibility)</li>
           </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== STOCKAI AGENT PROJECT DETAILS MODAL ========== -->
+  <div class="project-modal-backdrop" id="stockai-modal" aria-hidden="true">
+    <div class="project-modal-window">
+      <!-- Modal Toolbar -->
+      <div class="project-modal-toolbar">
+        <div class="modal-toolbar-title">
+          <span>📈</span>
+          <span>StockAI_Agent_Architecture.spec</span>
+        </div>
+        <div class="modal-toolbar-actions">
+          <a href="https://github.com/PavanCodeNexus/stock-ai-agent" target="_blank" rel="noopener" class="btn-modal-action-link" title="GitHub Repository">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            <span>GitHub</span>
+          </a>
+          <a href="https://stock-ai-agent-ten.vercel.app/" target="_blank" rel="noopener" class="btn-modal-action-link btn-modal-action-live" title="Live Demo">
+            <span>Live Demo ↗</span>
+          </a>
+          <button class="btn-modal-close" id="close-stockai-modal-btn" aria-label="Close modal">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Modal Body Content -->
+      <div class="project-modal-body">
+        <!-- Hero Banner inside Modal -->
+        <div class="modal-project-hero">
+          <div class="modal-hero-badge">
+            <span class="pulse-green"></span>
+            <span>MULTI-AGENT FINANCIAL INTELLIGENCE · NSE &amp; BSE</span>
+          </div>
+          <h2 class="modal-project-title">StockAI Agent</h2>
+          <p class="modal-project-tagline">An orchestrated six-agent AI workflow built using LangGraph and Groq Cloud for deep equity research on Indian markets.</p>
+          <div class="modal-cta-row">
+            <a href="https://stock-ai-agent-ten.vercel.app/" target="_blank" rel="noopener" class="btn-modal-hero btn-hero-live">
+              <span>Launch Live App</span>
+              <span class="btn-arrow">↗</span>
+            </a>
+            <a href="https://github.com/PavanCodeNexus/stock-ai-agent" target="_blank" rel="noopener" class="btn-modal-hero btn-hero-gh">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+              <span>View Source Code</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 6-Agent Architecture Section -->
+        <div class="modal-section">
+          <div class="modal-section-header">
+            <span class="modal-sec-icon">⚡</span>
+            <h3 class="modal-section-title">Six-Agent LangGraph Architecture</h3>
+          </div>
+          <p class="modal-sec-intro">StockAI Agent deconstructs financial analysis into specialized autonomous agents collaborating in a directed state graph to deliver validated research signals:</p>
+          
+          <div class="agent-grid">
+            <div class="agent-card">
+              <div class="agent-header">
+                <span class="agent-badge">01</span>
+                <h4 class="agent-name">Planner Agent</h4>
+              </div>
+              <p class="agent-desc">Deconstructs the user's natural language query, identifies target equity tickers across NSE/BSE, and defines the optimal multi-step research strategy.</p>
+            </div>
+
+            <div class="agent-card">
+              <div class="agent-header">
+                <span class="agent-badge">02</span>
+                <h4 class="agent-name">Data Collector Agent</h4>
+              </div>
+              <p class="agent-desc">Fetches live market quotes, historical OHLCV pricing, corporate balance sheets, quarterly financial results, and recent market news from financial APIs.</p>
+            </div>
+
+            <div class="agent-card">
+              <div class="agent-header">
+                <span class="agent-badge">03</span>
+                <h4 class="agent-name">Analyzer Agent</h4>
+              </div>
+              <p class="agent-desc">Calculates key technical indicators (RSI, MACD, EMA 20/50), analyzes profit margins and debt ratios, and performs sentiment scoring on market news.</p>
+            </div>
+
+            <div class="agent-card">
+              <div class="agent-header">
+                <span class="agent-badge">04</span>
+                <h4 class="agent-name">Verifier Agent</h4>
+              </div>
+              <p class="agent-desc">Cross-checks generated calculations and metrics against collected raw source data to reduce LLM hallucination risk before downstream delivery.</p>
+            </div>
+
+            <div class="agent-card">
+              <div class="agent-header">
+                <span class="agent-badge">05</span>
+                <h4 class="agent-name">Risk Agent</h4>
+              </div>
+              <p class="agent-desc">Assesses downside exposure, computes volatility levels, defines analytical price targets, computes stop-loss thresholds, and models risk-to-reward ratios.</p>
+            </div>
+
+            <div class="agent-card">
+              <div class="agent-header">
+                <span class="agent-badge">06</span>
+                <h4 class="agent-name">Reporter Agent</h4>
+              </div>
+              <p class="agent-desc">Consolidates verified outputs into a structured executive report with transparent reasoning and an actionable BUY / HOLD / SELL research signal.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Major Features Section -->
+        <div class="modal-section">
+          <div class="modal-section-header">
+            <span class="modal-sec-icon">✨</span>
+            <h3 class="modal-section-title">Key Capabilities &amp; Features</h3>
+          </div>
+          <div class="stockai-features-grid">
+            <div class="stockai-feature-card">
+              <div class="feat-icon">🤖</div>
+              <h4>AI-Powered Stock Analysis</h4>
+              <p>Autonomous orchestration analyzing technicals, fundamentals, and market sentiment on Indian equities.</p>
+            </div>
+            <div class="stockai-feature-card">
+              <div class="feat-icon">📊</div>
+              <h4>Interactive Stock Charts</h4>
+              <p>TradingView Lightweight Charts with candlestick views, volume overlays, and multi-timeframe exploration.</p>
+            </div>
+            <div class="stockai-feature-card">
+              <div class="feat-icon">📈</div>
+              <h4>Technical Indicators</h4>
+              <p>Automated computation of Relative Strength Index (RSI), MACD crossovers, and Exponential Moving Averages (EMA 20/50).</p>
+            </div>
+            <div class="stockai-feature-card">
+              <div class="feat-icon">🛡️</div>
+              <h4>Risk &amp; Target Modeling</h4>
+              <p>Data-driven stop-loss level suggestions, potential price target projections, and risk-to-reward profiling.</p>
+            </div>
+            <div class="stockai-feature-card">
+              <div class="feat-icon">🎯</div>
+              <h4>BUY / HOLD / SELL Signal</h4>
+              <p>Structured research signal generated from multi-factor consensus and verifiable source metrics.</p>
+            </div>
+            <div class="stockai-feature-card">
+              <div class="feat-icon">🔍</div>
+              <h4>Market Screener &amp; News</h4>
+              <p>Real-time market sentiment aggregation and scanning tools for Indian NSE and BSE listed stocks.</p>
+            </div>
+            <div class="stockai-feature-card">
+              <div class="feat-icon">📁</div>
+              <h4>Watchlist &amp; Portfolio</h4>
+              <p>Personalized tracking of tracked assets, past trade history, and multi-symbol monitoring.</p>
+            </div>
+            <div class="stockai-feature-card">
+              <div class="feat-icon">🔐</div>
+              <h4>Auth &amp; Persistence</h4>
+              <p>Secure Supabase-powered authentication and user data storage with real-time sync.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Technology Stack Section -->
+        <div class="modal-section">
+          <div class="modal-section-header">
+            <span class="modal-sec-icon">🛠️</span>
+            <h3 class="modal-section-title">Technology Stack</h3>
+          </div>
+          <div class="modal-tech-groups">
+            <div class="modal-tech-group">
+              <span class="group-title">Frontend &amp; UI</span>
+              <div class="group-pills">
+                <span class="tech-pill">Next.js 16</span>
+                <span class="tech-pill">React 19</span>
+                <span class="tech-pill">Tailwind CSS</span>
+                <span class="tech-pill">TradingView Lightweight Charts</span>
+              </div>
+            </div>
+            <div class="modal-tech-group">
+              <span class="group-title">Backend &amp; Multi-Agent AI</span>
+              <div class="group-pills">
+                <span class="tech-pill">FastAPI</span>
+                <span class="tech-pill">Python</span>
+                <span class="tech-pill">LangGraph</span>
+                <span class="tech-pill">Groq Cloud (Llama 3)</span>
+                <span class="tech-pill">yfinance</span>
+              </div>
+            </div>
+            <div class="modal-tech-group">
+              <span class="group-title">Data &amp; Deployment</span>
+              <div class="group-pills">
+                <span class="tech-pill">Supabase (PostgreSQL &amp; Auth)</span>
+                <span class="tech-pill">Vercel Deployment</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Notice Banner -->
+        <div class="stockai-notice">
+          <div class="notice-icon">ℹ️</div>
+          <div class="notice-text">
+            <strong>Research &amp; Hallucination-Reduction Protocol:</strong>
+            StockAI Agent incorporates a dedicated Verifier Agent to cross-check computed metrics against collected source data, significantly reducing the risk of LLM hallucinations. Outputs represent structured research signals and analytical insights for educational and informational purposes, not financial guarantees or investment advice.
+          </div>
+        </div>
+
+        <!-- Footer Actions inside Modal -->
+        <div class="modal-footer-cta">
+          <a href="https://stock-ai-agent-ten.vercel.app/" target="_blank" rel="noopener" class="btn-modal-footer btn-primary-action">
+            <span>Open Live StockAI Agent</span>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+          <a href="https://github.com/PavanCodeNexus/stock-ai-agent" target="_blank" rel="noopener" class="btn-modal-footer btn-secondary-action">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            <span>GitHub Repository</span>
+          </a>
         </div>
       </div>
     </div>
@@ -1046,7 +1359,7 @@ pavan = <span class="c-cls">Developer</span>()
 
   <!-- Three.js 3D WebGL Engine -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="script.js?v=21.0"></script>
+  <script src="script.js?v=22.0"></script>
 </body>
 </html>
 
