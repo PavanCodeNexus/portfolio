@@ -313,42 +313,87 @@ a { color: inherit; text-decoration: none; }
 .hamburger {
   display: none;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 5px;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 4px;
+  padding: 6px;
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  transition: var(--transition);
+}
+.hamburger:hover {
+  background: rgba(255, 255, 255, 0.08);
 }
 .hamburger span {
   display: block;
-  width: 22px; height: 2px;
+  width: 20px;
+  height: 2px;
   background: var(--text);
   border-radius: 2px;
-  transition: var(--transition);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.25s ease, background 0.3s ease;
+}
+.hamburger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+  background: var(--accent);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+  background: var(--accent);
 }
 
 .mobile-menu {
   display: none;
   flex-direction: column;
   gap: 0;
-  background: rgba(10, 12, 16, 0.98);
-  backdrop-filter: blur(20px);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  position: fixed;
-  top: 75px;
+  background: rgba(10, 12, 16, 0.96);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  position: absolute;
+  top: calc(100% + 10px);
   left: 0;
   right: 0;
+  width: 100%;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85), 0 0 25px rgba(245, 158, 11, 0.15);
   z-index: 999;
 }
 .mobile-menu a {
-  padding: 1rem 2rem;
+  padding: 0.95rem 1.4rem;
   color: var(--text);
-  font-size: 1rem;
+  font-size: 0.92rem;
+  font-weight: 500;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-.mobile-menu a:hover { color: var(--accent); background: var(--card-hover); }
-.mobile-menu.open { display: flex; }
+.mobile-menu a:last-child {
+  border-bottom: none;
+}
+.mobile-menu a:hover,
+.mobile-menu a:active {
+  color: var(--accent);
+  background: rgba(245, 158, 11, 0.1);
+  padding-left: 1.65rem;
+}
+.mobile-menu.open {
+  display: flex;
+  animation: mobileMenuDrop 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@keyframes mobileMenuDrop {
+  from { opacity: 0; transform: translateY(-8px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
 
 /* =========================================================
    SCROLLTIDE KAGE CINEMATIC LANDSCAPE HERO
@@ -430,13 +475,14 @@ a { color: inherit; text-decoration: none; }
 }
 
 .kage-hero-title {
-  font-size: clamp(3.2rem, 6.2vw, 5rem);
+  font-size: clamp(2.1rem, 6.5vw, 5rem);
   font-weight: 800;
-  line-height: 1.04;
+  line-height: 1.05;
   letter-spacing: -0.035em;
   color: #FFFFFF;
   margin-bottom: 1.4rem;
   text-shadow: 0 4px 35px rgba(0, 0, 0, 0.75);
+  word-break: break-word;
 }
 
 .kage-hero-desc {
@@ -2648,62 +2694,7 @@ section .container {
   transform: translateY(0);
 }
 
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
-@media (max-width: 1024px) {
-  .hero-inner {
-    justify-content: center;
-    padding-top: 6rem;
-  }
-  .hero-content-centered {
-    text-align: center;
-    max-width: 640px;
-    margin: 0 auto;
-    padding: 2.5rem 2rem;
-  }
-  .hero-content-centered .hero-btns {
-    justify-content: center;
-  }
-  .hero-content-centered .hero-socials {
-    justify-content: center;
-  }
-  .about-grid { grid-template-columns: 1fr; gap: 3rem; text-align: center; }
-  .about-avatar-wrap { flex-direction: row; justify-content: center; }
-  .about-stats { flex-direction: row; }
-  .about-highlights { grid-template-columns: 1fr 1fr; }
-  .skills-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (max-width: 768px) {
-  .nav-links { display: none; }
-  .hamburger { display: flex; }
-
-  .hero-content-centered .hero-btns { flex-direction: column; align-items: center; width: 100%; }
-  .hero-content-centered .hero-btns .btn { width: 100%; text-align: center; }
-
-
-  .about-grid { grid-template-columns: 1fr; }
-  .about-avatar-wrap { flex-direction: column; }
-  .about-highlights { grid-template-columns: 1fr; }
-
-  .skills-grid { grid-template-columns: repeat(2, 1fr); }
-  .projects-grid { grid-template-columns: 1fr; }
-
-  .contact-wrap { grid-template-columns: 1fr; }
-  .contact-info { flex-direction: row; flex-wrap: wrap; }
-  .contact-card { flex: 1; min-width: 160px; }
-
-  .footer-inner { flex-direction: column; text-align: center; }
-}
-
-@media (max-width: 480px) {
-  .section { padding: 70px 0; }
-  .skills-grid { grid-template-columns: 1fr; }
-  .about-stats { gap: 0.5rem; }
-  .contact-form { padding: 1.5rem; }
-  .timeline { padding-left: 1.75rem; }
-}
+/* Note: Responsive media queries are consolidated at the end of this stylesheet for cascade priority */
 
 /* =========================================================
    ✨ EXTRA ANIMATIONS
@@ -2943,7 +2934,7 @@ body:has(button:hover) #cursor-dot {
    ========================================================= */
 .cert-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1.8rem;
 }
 
@@ -3145,7 +3136,7 @@ body:has(button:hover) #cursor-dot {
 
 .resume-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.5rem;
   margin-bottom: 2.2rem;
 }
@@ -3454,36 +3445,7 @@ body:has(button:hover) #cursor-dot {
 }
 
 
-/* =========================================================
-   HERO — Responsive Breakpoints
-   ========================================================= */
-@media (max-width: 900px) {
-  .hero-inner {
-    grid-template-columns: 1fr;
-    text-align: center;
-    padding: 90px 1.5rem 2rem;
-    gap: 2.5rem;
-  }
-  .hero-left {
-    align-items: center;
-  }
-  .hero-right {
-    order: -1; /* Photo above text on mobile */
-  }
-  .hero-img-wrap {
-    width: 260px;
-  }
-  .hring-1 { inset: -12px; }
-  .hring-2 { inset: -22px; }
-  .hero-socials,
-  .hero-btns {
-    justify-content: center !important;
-  }
-}
-@media (max-width: 550px) {
-  .hero-img-wrap { width: 210px; }
-  .hero-name { font-size: clamp(2rem, 10vw, 3rem); }
-}
+/* (Legacy hero-inner responsive styles replaced by unified media queries at bottom of stylesheet) */
 
 /* =========================================================
    CYBER HOLOGRAPHIC WARP PORTAL MODAL
@@ -3765,5 +3727,595 @@ body:has(button:hover) #cursor-dot {
   background: rgba(255, 255, 255, 0.1);
   color: #FFFFFF;
   border-color: rgba(255, 255, 255, 0.25);
+}
+
+/* =========================================================
+   RESPONSIVE (Mobile First Optimization - 320px to 1024px)
+   ========================================================= */
+
+@media (max-width: 1024px) {
+  .hero-inner {
+    justify-content: center;
+    padding-top: 6rem;
+  }
+  .hero-content-centered {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem;
+  }
+  .hero-content-centered .hero-btns,
+  .hero-content-centered .hero-socials {
+    justify-content: center;
+  }
+  .about-grid { grid-template-columns: 1fr; gap: 3rem; text-align: center; }
+  .about-avatar-wrap { flex-direction: row; justify-content: center; }
+  .about-stats { flex-direction: row; }
+  .about-highlights { grid-template-columns: 1fr 1fr; }
+  .skills-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 900px) {
+  /* Floating Navbar */
+  .kage-nav-links { display: none !important; }
+  .hamburger { display: flex !important; }
+
+  /* Landscape Hero */
+  .kage-hero-section {
+    padding: 120px 1.5rem 70px;
+    justify-content: center;
+    text-align: center;
+  }
+  .kage-hero-container {
+    justify-content: center;
+  }
+  .kage-hero-content {
+    text-align: center;
+    margin: 0 auto;
+    max-width: 680px;
+  }
+  .kage-hero-btns {
+    justify-content: center;
+  }
+  .kage-hero-proof {
+    justify-content: center;
+    text-align: center;
+  }
+
+  /* Cockpit & IDE */
+  .hero-cockpit-container {
+    grid-template-columns: 1fr;
+    gap: 2.8rem;
+  }
+  .hero-left-cockpit {
+    align-items: center;
+    text-align: center;
+  }
+  .hero-profile-row {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    justify-content: center;
+  }
+  .hero-name-group {
+    align-items: center;
+    text-align: center;
+  }
+  .hero-left-cockpit .hero-name,
+  .hero-left-cockpit .hero-typewriter,
+  .hero-left-cockpit .hero-btns,
+  .hero-left-cockpit .hero-socials {
+    justify-content: center;
+  }
+  .hero-left-cockpit .xp-bar-wrap,
+  .hero-left-cockpit .hero-desc {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* About */
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    text-align: center;
+  }
+  .about-avatar-wrap {
+    flex-direction: column;
+  }
+
+  /* Skills & Projects */
+  .skills-grid { grid-template-columns: repeat(2, 1fr); }
+  .projects-grid { grid-template-columns: 1fr; }
+  .cert-grid { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+
+  /* Contact */
+  .contact-wrap { grid-template-columns: 1fr; gap: 2rem; }
+  .contact-info { flex-direction: row; flex-wrap: wrap; }
+  .contact-card { flex: 1; min-width: 160px; }
+}
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  
+  /* Featured Project Card */
+  .project-card-featured {
+    grid-column: auto;
+  }
+  .project-header {
+    flex-wrap: wrap;
+    gap: 0.85rem;
+  }
+
+  /* Footer */
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+  .footer-brand,
+  .footer-links-col,
+  .footer-connect-col {
+    align-items: center;
+    text-align: center;
+  }
+  .footer-nav {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem 1.2rem;
+  }
+  .footer-social-badges {
+    justify-content: center;
+  }
+
+  /* Modals */
+  .project-modal-window,
+  .resume-modal-window {
+    max-width: 95%;
+  }
+}
+
+@media (max-width: 540px) {
+  /* Nav items on compact phones */
+  .kage-nav {
+    width: 94%;
+    padding: 0.45rem 1rem;
+    top: 0.85rem;
+  }
+  .kage-nav-brand {
+    font-size: 0.95rem;
+  }
+  .kage-nav-resume-btn {
+    display: none; /* Accessible in Hero, Resume section, and Mobile Dropdown */
+  }
+  .kage-nav-right {
+    gap: 0.5rem;
+  }
+  .kage-nav-icon {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Global Container & Spacing */
+  .container {
+    padding: 0 1rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  .section {
+    padding: 55px 0;
+  }
+
+  /* Hero Section */
+  .kage-hero-section {
+    padding: 95px 1rem 45px;
+    min-height: auto;
+  }
+  .kage-hero-tag {
+    max-width: 100%;
+    font-size: 0.72rem;
+    padding: 0.25rem 0.6rem;
+    margin-bottom: 1.1rem;
+  }
+  .kage-hero-title {
+    font-size: clamp(2rem, 8.5vw, 2.7rem);
+    line-height: 1.08;
+    margin-bottom: 1rem;
+    letter-spacing: -0.025em;
+  }
+  .kage-hero-desc {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    margin-bottom: 1.6rem;
+  }
+  .kage-hero-btns {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.75rem;
+    margin-bottom: 1.8rem;
+  }
+  .kage-btn-solid,
+  .kage-btn-glass {
+    width: 100%;
+    justify-content: center;
+    padding: 0.8rem 1.2rem;
+    font-size: 0.92rem;
+    min-height: 46px;
+    box-sizing: border-box;
+  }
+  .kage-hero-proof {
+    flex-direction: column;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    line-height: 1.45;
+  }
+
+  /* Workspace & IDE */
+  .workspace-section {
+    padding: 3.5rem 0 4.5rem;
+    overflow: hidden;
+  }
+  .ide-ambient-glow {
+    inset: -15px;
+    max-width: 100%;
+  }
+  .ide-header {
+    padding: 0.65rem 0.75rem;
+    gap: 0.5rem;
+  }
+  .ide-tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    max-width: calc(100% - 45px);
+  }
+  .ide-tabs::-webkit-scrollbar {
+    display: none;
+  }
+  .ide-tab {
+    padding: 0.22rem 0.5rem;
+    font-size: 0.68rem;
+    flex-shrink: 0;
+  }
+  .ide-body {
+    padding: 1rem 0.8rem;
+    font-size: 0.76rem;
+    line-height: 1.6;
+  }
+  .hero-left-cockpit .hero-name {
+    font-size: 1.95rem;
+  }
+  .hero-profile-row .hero-avatar-wrap {
+    width: 90px;
+    height: 90px;
+  }
+  .xp-bar-wrap {
+    padding: 0.65rem 0.85rem;
+  }
+
+  /* About Section */
+  .about-avatar {
+    width: 160px;
+    height: 160px;
+  }
+  .about-avatar-img {
+    width: 160px;
+    height: 160px;
+  }
+  .about-stats {
+    gap: 0.4rem;
+    width: 100%;
+  }
+  .stat-card {
+    padding: 0.75rem 0.35rem;
+  }
+  .stat-num {
+    font-size: 1.4rem;
+  }
+  .stat-label {
+    font-size: 0.68rem;
+    word-break: break-word;
+  }
+  .about-highlights {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    text-align: left;
+  }
+
+  /* Skills Grid */
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .skill-card-modern {
+    padding: 1.3rem 1.1rem;
+  }
+  .skill-card-top {
+    margin-bottom: 0.85rem;
+  }
+  .skill-icon-box {
+    width: 44px;
+    height: 44px;
+  }
+  .skill-status-pill {
+    font-size: 0.66rem;
+    padding: 0.22rem 0.65rem;
+  }
+
+  /* Projects */
+  .project-card {
+    padding: 1.3rem 1.1rem;
+    gap: 0.85rem;
+  }
+  .project-header {
+    flex-direction: column;
+    gap: 0.85rem;
+    align-items: flex-start;
+  }
+  .project-links {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 0.5rem;
+  }
+  .proj-link {
+    width: 38px;
+    height: 38px;
+  }
+  .project-title {
+    font-size: 1.1rem;
+  }
+  .project-desc {
+    font-size: 0.86rem;
+    line-height: 1.55;
+  }
+  .project-footer-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.85rem;
+  }
+  .project-action-btns {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.6rem;
+  }
+  .btn-card-action {
+    width: 100%;
+    justify-content: center;
+    padding: 0.55rem 0.8rem;
+    min-height: 42px;
+    font-size: 0.8rem;
+    box-sizing: border-box;
+  }
+  .media-chart-visual {
+    height: 75px;
+  }
+  .media-agent-flow {
+    font-size: 0.65rem;
+  }
+
+  /* Certificates Grid - CRITICAL OVERFLOW FIX */
+  .cert-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.1rem;
+  }
+  .cert-card {
+    padding: 1.3rem 1.1rem;
+  }
+  .cert-title {
+    font-size: 1.1rem;
+  }
+  .cert-desc {
+    font-size: 0.86rem;
+  }
+
+  /* Education Timeline - CRITICAL OVERFLOW FIX */
+  .timeline {
+    padding-left: 1.5rem;
+  }
+  .timeline-dot {
+    left: -1.5rem;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 12px;
+    top: 1.3rem;
+  }
+  .timeline-card {
+    padding: 1.25rem 1rem;
+  }
+  .timeline-title {
+    font-size: 1.05rem;
+  }
+  .timeline-subtitle {
+    font-size: 0.8rem;
+    line-height: 1.45;
+  }
+  .timeline-body {
+    font-size: 0.84rem;
+    line-height: 1.55;
+  }
+
+  /* Resume Section - CRITICAL OVERFLOW FIX */
+  .resume-card {
+    padding: 1.3rem 1rem;
+  }
+  .resume-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.85rem;
+  }
+  .resume-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.85rem;
+  }
+  .resume-block {
+    padding: 1rem;
+  }
+  .resume-block h4 {
+    font-size: 0.9rem;
+  }
+  .resume-block p {
+    font-size: 0.84rem;
+    word-break: break-word;
+  }
+  .resume-email-link {
+    word-break: break-all;
+  }
+  .resume-card-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.65rem;
+  }
+  .resume-card-actions .btn {
+    width: 100%;
+    justify-content: center;
+    min-height: 44px;
+    box-sizing: border-box;
+  }
+
+  /* Contact Section */
+  .contact-info {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.85rem;
+  }
+  .contact-card {
+    width: 100%;
+    min-width: 0;
+    padding: 1.1rem 1rem;
+    box-sizing: border-box;
+  }
+  .contact-email-link,
+  .contact-card a {
+    word-break: break-all;
+    font-size: 0.86rem;
+  }
+  .contact-form {
+    padding: 1.3rem 1rem;
+    box-sizing: border-box;
+  }
+  .form-delivery-box {
+    padding: 1rem;
+  }
+  .delivery-actions {
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .btn-delivery {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* StockAI & Resume & Warp Modals */
+  .project-modal-backdrop,
+  .resume-modal-backdrop,
+  .warp-portal-modal {
+    padding: 0.5rem;
+  }
+  .project-modal-window,
+  .resume-modal-window,
+  .warp-portal-window {
+    max-height: 93vh;
+    border-radius: 16px;
+    max-width: 100%;
+  }
+  .project-modal-toolbar,
+  .resume-modal-toolbar,
+  .warp-portal-header {
+    padding: 0.65rem 0.85rem;
+  }
+  .modal-toolbar-title {
+    font-size: 0.74rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 140px;
+  }
+  .project-modal-body,
+  .resume-sheet,
+  .warp-portal-body {
+    padding: 1.1rem 0.85rem;
+  }
+  .modal-project-title {
+    font-size: 1.4rem;
+  }
+  .modal-project-tagline {
+    font-size: 0.88rem;
+  }
+  .agent-grid,
+  .stockai-features-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .agent-card,
+  .stockai-feature-card {
+    padding: 0.95rem;
+  }
+  .stockai-notice {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.85rem 0.95rem;
+    font-size: 0.8rem;
+  }
+  .rs-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+  .rs-name {
+    font-size: 1.5rem;
+  }
+  .rs-contact-info {
+    word-break: break-all;
+  }
+  .warp-target-card {
+    padding: 0.85rem 0.95rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+  }
+  .warp-action-buttons {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.6rem;
+  }
+  .warp-launch-btn,
+  .warp-cancel-btn {
+    width: 100%;
+    justify-content: center;
+    min-height: 44px;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 360px) {
+  /* Extra compact viewports (320px - 360px) */
+  .container {
+    padding: 0 0.75rem;
+  }
+  .kage-hero-title {
+    font-size: clamp(1.85rem, 8vw, 2.2rem);
+  }
+  .kage-nav-brand {
+    font-size: 0.88rem;
+  }
+  .stat-card {
+    padding: 0.6rem 0.25rem;
+  }
+  .stat-num {
+    font-size: 1.25rem;
+  }
+  .stat-label {
+    font-size: 0.62rem;
+  }
+  .ide-body {
+    padding: 0.85rem 0.65rem;
+    font-size: 0.72rem;
+  }
+  .project-media-banner {
+    padding: 0.75rem 0.65rem;
+  }
 }
 

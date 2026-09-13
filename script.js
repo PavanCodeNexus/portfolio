@@ -162,12 +162,25 @@ window.addEventListener('scroll', () => {
 // ── Mobile menu toggle ───────────────────────────────────
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobile-menu');
-hamburger.addEventListener('click', () => {
-  mobileMenu.classList.toggle('open');
-});
-mobileMenu.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => mobileMenu.classList.remove('open'));
-});
+if (hamburger && mobileMenu) {
+  hamburger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    });
+  });
+  document.addEventListener('click', (e) => {
+    if (!mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    }
+  });
+}
 
 // ── Active nav link highlight ────────────────────────────
 function updateActiveNavLink() {
@@ -914,7 +927,9 @@ if (footerEl) {
 
       // Close mobile menu if open
       const mobileMenu = document.getElementById('mobile-menu');
+      const hamburger = document.getElementById('hamburger');
       if (mobileMenu) mobileMenu.classList.remove('open');
+      if (hamburger) hamburger.classList.remove('open');
 
       // Add arrival frame shutter flash on target section
       setTimeout(() => {
