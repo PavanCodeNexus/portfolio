@@ -30,7 +30,10 @@
   --font-mono:    'JetBrains Mono', monospace;
 }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
 
 body {
   font-family: var(--font);
@@ -1796,7 +1799,8 @@ section .container {
   border-radius: 50px;
 }
 
-.media-chart-visual {
+.media-chart-visual,
+.media-rag-visual {
   height: 90px;
   width: 100%;
   position: relative;
@@ -1853,6 +1857,40 @@ section .container {
   border-color: rgba(16, 185, 129, 0.35);
   color: #34D399;
   font-weight: 700;
+}
+
+/* ── Project Highlights Strip (AskAnything & Flagship Projects) ── */
+.project-highlights-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.85rem 0 0.95rem;
+}
+
+.highlight-pill {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  padding: 0.32rem 0.7rem;
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.24);
+  border-radius: 6px;
+  color: #FEF3C7;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  line-height: 1.35;
+  transition: var(--transition);
+}
+
+.highlight-pill:hover {
+  background: rgba(245, 158, 11, 0.16);
+  border-color: rgba(245, 158, 11, 0.45);
+  transform: translateY(-1px);
+}
+
+.highlight-pill .pill-icon {
+  font-size: 0.85rem;
+  line-height: 1;
 }
 
 /* ── Project Footer Action Buttons ── */
@@ -4288,6 +4326,14 @@ body:has(button:hover) #cursor-dot {
     min-height: 44px;
     box-sizing: border-box;
   }
+  .project-highlights-strip {
+    gap: 0.38rem;
+    margin: 0.75rem 0 0.85rem;
+  }
+  .highlight-pill {
+    font-size: 0.68rem;
+    padding: 0.24rem 0.55rem;
+  }
 }
 
 @media (max-width: 360px) {
@@ -4316,6 +4362,13 @@ body:has(button:hover) #cursor-dot {
   }
   .project-media-banner {
     padding: 0.75rem 0.65rem;
+  }
+  .project-highlights-strip {
+    gap: 0.3rem;
+  }
+  .highlight-pill {
+    font-size: 0.63rem;
+    padding: 0.2rem 0.45rem;
   }
 }
 
