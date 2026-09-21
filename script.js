@@ -636,7 +636,7 @@ document.querySelectorAll('section:not(#home)').forEach(sec => {
 // Also make nav + footer always visible
 const navEl = document.getElementById('navbar');
 const footerEl = document.querySelector('.footer');
-if (navEl)    navEl.style.cssText += 'opacity:1;transform:none;';
+if (navEl)    navEl.style.opacity = '1';
 if (footerEl) {
   footerEl.style.opacity = '1';
   footerEl.style.transform = 'none';

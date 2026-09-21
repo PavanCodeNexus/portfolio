@@ -98,7 +98,7 @@ body {
 }
 
 /* ---------- SCROLLBAR ---------- */
-::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar { width: 5px; height: 5px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, var(--accent), var(--accent2));
@@ -590,6 +590,7 @@ a { color: inherit; text-decoration: none; }
   padding: 5rem 0 6rem;
   background: var(--bg);
   z-index: 5;
+  scroll-margin-top: 80px;
 }
 
 
@@ -1100,8 +1101,18 @@ a { color: inherit; text-decoration: none; }
     padding: 100px 1.2rem 50px;
   }
   .hero-cockpit-container {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 2.8rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  .hero-left-cockpit,
+  .hero-right-cockpit {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
   }
   .hero-left-cockpit {
     align-items: center;
@@ -1113,6 +1124,9 @@ a { color: inherit; text-decoration: none; }
     text-align: center;
     gap: 1rem;
     justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
   .hero-name-group {
     align-items: center;
@@ -1126,13 +1140,36 @@ a { color: inherit; text-decoration: none; }
   }
   .hero-left-cockpit .xp-bar-wrap {
     margin: 0 auto 1.4rem;
+    width: 100%;
+    max-width: 500px;
+    box-sizing: border-box;
   }
   .hero-left-cockpit .hero-desc {
     margin: 0 auto 1.5rem;
+    width: 100%;
+    max-width: 500px;
+    box-sizing: border-box;
   }
   .hero-left-cockpit .hero-btns,
   .hero-left-cockpit .hero-socials {
     justify-content: center;
+  }
+  .ide-window {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+  .ide-body {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    overflow-x: auto;
+  }
+  .ide-code {
+    display: block;
+    min-width: 0;
   }
 }
 
@@ -3821,9 +3858,29 @@ body:has(button:hover) #cursor-dot {
   }
 
   /* Cockpit & IDE */
+  .hero-scroll-indicator {
+    display: none !important;
+  }
   .hero-cockpit-container {
-    grid-template-columns: 1fr;
-    gap: 2.8rem;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.4rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  .hero-left-cockpit,
+  .hero-right-cockpit {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+  .hero-profile-row,
+  .hero-avatar-wrap,
+  .hero-stats-row,
+  .ide-header,
+  .ide-tabs {
+    transform: none !important;
   }
   .hero-left-cockpit {
     align-items: center;
@@ -3835,6 +3892,9 @@ body:has(button:hover) #cursor-dot {
     text-align: center;
     gap: 1rem;
     justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
   .hero-name-group {
     align-items: center;
@@ -3846,10 +3906,65 @@ body:has(button:hover) #cursor-dot {
   .hero-left-cockpit .hero-socials {
     justify-content: center;
   }
-  .hero-left-cockpit .xp-bar-wrap,
+  .hero-left-cockpit .xp-bar-wrap {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 500px;
+    box-sizing: border-box;
+  }
   .hero-left-cockpit .hero-desc {
     margin-left: auto;
     margin-right: auto;
+    width: 100%;
+    max-width: 500px;
+    box-sizing: border-box;
+  }
+  .ide-window {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+  .ide-body {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    overflow-x: auto;
+  }
+  .ide-body::-webkit-scrollbar {
+    height: 3px;
+  }
+  .ide-body::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+  }
+  .ide-body::-webkit-scrollbar-thumb {
+    background: rgba(245, 158, 11, 0.35);
+    border-radius: 99px;
+  }
+  .ide-code {
+    display: block;
+    min-width: 0;
+  }
+  .ide-header {
+    padding: 0.55rem 0.75rem;
+    gap: 0.5rem;
+  }
+  .ide-tabs {
+    max-width: calc(100% - 46px);
+    overflow-x: auto;
+    gap: 3px;
+  }
+  .ide-tab {
+    padding: 0.2rem 0.45rem;
+    font-size: 0.68rem;
+    gap: 0.25rem;
+    flex-shrink: 0;
+  }
+  .ide-footer {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.66rem;
   }
 
   /* About */
@@ -3997,35 +4112,52 @@ body:has(button:hover) #cursor-dot {
     padding: 3.5rem 0 4.5rem;
     overflow: hidden;
   }
+  .cockpit-badge {
+    font-size: 0.68rem;
+    padding: 0.3rem 0.75rem;
+    letter-spacing: 0.1em;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 1.1rem;
+  }
   .ide-ambient-glow {
     inset: -15px;
     max-width: 100%;
   }
   .ide-header {
-    padding: 0.65rem 0.75rem;
+    padding: 0.55rem 0.75rem;
     gap: 0.5rem;
   }
   .ide-tabs {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    max-width: calc(100% - 45px);
+    max-width: calc(100% - 46px);
+    gap: 3px;
   }
   .ide-tabs::-webkit-scrollbar {
     display: none;
   }
   .ide-tab {
-    padding: 0.22rem 0.5rem;
+    padding: 0.2rem 0.45rem;
     font-size: 0.68rem;
+    gap: 0.25rem;
     flex-shrink: 0;
   }
   .ide-body {
-    padding: 1rem 0.8rem;
-    font-size: 0.76rem;
+    padding: 0.95rem 0.75rem;
+    font-size: 0.74rem;
     line-height: 1.6;
   }
+  .ide-footer {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.65rem;
+  }
+  .ide-footer-right {
+    font-size: 0.62rem;
+  }
   .hero-left-cockpit .hero-name {
-    font-size: 1.95rem;
+    font-size: clamp(1.8rem, 6vw, 2.1rem);
   }
   .hero-profile-row .hero-avatar-wrap {
     width: 90px;
@@ -4033,6 +4165,17 @@ body:has(button:hover) #cursor-dot {
   }
   .xp-bar-wrap {
     padding: 0.65rem 0.85rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .xp-label {
+    font-size: 0.74rem;
+  }
+  .xp-pct {
+    font-size: 0.72rem;
+  }
+  .xp-footer {
+    font-size: 0.62rem;
   }
 
   /* About Section */
@@ -4356,9 +4499,36 @@ body:has(button:hover) #cursor-dot {
   .stat-label {
     font-size: 0.62rem;
   }
+  .hero-left-cockpit .hero-name {
+    font-size: 1.7rem;
+  }
+  .cockpit-badge {
+    font-size: 0.64rem;
+    padding: 0.25rem 0.6rem;
+    letter-spacing: 0.06em;
+  }
+  .hero-typewriter {
+    font-size: 0.88rem;
+  }
+  .xp-bar-wrap {
+    padding: 0.55rem 0.65rem;
+  }
+  .xp-label {
+    font-size: 0.7rem;
+  }
+  .xp-pct {
+    font-size: 0.68rem;
+  }
+  .ide-tab {
+    font-size: 0.62rem;
+    padding: 0.18rem 0.35rem;
+  }
   .ide-body {
     padding: 0.85rem 0.65rem;
-    font-size: 0.72rem;
+    font-size: 0.68rem;
+  }
+  .ide-footer-right {
+    font-size: 0.56rem;
   }
   .project-media-banner {
     padding: 0.75rem 0.65rem;
