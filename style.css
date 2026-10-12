@@ -1837,7 +1837,8 @@ section .container {
 }
 
 .media-chart-visual,
-.media-rag-visual {
+.media-rag-visual,
+.media-skillsift-visual {
   height: 90px;
   width: 100%;
   position: relative;

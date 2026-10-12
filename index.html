@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=25.0" />
+  <link rel="stylesheet" href="style.css?v=26.0" />
 </head>
 <body>
   <!-- KAGE CINEMATIC AMBIENT LIGHTING & GRID -->
@@ -310,7 +310,7 @@ pavan = <span class="c-cls">Developer</span>()
           </div>
           <div class="about-stats">
             <div class="stat-card">
-              <span class="stat-num">6</span>
+              <span class="stat-num">7</span>
               <span class="stat-label">Projects</span>
             </div>
             <div class="stat-card">
@@ -550,7 +550,116 @@ pavan = <span class="c-cls">Developer</span>()
           </div>
         </article>
 
-        <!-- PROJECT 2: StockAI Agent (Flagship Multi-Agent Platform) -->
+        <!-- FEATURED PROJECT 2: SkillSift — AI-Powered Curated Learning Intelligence Platform -->
+        <article class="project-card project-card-featured project-card-skillsift">
+          <div class="project-media-banner">
+            <div class="media-banner-top">
+              <div class="media-banner-badge">
+                <span class="pulse-green"></span>
+                <span>FULL-STACK PRODUCTION · AI QUALITY CURATION</span>
+              </div>
+              <span class="media-banner-chip">JAVA 21 + SPRING BOOT 3 + REACT 19</span>
+            </div>
+            <div class="media-skillsift-visual">
+              <svg viewBox="0 0 540 100" preserveAspectRatio="none" class="chart-svg" aria-hidden="true">
+                <defs>
+                  <linearGradient id="siftGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#10B981" stop-opacity="0.32" />
+                    <stop offset="70%" stop-color="#10B981" stop-opacity="0.05" />
+                    <stop offset="100%" stop-color="#10B981" stop-opacity="0.0" />
+                  </linearGradient>
+                  <linearGradient id="siftLine" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stop-color="#818CF8" />
+                    <stop offset="30%" stop-color="#38BDF8" />
+                    <stop offset="65%" stop-color="#F59E0B" />
+                    <stop offset="100%" stop-color="#10B981" />
+                  </linearGradient>
+                </defs>
+                <line x1="0" y1="25" x2="540" y2="25" stroke="rgba(255,255,255,0.05)" stroke-dasharray="4,4" />
+                <line x1="0" y1="50" x2="540" y2="50" stroke="rgba(255,255,255,0.05)" stroke-dasharray="4,4" />
+                <line x1="0" y1="75" x2="540" y2="75" stroke="rgba(255,255,255,0.05)" stroke-dasharray="4,4" />
+                <path d="M0,85 Q60,78 120,52 T240,60 T340,32 T430,40 T500,18 T540,14 L540,100 L0,100 Z" fill="url(#siftGrad)" />
+                <path d="M0,85 Q60,78 120,52 T240,60 T340,32 T430,40 T500,18 T540,14" fill="none" stroke="url(#siftLine)" stroke-width="2.5" stroke-linecap="round" />
+                <circle cx="120" cy="52" r="4.5" fill="#818CF8" />
+                <circle cx="340" cy="32" r="4.5" fill="#F59E0B" />
+                <circle cx="500" cy="18" r="4.5" fill="#10B981" />
+              </svg>
+            </div>
+            <div class="media-banner-footer">
+              <div class="media-agent-flow">
+                <span class="flow-pill"><span class="pill-dot"></span> Goal Filter (DSA/Exams)</span>
+                <span class="flow-arrow">→</span>
+                <span class="flow-pill"><span class="pill-dot"></span> YouTube API (24h Cache)</span>
+                <span class="flow-arrow">→</span>
+                <span class="flow-pill"><span class="pill-dot"></span> Groq Llama 3.1 (&lt;400ms)</span>
+                <span class="flow-arrow">→</span>
+                <span class="flow-pill"><span class="pill-dot"></span> Quality Gate (&gt;3 min)</span>
+                <span class="flow-arrow">→</span>
+                <span class="flow-pill"><span class="pill-dot"></span> In-Video Timestamp Notes</span>
+                <span class="flow-arrow">→</span>
+                <span class="flow-pill flow-signal">CURATED STUDY DISPATCH</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-header">
+            <div class="project-tag-list">
+              <span class="ptag">Java 21</span>
+              <span class="ptag">Spring Boot 3</span>
+              <span class="ptag">Spring Security (JWT)</span>
+              <span class="ptag">React 19</span>
+              <span class="ptag">Vite</span>
+              <span class="ptag">Groq LPU</span>
+              <span class="ptag">Llama 3.1 8B</span>
+              <span class="ptag">Supabase (PostgreSQL)</span>
+              <span class="ptag">HikariCP</span>
+              <span class="ptag">YouTube Data API v3</span>
+              <span class="ptag">Docker</span>
+              <span class="ptag">Vercel Edge</span>
+            </div>
+            <div class="project-links">
+              <button class="proj-link open-skillsift-modal" id="card-skillsift-details-btn" title="View System Architecture &amp; Curation Pipeline" aria-label="View Project Architecture">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              </button>
+              <a href="https://github.com/PavanCodeNexus/SkillSift" target="_blank" rel="noopener" aria-label="GitHub" title="SkillSift GitHub Repository" class="proj-link">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+              </a>
+              <a href="https://skill-sift-two.vercel.app/" target="_blank" rel="noopener" aria-label="Live Demo" title="SkillSift Live Demo" class="proj-link">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <h3 class="project-title">SkillSift — AI-Powered Curated Learning Intelligence Platform</h3>
+          <p class="project-desc">A production full-stack educational intelligence platform engineered for engineering students to eliminate instructional noise. Combines a Java 21 &amp; Spring Boot microservice architecture (stateless JWT, tuned HikariCP keepalive pool for Supabase) with Groq LPU (Llama 3.1 8B) for sub-400ms depth evaluation, a 24-hour SQL caching layer cutting YouTube API quota by &gt;80%, and an interactive embedded player with real-time timestamped study notes across 5 regional languages.</p>
+
+          <div class="project-highlights-strip">
+            <div class="highlight-pill"><span class="pill-icon">🎯</span> Goal-driven filtering (Placement/DSA, Exams, Capstone)</div>
+            <div class="highlight-pill"><span class="pill-icon">⚡</span> AI Quality Evaluation (&lt;400ms Groq &amp; Llama 3.1)</div>
+            <div class="highlight-pill"><span class="pill-icon">🚫</span> Anti-clickbait &amp; shorts filter (&gt;3 mins only)</div>
+            <div class="highlight-pill"><span class="pill-icon">⏱️</span> In-video timestamped study notes &amp; auto-save</div>
+            <div class="highlight-pill"><span class="pill-icon">📊</span> Student dashboard with learning telemetry</div>
+            <div class="highlight-pill"><span class="pill-icon">🌐</span> 5 Languages (English, Hindi, Telugu, Tamil, Kannada)</div>
+          </div>
+
+          <div class="project-footer project-footer-actions">
+            <span class="project-status online">Full-Stack · Spring Boot + React · Live App</span>
+            <div class="project-action-btns">
+              <button class="btn-card-action open-skillsift-modal" id="open-skillsift-modal-btn">
+                <span>System Architecture</span> ↗
+              </button>
+              <a href="https://skill-sift-two.vercel.app/" target="_blank" rel="noopener" class="btn-card-action btn-card-live" title="SkillSift Live Demo">
+                <span>Live Demo</span> ↗
+              </a>
+              <a href="https://github.com/PavanCodeNexus/SkillSift" target="_blank" rel="noopener" class="btn-card-action" title="SkillSift GitHub Repository">
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                <span>View on GitHub</span> ↗
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- PROJECT 3: StockAI Agent (Flagship Multi-Agent Platform) -->
         <article class="project-card project-card-featured">
           <div class="project-media-banner">
             <div class="media-banner-top">
@@ -1136,16 +1245,23 @@ pavan = <span class="c-cls">Developer</span>()
         <div class="rs-section">
           <h2 class="rs-section-title">Technical Skills</h2>
           <div class="rs-skills-grid">
-            <div class="rs-skill-group"><strong>Programming:</strong> Python, C, C++, HTML5, CSS3</div>
-            <div class="rs-skill-group"><strong>AI &amp; Frameworks:</strong> Agentic AI, Multimodal RAG, LangChain, Llama 3.3 (Groq API), ChromaDB, BM25, Prompt Engineering</div>
-            <div class="rs-skill-group"><strong>Tools &amp; Platforms:</strong> Git, GitHub, VS Code, Streamlit, Docker, Tesseract OCR, Linux CLI, PDF Automation</div>
-            <div class="rs-skill-group"><strong>Core Competencies:</strong> OOP, Data Structures, Problem Solving, Distributed Version Control</div>
+            <div class="rs-skill-group"><strong>Programming:</strong> Python, Java (21), C, C++, JavaScript, HTML5, CSS3</div>
+            <div class="rs-skill-group"><strong>AI &amp; Frameworks:</strong> Agentic AI, Multimodal RAG, LangChain, Spring Boot 3, Spring Security (JWT), React 19, Llama 3.1/3.3 (Groq API), ChromaDB, BM25</div>
+            <div class="rs-skill-group"><strong>Tools &amp; Platforms:</strong> Git, GitHub, VS Code, Supabase, PostgreSQL, HikariCP, Docker, Vite, Streamlit, Linux CLI</div>
+            <div class="rs-skill-group"><strong>Core Competencies:</strong> Microservices, OOP, Data Structures, Restful APIs, Distributed Version Control</div>
           </div>
         </div>
 
         <!-- Section: Projects -->
         <div class="rs-section">
           <h2 class="rs-section-title">Key Projects</h2>
+          <div class="rs-entry">
+            <div class="rs-entry-header">
+              <strong>SkillSift — AI-Powered Curated Learning Intelligence Platform</strong>
+              <span class="rs-date">Java 21 · Spring Boot 3 · React 19 · Groq LPU · Supabase · Docker</span>
+            </div>
+            <p class="rs-desc">Architected a production full-stack platform for engineering students filtering YouTube noise. Built with Java 21, Spring Boot (Stateless JWT), HikariCP keepalive pool tuned for Supabase transaction pooler, React 19, Groq LPU (Llama 3.1) for sub-400ms quality evaluations, 24h SQL caching layer reducing YouTube API quota by &gt;80%, and real-time in-video timestamped notes across 5 languages.</p>
+          </div>
           <div class="rs-entry">
             <div class="rs-entry-header">
               <strong>AskAnything — Multimodal RAG Assistant</strong>
@@ -1610,6 +1726,206 @@ pavan = <span class="c-cls">Developer</span>()
     </div>
   </div>
 
+  <!-- ========== SKILLSIFT CURATED LEARNING INTELLIGENCE PROJECT DETAILS MODAL ========== -->
+  <div class="project-modal-backdrop" id="skillsift-modal" aria-hidden="true">
+    <div class="project-modal-window">
+      <!-- Modal Toolbar -->
+      <div class="project-modal-toolbar">
+        <div class="modal-toolbar-title">
+          <span>🎓</span>
+          <span>SkillSift_System_Architecture.java</span>
+        </div>
+        <div class="modal-toolbar-actions">
+          <a href="https://skill-sift-two.vercel.app/" target="_blank" rel="noopener" class="btn-modal-action-link" title="Live Application">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            <span>Live Demo</span>
+          </a>
+          <a href="https://github.com/PavanCodeNexus/SkillSift" target="_blank" rel="noopener" class="btn-modal-action-link" title="GitHub Repository">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            <span>GitHub</span>
+          </a>
+          <button class="btn-modal-close" id="close-skillsift-modal-btn" aria-label="Close modal">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Modal Body Content -->
+      <div class="project-modal-body">
+        <!-- Hero Banner inside Modal -->
+        <div class="modal-project-hero">
+          <div class="modal-hero-badge">
+            <span class="pulse-green"></span>
+            <span>GOAL-DRIVEN CURATION · AI EVALUATION · REAL-TIME NOTES</span>
+          </div>
+          <h2 class="modal-project-title">SkillSift — Curated Learning Intelligence for Engineers</h2>
+          <p class="modal-project-tagline">Engineered for engineering students to cut through educational noise with goal-directed YouTube curation, sub-second Llama 3.1 quality evaluation, and automated timestamped study workflows.</p>
+          <div class="modal-cta-row">
+            <a href="https://skill-sift-two.vercel.app/" target="_blank" rel="noopener" class="btn-modal-hero btn-hero-live">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              <span>Launch Live Application</span>
+              <span class="btn-arrow">↗</span>
+            </a>
+            <a href="https://github.com/PavanCodeNexus/SkillSift" target="_blank" rel="noopener" class="btn-modal-hero btn-hero-gh">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+              <span>Explore GitHub Repository</span>
+              <span class="btn-arrow">↗</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 4 Architecture Highlights Section -->
+        <div class="modal-section">
+          <div class="modal-section-header">
+            <span class="modal-sec-icon">⚡</span>
+            <h3 class="modal-section-title">System Architecture &amp; Technical Highlights</h3>
+          </div>
+          <p class="modal-sec-intro">SkillSift was designed from first principles to balance sub-second inference speeds, resilient database connection handling, and quota-efficient API caching:</p>
+          
+          <div class="agent-grid">
+            <div class="agent-card">
+              <div class="agent-header">
+                <span class="agent-badge">01</span>
+                <h4 class="agent-name">Java 21 &amp; Spring Boot 3</h4>
+              </div>
+              <p class="agent-desc">Modular backend built on Java 21 LTS leveraging record classes and pattern matching. Secured with stateless Spring Security JWT tokens for low-memory, horizontal scalability.</p>
+            </div>
+
+            <div class="agent-card">
+              <div class="agent-header">
+                <span class="agent-badge">02</span>
+                <h4 class="agent-name">HikariCP Keepalive Tuning</h4>
+              </div>
+              <p class="agent-desc">Fine-tuned pooler connection health with keepalive ping queries and proactive socket reclamation, preventing dropped connections through Supabase's transaction pooler (PgBouncer).</p>
+            </div>
+
+            <div class="agent-card">
+              <div class="agent-header">
+                <span class="agent-badge">03</span>
+                <h4 class="agent-name">Groq LPU &amp; 24h SQL Cache</h4>
+              </div>
+              <p class="agent-desc">Leverages llama-3.1-8b-instant on Groq LPUs for sub-400ms rubric evaluation. Caches YouTube Data API queries in PostgreSQL for 24 hours, slashing quota usage by over 80%.</p>
+            </div>
+
+            <div class="agent-card">
+              <div class="agent-header">
+                <span class="agent-badge">04</span>
+                <h4 class="agent-name">React 19 &amp; Vercel Edge Proxy</h4>
+              </div>
+              <p class="agent-desc">Fluid client built with React 19 and Vite with custom design tokens. Fronted by a Vercel Edge reverse proxy routing traffic to Dockerized Render instances with zero CORS issues.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Core Features Grid -->
+        <div class="modal-section">
+          <div class="modal-section-header">
+            <span class="modal-sec-icon">✨</span>
+            <h3 class="modal-section-title">Core Engineering Features</h3>
+          </div>
+          <div class="stockai-features-grid">
+            <div class="stockai-feature-card">
+              <div class="feat-icon">🎯</div>
+              <h4>Goal-Driven Filtering</h4>
+              <p>Tailored curriculum paths for Placement/DSA preparation, University Semester Exams, and Capstone Project builds.</p>
+            </div>
+            <div class="stockai-feature-card">
+              <div class="feat-icon">⚡</div>
+              <h4>AI Quality Evaluation</h4>
+              <p>Sub-second evaluation powered by Groq LPU and Llama 3.1, grading tutorial instructional depth, clarity, and rigor.</p>
+            </div>
+            <div class="stockai-feature-card">
+              <div class="feat-icon">🚫</div>
+              <h4>Anti-Clickbait &amp; Shorts Filter</h4>
+              <p>Strict duration thresholds purging shorts (&lt;3 mins) and clickbait titles to keep students immersed in deep-work learning.</p>
+            </div>
+            <div class="stockai-feature-card">
+              <div class="feat-icon">⏱️</div>
+              <h4>Timestamped In-Video Notes</h4>
+              <p>Embedded video player synchronized with a real-time Markdown note editor featuring debounced auto-save persistence.</p>
+            </div>
+            <div class="stockai-feature-card">
+              <div class="feat-icon">📊</div>
+              <h4>Student Analytics Dashboard</h4>
+              <p>Comprehensive telemetry monitoring total watch hours, active topic playlists, progress metrics, and academic goals.</p>
+            </div>
+            <div class="stockai-feature-card">
+              <div class="feat-icon">🌐</div>
+              <h4>5 Regional Languages</h4>
+              <p>Breaks language barriers with curated vernacular engineering tutorials in English, Hindi, Telugu, Tamil, and Kannada.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Technology Stack Section -->
+        <div class="modal-section">
+          <div class="modal-section-header">
+            <span class="modal-sec-icon">🛠️</span>
+            <h3 class="modal-section-title">Technology Stack Breakdown</h3>
+          </div>
+          <div class="modal-tech-groups">
+            <div class="modal-tech-group">
+              <span class="group-title">Backend, Security &amp; Database</span>
+              <div class="group-pills">
+                <span class="tech-pill">Java 21</span>
+                <span class="tech-pill">Spring Boot 3</span>
+                <span class="tech-pill">Spring Security</span>
+                <span class="tech-pill">Stateless JWT</span>
+                <span class="tech-pill">HikariCP Pooler</span>
+                <span class="tech-pill">Supabase (PostgreSQL)</span>
+                <span class="tech-pill">24h SQL Cache Tier</span>
+              </div>
+            </div>
+            <div class="modal-tech-group">
+              <span class="group-title">AI Engine &amp; Media APIs</span>
+              <div class="group-pills">
+                <span class="tech-pill">Groq LPU Cloud</span>
+                <span class="tech-pill">Llama 3.1 8B Instant</span>
+                <span class="tech-pill">Sub-400ms Inference</span>
+                <span class="tech-pill">YouTube Data API v3</span>
+                <span class="tech-pill">Semantic Rubric Grading</span>
+              </div>
+            </div>
+            <div class="modal-tech-group">
+              <span class="group-title">Frontend, Design &amp; DevOps</span>
+              <div class="group-pills">
+                <span class="tech-pill">React 19</span>
+                <span class="tech-pill">Vite</span>
+                <span class="tech-pill">Custom CSS Token System</span>
+                <span class="tech-pill">Docker Containerization</span>
+                <span class="tech-pill">Render Cloud</span>
+                <span class="tech-pill">Vercel Edge Reverse Proxy</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Engineering Resilience Banner -->
+        <div class="stockai-notice">
+          <div class="notice-icon">🛡️</div>
+          <div class="notice-text">
+            <strong>Resilient Architecture &amp; Quota Optimization:</strong>
+            By pairing a 24-hour SQL caching layer with Groq's high-throughput LPU inference and HikariCP keepalive pings for Supabase's transaction pooler, SkillSift delivers sub-second response times while preserving API quotas and zero-downtime database connectivity.
+          </div>
+        </div>
+
+        <!-- Footer Actions inside Modal -->
+        <div class="modal-footer-cta">
+          <a href="https://skill-sift-two.vercel.app/" target="_blank" rel="noopener" class="btn-modal-footer btn-primary-action">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            <span>Launch Live App</span>
+            <span class="btn-arrow">↗</span>
+          </a>
+          <a href="https://github.com/PavanCodeNexus/SkillSift" target="_blank" rel="noopener" class="btn-modal-footer">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            <span>View Repository on GitHub</span>
+            <span class="btn-arrow">↗</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- ========== CYBER HOLOGRAPHIC WARP PORTAL MODAL ========== -->
   <div id="warp-portal-modal" class="warp-portal-modal" aria-hidden="true">
     <div class="warp-portal-window">
@@ -1669,7 +1985,7 @@ pavan = <span class="c-cls">Developer</span>()
 
   <!-- Three.js 3D WebGL Engine -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="script.js?v=25.0"></script>
+  <script src="script.js?v=26.0"></script>
 </body>
 </html>
 
