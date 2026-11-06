@@ -184,7 +184,7 @@
 @layer sections {
   #hero { position: relative; z-index: 2; display: grid; grid-template-rows: auto auto minmax(0, 1fr); height: 100svh; min-height: 560px; padding-top: 52px; overflow-x: clip; background: var(--color-1); }
   #hero .hero__title { position: relative; z-index: 3; container-type: inline-size; padding: clamp(10px, 1.6vw, 22px) var(--space-1) clamp(12px, 1.6vw, 22px); }
-  #hero .m-mark { font-size: calc(100cqi / (var(--len) * .74)); }
+  #hero .m-mark { font-size: calc(100cqi / (var(--len) * .84)); letter-spacing: 0; }
   #hero .hero__info { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 12px 24px; padding: 12px var(--space-1); border-top: 1px solid var(--color-5); }
   #hero .hero__tagline { text-align: center; }
   #hero .hero__go { justify-self: end; }
@@ -319,16 +319,18 @@
 <style data-8b-part="section:method">
 @layer sections {
   #method { position: relative; overflow-x: clip; padding: var(--space-2) var(--space-1); }
-  #method .method__head { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 24px; align-items: end; padding-bottom: clamp(28px, 3.5vw, 48px); border-bottom: 1px solid var(--color-2); }
+  #method .method__head { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 24px; align-items: end; padding-bottom: clamp(20px, 2.5vw, 36px); border-bottom: 1px solid var(--color-2); }
   #method .method__head h2 { grid-column: 1 / span 7; }
-  #method .method__head p { grid-column: 9 / span 4; }
-  #method .method__track { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(40px, 5vw, 72px) clamp(16px, 2.5vw, 32px); margin-top: clamp(28px, 3.5vw, 48px); }
-  #method .method__frame { display: grid; gap: 18px; align-content: start; }
-  #method .method__photo { position: relative; overflow: hidden; aspect-ratio: 3 / 2; background: var(--color-5); }
-  #method .method__photo img { position: absolute; top: 0; left: -8%; width: 116%; max-width: none; height: 100%; object-fit: cover; }
-  #method .method__text { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 6px 22px; align-items: start; }
-  #method .method__step { grid-row: span 2; font-size: clamp(44px, 5vw, 76px); line-height: .8; }
-  #method .method__text h3 { padding-top: 2px; }
+  #method .method__head p { grid-column: 8 / span 5; }
+  #method .method__track { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(32px, 4vw, 56px) clamp(16px, 2.2vw, 32px); margin-top: clamp(24px, 3vw, 40px); }
+  #method .method__frame { display: grid; gap: 14px; align-content: start; }
+  #method .method__photo { position: relative; overflow: hidden; aspect-ratio: 16 / 10; background: var(--color-5); border-radius: 2px; }
+  #method .method__photo img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
+  #method .method__text { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 8px 18px; align-items: start; margin-top: 4px; }
+  #method .method__step { font-family: var(--font-1); font-size: clamp(32px, 3.8vw, 48px); line-height: 0.85; font-weight: 300; color: var(--color-2); padding-top: 2px; }
+  #method .method__desc { display: grid; gap: 5px; }
+  #method .method__desc h3 { font-size: clamp(17px, 1.5vw, 22px); font-weight: 500; color: var(--color-2); }
+  #method .method__desc p { font-size: 14px; line-height: 1.45; color: var(--color-3); }
   @media (max-width: 860px) {
     #method .method__head h2, #method .method__head p { grid-column: 1 / -1; }
     #method .method__track { grid-template-columns: minmax(0, 1fr); }
@@ -337,13 +339,16 @@
 </style>
 <style data-8b-part="section:studio">
 @layer sections {
-  #studio { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 24px; align-items: start; padding: var(--space-2) var(--space-1); }
-  #studio .studio__photo { grid-column: 1 / span 7; position: relative; overflow: hidden; aspect-ratio: 4 / 3.1; background: var(--color-5); }
-  #studio .studio__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%; }
-  #studio .studio__text { grid-column: 9 / span 4; display: grid; gap: clamp(20px, 2.4vw, 30px); }
+  #studio { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: clamp(28px, 4vw, 56px); align-items: center; padding: var(--space-2) var(--space-1); }
+  #studio .studio__photo { grid-column: 1 / span 6; position: relative; overflow: hidden; aspect-ratio: 4 / 3.2; background: var(--color-5); border-radius: 2px; }
+  #studio .studio__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; }
+  #studio .studio__text { grid-column: 7 / span 6; display: grid; gap: clamp(20px, 2.5vw, 32px); }
+  #studio .studio__head h2 { margin-bottom: 8px; }
   #studio .studio__specs { border-bottom: 1px solid var(--color-5); }
-  #studio .studio__spec { display: grid; grid-template-columns: minmax(96px, 30%) minmax(0, 1fr); gap: 16px; padding: 13px 0; border-top: 1px solid var(--color-5); }
-  #studio .studio__spec dd { margin: 0; }
+  #studio .studio__spec { display: grid; gap: 8px; padding: 22px 0; border-top: 1px solid var(--color-5); }
+  #studio .studio__spec-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; }
+  #studio .studio__spec-year { font-family: var(--font-2); font-size: 13px; font-weight: 500; color: var(--color-4); letter-spacing: 0.04em; }
+  #studio .studio__spec-inst { font-family: var(--font-2); font-size: 14px; font-weight: 600; color: var(--color-2); }
   @media (max-width: 860px) {
     #studio .studio__photo, #studio .studio__text { grid-column: 1 / -1; }
   }
@@ -385,11 +390,14 @@
 </style>
 <style data-8b-part="section:footer">
 @layer sections {
-  #footer { position: relative; overflow-x: clip; padding: var(--space-2) var(--space-1) 20px; }
-  #footer .footer__mark { container-type: inline-size; }
-  #footer .m-mark { font-size: calc(100cqi / (var(--len) * .74)); }
-  #footer .footer__row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 28px; margin-top: clamp(28px, 4vw, 56px); padding-top: 14px; border-top: 1px solid var(--color-2); }
-  #footer .footer__links { display: flex; flex-wrap: wrap; gap: 8px 22px; }
+  #footer { position: relative; overflow-x: clip; padding: var(--space-2) var(--space-1) clamp(32px, 5vw, 64px); }
+  #footer .footer__mark { container-type: inline-size; pointer-events: none; user-select: none; padding-right: 6px; }
+  #footer .m-mark { font-size: calc(100cqi / (var(--len) * .84)); pointer-events: none; letter-spacing: 0; width: 100%; }
+  #footer .m-mark__glyph { pointer-events: none; }
+  #footer .m-mark__ink { pointer-events: none; }
+  #footer .footer__row { position: relative; z-index: 10; pointer-events: auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px 28px; margin-top: clamp(32px, 5vw, 64px); padding-top: 18px; border-top: 1px solid var(--color-2); }
+  #footer .footer__links { position: relative; z-index: 10; pointer-events: auto; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; }
+  #footer .footer__row a, #footer .footer__links a { position: relative; z-index: 10; pointer-events: auto; cursor: pointer; }
 }
 </style>
 <style data-8b-part="motion">
@@ -564,16 +572,16 @@
 @layer scenes {
 [data-8b-live] #method { padding-block: 0; view-timeline: --method-t block; view-timeline-inset: 0; }
 [data-8b-live] #method::after { content: ""; display: block; height: var(--method-distance, 0px); }
-[data-8b-live] #method .method__stage { position: sticky; top: 0; display: flex; flex-direction: column; justify-content: center; min-height: 100svh; padding-block: 76px 28px; }
-[data-8b-live] #method .method__track { display: flex; width: max-content; gap: clamp(20px, 3vw, 44px); margin-top: clamp(22px, 3vh, 40px); animation-name: method-travel; animation-timeline: --method-t; animation-range: cover 100vh cover calc(100vh + max(1px, var(--method-distance, 0px))); animation-timing-function: linear; animation-fill-mode: both; }
-[data-8b-live] #method .method__frame { width: min(52vw, 92vh); }
-[data-8b-live] #method .method__photo { aspect-ratio: 16 / 9; }
+[data-8b-live] #method .method__stage { position: sticky; top: 0; display: flex; flex-direction: column; justify-content: center; min-height: 100svh; padding-block: clamp(48px, 6vh, 68px) clamp(20px, 3vh, 32px); }
+[data-8b-live] #method .method__track { display: flex; width: max-content; gap: clamp(24px, 3vw, 44px); margin-top: clamp(18px, 2.4vh, 32px); animation-name: method-travel; animation-timeline: --method-t; animation-range: cover 100vh cover calc(100vh + max(1px, var(--method-distance, 0px))); animation-timing-function: linear; animation-fill-mode: both; }
+[data-8b-live] #method .method__frame { width: min(38vw, 480px); }
+[data-8b-live] #method .method__photo { aspect-ratio: 16 / 10; }
 [data-8b-live] #method .method__stage { animation-name: method-pin; animation-timeline: --method-t; animation-range: cover 100vh cover calc(100vh + max(1px, var(--method-distance, 0px))); animation-timing-function: linear; animation-fill-mode: both; }
-[data-8b-live] #method .method__photo img { --method-t-in: clamp(0, (var(--method-pin) * var(--method-d, 0) - var(--method-x, 0) + var(--method-w, 1)) / (var(--method-w, 1) / 2), 1); --method-e: calc(1 - (1 - var(--method-t-in)) * (1 - var(--method-t-in))); translate: calc(7% * (1 - var(--method-e))) 0px; scale: calc(1.24 - .24 * var(--method-e)); }
+[data-8b-live] #method .method__photo img { --method-t-in: clamp(0, (var(--method-pin) * var(--method-d, 0) - var(--method-x, 0) + var(--method-w, 1)) / (var(--method-w, 1) / 2), 1); --method-e: calc(1 - (1 - var(--method-t-in)) * (1 - var(--method-t-in))); translate: calc(5% * (1 - var(--method-e))) 0px; scale: calc(1.15 - .15 * var(--method-e)); }
 @keyframes method-travel { 0% { translate: 0px 0px; } 100% { translate: calc(-1 * var(--method-distance, 0px)) 0px; } }
 @keyframes method-pin { 0% { --method-pin: 0; } 100% { --method-pin: 1; } }
 @media (max-width: 860px) {
-  [data-8b-live] #method .method__frame { width: 82vw; }
+  [data-8b-live] #method .method__frame { width: min(78vw, 340px); }
 }
 }
 </style>
@@ -687,7 +695,7 @@ if (matchMedia('(prefers-reduced-motion: no-preference)').matches && CSS.support
   <figure class="hero__media">
     <div class="hero__media-in"><div class="hero__push">
       <div class="hero__drift">
-        <img src="pavan-photo.jpg" width="1600" height="1775" alt="Pavan B C in a tailored dark suit against a studio backdrop" fetchpriority="high">
+        <img src="pavan-photo.jpg?v=2" width="1600" height="1775" alt="Pavan B C in a tailored dark suit against a studio backdrop" fetchpriority="high">
       </div>
     </div></div>
     <figcaption class="hero__caption m-text-3">Pavan B C — Bengaluru, India · Autonomous AI &amp; Software Systems</figcaption>
@@ -821,7 +829,7 @@ if (matchMedia('(prefers-reduced-motion: no-preference)').matches && CSS.support
     <p class="m-text-6" data-8b-motion="rise">From low-level memory allocation in C/C++ to autonomous multi-agent state machines and scalable Java microservices.</p>
   </div>
   <div class="expertise__body">
-    <figure class="expertise__portrait"><div class="expertise__portrait-in"><img src="pavan-photo.jpg" width="1600" height="2133" alt="Pavan B C portrait in dark suit" loading="lazy"></div></figure>
+    <figure class="expertise__portrait"><div class="expertise__portrait-in"><img src="pavan-photo.jpg?v=2" width="1600" height="2133" alt="Pavan B C portrait in dark suit" loading="lazy"></div></figure>
     <ol class="expertise__rows" data-8b-items=":scope > li">
       <li class="expertise__row">
         <h3 class="m-text-5">Autonomous Agentic AI &amp; RAG</h3>
@@ -858,104 +866,120 @@ if (matchMedia('(prefers-reduced-motion: no-preference)').matches && CSS.support
     <ol class="method__track" data-8b-items=":scope > li">
       <li class="method__frame">
         <figure class="method__photo"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=800&amp;q=75" width="1600" height="1067" alt="Abstract architectural circuit board" loading="lazy"></figure>
-        <span class="method__step m-text-3">1 Deconstruct &amp; Model</span>
-        <h3 class="m-text-5">Algorithmic Formulation</h3>
-        <p class="m-text-7">Break down complex user and technical requirements into formal state machines, relational data schemas, and API contracts.</p>
+        <div class="method__text">
+          <p class="method__step m-text-4">01</p>
+          <div class="method__desc">
+            <h3 class="m-text-5">Algorithmic Formulation</h3>
+            <p class="m-text-7">Break down complex user and technical requirements into formal state machines, relational data schemas, and API contracts.</p>
+          </div>
+        </div>
       </li>
       <li class="method__frame">
         <figure class="method__photo"><img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&amp;fit=crop&amp;w=800&amp;q=75" width="1600" height="1067" alt="Software code engineering setup" loading="lazy"></figure>
-        <span class="method__step m-text-3">2 Build &amp; Orchestrate</span>
-        <h3 class="m-text-5">Agent Workflows &amp; Microservices</h3>
-        <p class="m-text-7">Implement multi-agent LangGraph flows, Java 21 LTS record classes, Spring Security JWT tokens, and reactive React components.</p>
+        <div class="method__text">
+          <p class="method__step m-text-4">02</p>
+          <div class="method__desc">
+            <h3 class="m-text-5">Agent Workflows &amp; Microservices</h3>
+            <p class="m-text-7">Implement multi-agent LangGraph flows, Java 21 LTS record classes, Spring Security JWT tokens, and reactive React components.</p>
+          </div>
+        </div>
       </li>
       <li class="method__frame">
         <figure class="method__photo"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&amp;fit=crop&amp;w=800&amp;q=75" width="1600" height="1067" alt="Performance telemetry metrics" loading="lazy"></figure>
-        <span class="method__step m-text-3">3 Optimize &amp; Cache</span>
-        <h3 class="m-text-5">Sub-Second Low Latency</h3>
-        <p class="m-text-7">Tune HikariCP keepalive pings for cloud transaction poolers, establish 24h SQL caching layers, and harness Groq LPUs for sub-400ms inference.</p>
+        <div class="method__text">
+          <p class="method__step m-text-4">03</p>
+          <div class="method__desc">
+            <h3 class="m-text-5">Sub-Second Low Latency</h3>
+            <p class="m-text-7">Tune HikariCP keepalive pings for cloud transaction poolers, establish 24h SQL caching layers, and harness Groq LPUs for sub-400ms inference.</p>
+          </div>
+        </div>
       </li>
       <li class="method__frame">
         <figure class="method__photo"><img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&amp;fit=crop&amp;w=800&amp;q=75" width="1600" height="1067" alt="Global satellite network and deployment" loading="lazy"></figure>
-        <span class="method__step m-text-3">4 Containerize &amp; Deploy</span>
-        <h3 class="m-text-5">Edge Delivery &amp; Reliability</h3>
-        <p class="m-text-7">Package into reproducible Docker images, configure edge reverse proxies, and verify cross-browser compatibility and zero-downtime health.</p>
+        <div class="method__text">
+          <p class="method__step m-text-4">04</p>
+          <div class="method__desc">
+            <h3 class="m-text-5">Edge Delivery &amp; Reliability</h3>
+            <p class="m-text-7">Package into reproducible Docker images, configure edge reverse proxies, and verify cross-browser compatibility and zero-downtime health.</p>
+          </div>
+        </div>
       </li>
     </ol>
   </div>
 </section>
 
-<!-- studio: a space for hire: large photo, text, five ruled spec rows and a booking button -->
+<!-- studio: academic foundation -->
 <section class="studio" id="studio" data-8b-section="studio">
   <figure class="studio__photo" data-8b-motion="cut"><img src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&amp;fit=crop&amp;w=1600&amp;q=80" width="1600" height="1067" alt="Modern university campus and engineering building" loading="lazy"></figure>
-  <div class="studio__copy">
+  <div class="studio__text">
     <div class="studio__head">
       <h2 class="m-text-2" data-8b-motion="trail">Academic Foundation</h2>
-      <p class="m-text-7">Computer Science &amp; Engineering at Dayananda Sagar Institutions, Bengaluru — building theoretical depth and real-world execution.</p>
+      <p class="m-text-7">Rigorous computer science depth paired with rapid practical execution at premier institutions in Karnataka.</p>
     </div>
     <div class="studio__specs">
       <div class="studio__spec" data-8b-motion="rule">
-        <h3 class="m-text-5">Bachelor of Engineering (B.E.)</h3>
-        <p class="m-text-7">Computer Science &amp; Engineering · Dayananda Sagar Institutions, Bengaluru (2025 — Present). Rigorous focus on Data Structures, Algorithms, DBMS, OOP, Computer Architecture, and Autonomous Systems.</p>
+        <div class="studio__spec-head">
+          <h3 class="m-text-5">Bachelor of Engineering (B.E.) in CSE</h3>
+          <span class="studio__spec-year">2025 — Present</span>
+        </div>
+        <p class="studio__spec-inst">Dayananda Sagar Institutions, Bengaluru</p>
+        <p class="m-text-7">Computer Science &amp; Engineering. Core focus on Data Structures, Algorithms, Systems Architecture, Relational Databases, and Autonomous AI.</p>
       </div>
       <div class="studio__spec" data-8b-motion="rule">
-        <h3 class="m-text-5">Pre-University College (PUC)</h3>
-        <p class="m-text-7">Science Stream (PCMB) · Brigade Pre-University College, Hassan (2023 — 2025). Built a strong analytical foundation across Physics, Chemistry, Mathematics, and Biology.</p>
-      </div>
-      <div class="studio__spec" data-8b-motion="rule">
-        <h3 class="m-text-5">Hardware &amp; Telemetry Lab</h3>
-        <p class="m-text-7">Hands-on micro-controller prototyping with Arduino Uno, HC-SR04 ultrasonic sensors, serial-to-Python bridges, and Firebase real-time telemetry streaming.</p>
-      </div>
-      <div class="studio__spec" data-8b-motion="rule">
-        <h3 class="m-text-5">High-Throughput AI Workstation</h3>
-        <p class="m-text-7">Rapid local development environment paired with Groq Cloud LPU clusters for ultra-low latency model evaluations and distributed version control workflows.</p>
+        <div class="studio__spec-head">
+          <h3 class="m-text-5">Pre-University College (PUC)</h3>
+          <span class="studio__spec-year">2023 — 2025</span>
+        </div>
+        <p class="studio__spec-inst">Brigade Pre-University College, Hassan</p>
+        <p class="m-text-7">Science Stream (Physics, Chemistry, Mathematics, Biology). Built strong quantitative and analytical problem-solving foundations.</p>
       </div>
     </div>
     <div class="studio__more"><a class="m-btn-2" href="#contact"><span class="m-btn-2__label">Connect with Pavan</span></a></div>
   </div>
 </section>
 
-<!-- crew: team: six portraits with names and roles, and a hiring line (animation: scene:crew) -->
+<!-- crew: verified certifications -->
 <section class="crew" id="crew" data-8b-section="crew">
   <div class="crew__head">
     <h2 class="m-text-2" data-8b-motion="trail">Verified Certifications</h2>
-    <p class="m-text-7">Professional credentials and leadership programs verified across systems programming, version control, and global ethics.</p>
+    <p class="m-text-7">Professional credentials and leadership programs verified across systems programming, version control, and Agentic AI.</p>
   </div>
   <ul class="crew__grid" data-8b-items=":scope > li" data-8b-fixed="6">
-    <li class="crew__card" style="--crew-li-crew-card-rotate-from: -3deg">
+    <li class="crew__card" style="--crew-li-crew-card-rotate-from: -2deg">
+      <figure class="crew__photo"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&amp;fit=crop&amp;w=800&amp;q=75" width="800" height="1067" alt="Neural AI network and generative cognition" loading="lazy"></figure>
+      <h3 class="m-text-5">Agentic AI Certification</h3>
+      <p class="m-text-3">Oracle · Certified</p>
+      <p class="m-text-7">Certified by Oracle in autonomous Agentic AI architectures, LLM orchestration, multi-agent frameworks, tool calling, and enterprise AI workflows.</p>
+    </li>
+    <li class="crew__card" style="--crew-li-crew-card-rotate-from: 2deg">
       <figure class="crew__photo"><img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&amp;fit=crop&amp;w=800&amp;q=75" width="800" height="1067" alt="Global leadership development program" loading="lazy"></figure>
       <h3 class="m-text-5">Aspire Leader Program</h3>
       <p class="m-text-3">Aspire Institute · Global Leadership</p>
       <p class="m-text-7">Selected for the prestigious international leadership program focusing on professional ethics, critical thinking, and social impact.</p>
     </li>
-    <li class="crew__card" style="--crew-li-crew-card-rotate-from: 2deg">
+    <li class="crew__card" style="--crew-li-crew-card-rotate-from: -2deg">
       <figure class="crew__photo"><img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&amp;fit=crop&amp;w=800&amp;q=75" width="800" height="1067" alt="C Programming code matrix" loading="lazy"></figure>
       <h3 class="m-text-5">C Programming Certificate</h3>
       <p class="m-text-3">Infosys Springboard · Verified</p>
       <p class="m-text-7">Mastered core C language fundamentals, pointer arithmetic, dynamic memory allocation, data structures, and modular algorithmic design.</p>
     </li>
-    <li class="crew__card" style="--crew-li-crew-card-rotate-from: -2deg">
+    <li class="crew__card" style="--crew-li-crew-card-rotate-from: 3deg">
       <figure class="crew__photo"><img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&amp;fit=crop&amp;w=800&amp;q=75" width="800" height="1067" alt="C++ and modern software architecture" loading="lazy"></figure>
       <h3 class="m-text-5">C++ Programming Certificate</h3>
       <p class="m-text-3">Infosys Springboard · Verified</p>
       <p class="m-text-7">Certified in Object-Oriented Programming (OOP), inheritance, polymorphism, templates, STL containers, and modern C++ practices.</p>
     </li>
-    <li class="crew__card" style="--crew-li-crew-card-rotate-from: 3deg">
+    <li class="crew__card" style="--crew-li-crew-card-rotate-from: -1deg">
       <figure class="crew__photo"><img src="https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?auto=format&amp;fit=crop&amp;w=800&amp;q=75" width="800" height="1067" alt="Git and GitHub branching repository" loading="lazy"></figure>
       <h3 class="m-text-5">Git &amp; GitHub Certificate</h3>
       <p class="m-text-3">Let's Upgrade · Version Control</p>
       <p class="m-text-7">Proficient in distributed version control, branch management, collaborative pull requests, merge conflict handling, and open-source workflows.</p>
     </li>
-    <li class="crew__card" style="--crew-li-crew-card-rotate-from: -1deg">
+    <li class="crew__card" style="--crew-li-crew-card-rotate-from: 2deg">
       <figure class="crew__photo"><img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&amp;fit=crop&amp;w=800&amp;q=75" width="800" height="1067" alt="HTML5 and web standards code" loading="lazy"></figure>
       <h3 class="m-text-5">HTML5 &amp; Web Standards</h3>
       <p class="m-text-3">Let's Upgrade · Frontend Foundation</p>
       <p class="m-text-7">Certified in semantic HTML5 markup, accessible web standards, interactive forms, media integration, and modern document architecture.</p>
-    </li>
-    <li class="crew__card" style="--crew-li-crew-card-rotate-from: 2deg">
-      <figure class="crew__photo"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&amp;fit=crop&amp;w=800&amp;q=75" width="800" height="1067" alt="Open-source collaboration and team development" loading="lazy"></figure>
-      <h3 class="m-text-5">Continuous Open Source</h3>
-      <p class="m-text-3">GitHub · Community Engagement</p>
-      <p class="m-text-7">Active development across autonomous Agentic AI, full-stack microservices, and interactive developer tooling.</p>
     </li>
   </ul>
 </section>
@@ -992,18 +1016,28 @@ if (matchMedia('(prefers-reduced-motion: no-preference)').matches && CSS.support
 </section>
 </main>
 
-<!-- footer: the SILLAGE wordmark again, copyright, social links and the Design: 8B credit (animation: scene:footer) -->
+<!-- footer: kinetic wordmark and interactive direct links -->
 <footer class="footer" id="footer" data-8b-section="footer">
-  <p class="m-mark footer__mark" style="--len:7"><span class="m-mark__glyph" data-glyph="P">P</span><span class="m-mark__glyph" data-glyph="A">A</span><span class="m-mark__glyph" data-glyph="V">V</span><span class="m-mark__glyph" data-glyph="A">A</span><span class="m-mark__glyph" data-glyph="N">N</span><span class="m-mark__glyph" data-glyph="B">B</span><span class="m-mark__glyph" data-glyph="C">C</span></p>
-  <div class="footer__foot m-text-3">
-    <span>&copy; 2026 Pavan B C. Bengaluru — Dayananda Sagar Institutions.</span>
-    <span>Phone: <a class="m-link" href="tel:+916361126177">+91 6361126177</a></span>
-    <ul class="footer__links">
+  <p class="footer__mark">
+    <span class="u-hidden">Pavan B C</span>
+    <span class="m-mark" aria-hidden="true" style="--len:7">
+      <span class="m-mark__glyph"><span class="m-mark__ink" data-glyph="P">P</span></span>
+      <span class="m-mark__glyph"><span class="m-mark__ink" data-glyph="A">A</span></span>
+      <span class="m-mark__glyph"><span class="m-mark__ink" data-glyph="V">V</span></span>
+      <span class="m-mark__glyph"><span class="m-mark__ink" data-glyph="A">A</span></span>
+      <span class="m-mark__glyph"><span class="m-mark__ink" data-glyph="N">N</span></span>
+      <span class="m-mark__glyph"><span class="m-mark__ink" data-glyph="B">B</span></span>
+      <span class="m-mark__glyph"><span class="m-mark__ink" data-glyph="C">C</span></span>
+    </span>
+  </p>
+  <div class="footer__row">
+    <p class="m-text-3">&copy; 2026 Pavan B C · Bengaluru — Dayananda Sagar Institutions · <a class="m-link" href="tel:+916361126177">+91 6361126177</a></p>
+    <ul class="footer__links m-text-3">
       <li><a class="m-link" href="https://github.com/PavanCodeNexus" target="_blank" rel="noopener">GitHub</a></li>
       <li><a class="m-link" href="https://www.linkedin.com/in/pavan-b-c-313b83385" target="_blank" rel="noopener">LinkedIn</a></li>
       <li><a class="m-link" href="mailto:pavanbc31@gmail.com">Email</a></li>
+      <li><a class="footer__top m-link" href="#hero">Back to top</a></li>
     </ul>
-    <a class="footer__top m-link" href="#hero">Back to top</a>
   </div>
 </footer>
 
@@ -1218,6 +1252,20 @@ motionKit.scene('crew', () => {
       motionKit.set(card, { '--crew-dx': `${x - own.x - own.w / 2}px`, '--crew-dy': `${y - own.y - own.h * .45}px` });
     });
   });
+});
+</script>
+
+<script id="smooth-anchors">
+document.addEventListener('click', function(e) {
+  const link = e.target.closest('a[href^="#"]');
+  if (!link) return;
+  const hash = link.getAttribute('href');
+  if (hash === '#') return;
+  const target = document.querySelector(hash);
+  if (target) {
+    e.preventDefault();
+    target.scrollIntoView({ behavior: 'smooth' });
+  }
 });
 </script>
 </body>
