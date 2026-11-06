@@ -336,6 +336,19 @@
     #method .method__track { grid-template-columns: minmax(0, 1fr); }
   }
 }
+
+  #method .method__frame--summary { display: flex; align-items: center; justify-content: center; border: 1px solid var(--color-2); background: var(--color-1); padding: clamp(24px, 3.5vw, 40px); border-radius: 2px; }
+  #method .method__summary-in { display: grid; gap: 12px; align-content: center; }
+  #method .method__summary-badge { font-family: var(--font-2); font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--color-4); }
+  #method .method__summary-in h3 { font-size: clamp(20px, 2vw, 26px); color: var(--color-2); line-height: 1.2; }
+  #method .method__summary-in p.m-text-7 { font-size: 14px; line-height: 1.5; color: var(--color-3); }
+  #works .works__card { transition: opacity .35s ease, filter .35s ease; }
+  #works .works__card[data-muted] { opacity: .18; filter: grayscale(1); pointer-events: none; }
+  #works .works__cat { font-family: var(--font-2); font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--color-4); margin-bottom: 4px; }
+  #works .works__tech { font-family: var(--font-2); font-size: 13px; color: var(--color-3); margin-top: 4px; }
+  #works .works__more { margin-top: clamp(40px, 5vw, 64px); }
+
+}
 </style>
 <style data-8b-part="section:studio">
 @layer sections {
@@ -720,7 +733,7 @@ if (matchMedia('(prefers-reduced-motion: no-preference)').matches && CSS.support
   <p class="manifesto__verbs m-text-3"><span>Model</span><span>Orchestrate</span><span>Evaluate</span><span>Optimize</span><span>Containerize</span><span>Ship</span></p>
 </section>
 
-<!-- works: portfolio: a ruled filter bar over an asymmetric grid of eight projects, plus a reel button (animation: scene:works) -->
+<!-- works: selected works with clear discipline classification -->
 <section class="works" id="works" data-8b-section="works">
   <div class="works__head">
     <h2 class="m-text-2" data-8b-motion="trail">Selected work</h2>
@@ -737,43 +750,51 @@ if (matchMedia('(prefers-reduced-motion: no-preference)').matches && CSS.support
   <ul class="works__grid" data-8b-items=":scope > li" data-8b-fixed="8">
     <li class="works__card" data-tags="full-stack agentic-ai" style="--works-div-works-plate-span-works-echo-translate-from: 9.75px; --works-div-works-plate-span-works-echo-translate-2-from: 19.5px">
       <div class="works__plate"><div class="works__frame"><img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&amp;fit=crop&amp;w=800&amp;q=75" width="1600" height="1067" alt="SkillSift learning platform screen" loading="lazy"></div></div>
-      <p class="m-text-3">Java 21 · Spring Boot 3 · React 19 · Groq LPU</p>
+      <p class="works__cat m-text-3">Full-Stack Platform · Agentic AI</p>
       <h3 class="m-text-5"><a href="https://skill-sift-two.vercel.app/" target="_blank" rel="noopener" class="m-link">SkillSift — Curated Learning Platform</a></h3>
+      <p class="works__tech m-text-7">Java 21 · Spring Boot 3 · React 19 · Groq LPU · Supabase</p>
     </li>
     <li class="works__card" data-tags="agentic-ai full-stack" style="--works-div-works-plate-span-works-echo-translate-from: 0px; --works-div-works-plate-span-works-echo-translate-2-from: 0px">
-      <div class="works__plate"><div class="works__frame"><img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&amp;fit=crop&amp;w=800&amp;q=75" width="1600" height="1067" alt="Neural multimodal concept artwork" loading="lazy"></div></div>
-      <p class="m-text-3">Python · ChromaDB · BM25 · LangChain</p>
-      <h3 class="m-text-5"><a href="https://github.com/PavanCodeNexus/AskAnything" target="_blank" rel="noopener" class="m-link">AskAnything — Multimodal RAG Assistant</a></h3>
-    </li>
-    <li class="works__card" data-tags="agentic-ai full-stack" style="--works-div-works-plate-span-works-echo-translate-from: -9.75px; --works-div-works-plate-span-works-echo-translate-2-from: -19.5px">
       <div class="works__plate"><div class="works__frame"><img src="https://images.unsplash.com/photo-1642543492481-44e81e3914a7?auto=format&amp;fit=crop&amp;w=800&amp;q=75" width="1600" height="1067" alt="Financial market data visualization" loading="lazy"></div></div>
-      <p class="m-text-3">Next.js 16 · LangGraph · Groq Cloud · FastAPI</p>
+      <p class="works__cat m-text-3">Agentic AI · Multi-Agent Architecture</p>
       <h3 class="m-text-5"><a href="https://stock-ai-agent-ten.vercel.app/" target="_blank" rel="noopener" class="m-link">StockAI Agent — 6-Agent Market Engine</a></h3>
+      <p class="works__tech m-text-7">LangGraph Swarm · Groq Cloud · FastAPI · Next.js 16</p>
+    </li>
+    <li class="works__card" data-tags="agentic-ai" style="--works-div-works-plate-span-works-echo-translate-from: -9.75px; --works-div-works-plate-span-works-echo-translate-2-from: -19.5px">
+      <div class="works__plate"><div class="works__frame"><img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&amp;fit=crop&amp;w=800&amp;q=75" width="1600" height="1067" alt="Neural multimodal concept artwork" loading="lazy"></div></div>
+      <p class="works__cat m-text-3">Agentic AI · Multimodal RAG</p>
+      <h3 class="m-text-5"><a href="https://github.com/PavanCodeNexus/AskAnything" target="_blank" rel="noopener" class="m-link">AskAnything — Multimodal RAG Assistant</a></h3>
+      <p class="works__tech m-text-7">Python · ChromaDB Vectors · BM25 Sparse · LangChain</p>
     </li>
     <li class="works__card" data-tags="systems-iot automation" style="--works-div-works-plate-span-works-echo-translate-from: 4.88px; --works-div-works-plate-span-works-echo-translate-2-from: 9.75px">
       <div class="works__plate"><div class="works__frame"><img src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&amp;fit=crop&amp;w=800&amp;q=75" width="1600" height="1067" alt="City traffic and light streaks at night" loading="lazy"></div></div>
-      <p class="m-text-3">IoT · Arduino Uno · Python · Firebase</p>
+      <p class="works__cat m-text-3">Systems &amp; IoT · Hardware Telemetry</p>
       <h3 class="m-text-5"><a href="https://github.com/PavanCodeNexus/itfos-traffic-system" target="_blank" rel="noopener" class="m-link">ITFOS — Intelligent Traffic Optimization</a></h3>
+      <p class="works__tech m-text-7">Arduino Uno · HC-SR04 Sensors · Python Bridge · Firebase</p>
     </li>
-    <li class="works__card" data-tags="agentic-ai automation" style="--works-div-works-plate-span-works-echo-translate-from: -9.75px; --works-div-works-plate-span-works-echo-translate-2-from: -19.5px">
+    <li class="works__card" data-tags="automation agentic-ai" style="--works-div-works-plate-span-works-echo-translate-from: -9.75px; --works-div-works-plate-span-works-echo-translate-2-from: -19.5px">
       <div class="works__plate"><div class="works__frame"><img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&amp;fit=crop&amp;w=800&amp;q=75" width="1600" height="1067" alt="Newspaper and digital headline aggregation" loading="lazy"></div></div>
-      <p class="m-text-3">Python · Llama 3.3 70B · Groq API</p>
-      <h3 class="m-text-5"><a href="https://github.com/PavanCodeNexus/news-digest-agent" target="_blank" rel="noopener" class="m-link">Daily Current Affairs Digest — AI Agent</a></h3>
+      <p class="works__cat m-text-3">Automation · Autonomous Agent</p>
+      <h3 class="m-text-5"><a href="https://github.com/PavanCodeNexus/daily-current-affairs-digest" target="_blank" rel="noopener" class="m-link">Daily Current Affairs Digest — AI Agent</a></h3>
+      <p class="works__tech m-text-7">Python · Llama 3.3 70B · Groq API · Automated Scheduling</p>
     </li>
-    <li class="works__card" data-tags="agentic-ai automation" style="--works-div-works-plate-span-works-echo-translate-from: 9.75px; --works-div-works-plate-span-works-echo-translate-2-from: 19.5px">
+    <li class="works__card" data-tags="automation agentic-ai" style="--works-div-works-plate-span-works-echo-translate-from: 9.75px; --works-div-works-plate-span-works-echo-translate-2-from: 19.5px">
       <div class="works__plate"><div class="works__frame"><img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&amp;fit=crop&amp;w=800&amp;q=75" width="1600" height="1067" alt="Slide presentation and design deck" loading="lazy"></div></div>
-      <p class="m-text-3">Python · Groq API · PDF Automation · PPTX</p>
-      <h3 class="m-text-5"><a href="https://github.com/PavanCodeNexus/AI-PPT-Generator" target="_blank" rel="noopener" class="m-link">AI PPT Generator — Academic Decks</a></h3>
+      <p class="works__cat m-text-3">Automation · Presentation Engine</p>
+      <h3 class="m-text-5"><a href="https://github.com/PavanCodeNexus/ai-ppt-generator" target="_blank" rel="noopener" class="m-link">AI PPT Generator — Academic Decks</a></h3>
+      <p class="works__tech m-text-7">Python · Groq API · PDF Analysis · PPTX Templating</p>
     </li>
-    <li class="works__card" data-tags="systems-iot" style="--works-div-works-plate-span-works-echo-translate-from: 0px; --works-div-works-plate-span-works-echo-translate-2-from: 0px">
+    <li class="works__card" data-tags="full-stack" style="--works-div-works-plate-span-works-echo-translate-from: 0px; --works-div-works-plate-span-works-echo-translate-2-from: 0px">
       <div class="works__plate"><div class="works__frame"><img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&amp;fit=crop&amp;w=800&amp;q=75" width="1600" height="1067" alt="Agricultural crop fields and marketplace" loading="lazy"></div></div>
-      <p class="m-text-3">C++ · Python · CLI Architecture</p>
-      <h3 class="m-text-5"><a href="https://github.com/PavanCodeNexus/farmer-marketplace-cpp" target="_blank" rel="noopener" class="m-link">Farmer Marketplace &amp; Crop Tracker</a></h3>
+      <p class="works__cat m-text-3">Full-Stack · Agri-Commerce Platform</p>
+      <h3 class="m-text-5"><a href="https://github.com/PavanCodeNexus/farmer-marketplace" target="_blank" rel="noopener" class="m-link">Farmer Marketplace &amp; Crop Tracker</a></h3>
+      <p class="works__tech m-text-7">Python · C++ Core · SQLite · Trade Contracts</p>
     </li>
-    <li class="works__card" data-tags="systems-iot full-stack" style="--works-div-works-plate-span-works-echo-translate-from: -9.75px; --works-div-works-plate-span-works-echo-translate-2-from: -19.5px">
+    <li class="works__card" data-tags="systems-iot automation" style="--works-div-works-plate-span-works-echo-translate-from: -9.75px; --works-div-works-plate-span-works-echo-translate-2-from: -19.5px">
       <div class="works__plate"><div class="works__frame"><img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&amp;fit=crop&amp;w=800&amp;q=75" width="1600" height="1067" alt="Code editor and terminal workflow" loading="lazy"></div></div>
-      <p class="m-text-3">System Architecture · Git · Linux CLI</p>
+      <p class="works__cat m-text-3">Systems Engineering · Linux Tooling</p>
       <h3 class="m-text-5"><a href="https://github.com/PavanCodeNexus" target="_blank" rel="noopener" class="m-link">Developer Workspace &amp; Tooling</a></h3>
+      <p class="works__tech m-text-7">System Architecture · Git Workflows · Linux CLI Automation</p>
     </li>
   </ul>
   <div class="works__more"><a class="m-btn" href="https://github.com/PavanCodeNexus" target="_blank" rel="noopener"><span class="m-btn__label">Explore all repositories on GitHub</span></a></div>
@@ -856,12 +877,12 @@ if (matchMedia('(prefers-reduced-motion: no-preference)').matches && CSS.support
   <div class="expertise__more"><a class="m-btn-2" href="#contact"><span class="m-btn-2__label">Get in touch</span></a></div>
 </section>
 
-<!-- method: four numbered process steps as a horizontal storyboard (demo: Write, Build, Shoot, Finish & scale) (animation: scene:method) -->
+<!-- method: five disciplined stages from concept to live production, plus production sign-off -->
 <section class="method" id="method" data-8b-section="method">
   <div class="method__stage">
     <div class="method__head">
       <h2 class="m-text-2" data-8b-motion="trail">From concept to production</h2>
-      <p class="m-text-7">Four disciplined engineering stages. From problem deconstruction to sub-second inference and resilient cloud deployment.</p>
+      <p class="m-text-7">Five disciplined engineering stages. From problem deconstruction to sub-second inference and live resilient cloud production.</p>
     </div>
     <ol class="method__track" data-8b-items=":scope > li">
       <li class="method__frame">
@@ -869,7 +890,7 @@ if (matchMedia('(prefers-reduced-motion: no-preference)').matches && CSS.support
         <div class="method__text">
           <p class="method__step m-text-4">01</p>
           <div class="method__desc">
-            <h3 class="m-text-5">Algorithmic Formulation</h3>
+            <h3 class="m-text-5">Deconstruct &amp; Model</h3>
             <p class="m-text-7">Break down complex user and technical requirements into formal state machines, relational data schemas, and API contracts.</p>
           </div>
         </div>
@@ -879,7 +900,7 @@ if (matchMedia('(prefers-reduced-motion: no-preference)').matches && CSS.support
         <div class="method__text">
           <p class="method__step m-text-4">02</p>
           <div class="method__desc">
-            <h3 class="m-text-5">Agent Workflows &amp; Microservices</h3>
+            <h3 class="m-text-5">Build &amp; Orchestrate</h3>
             <p class="m-text-7">Implement multi-agent LangGraph flows, Java 21 LTS record classes, Spring Security JWT tokens, and reactive React components.</p>
           </div>
         </div>
@@ -889,19 +910,37 @@ if (matchMedia('(prefers-reduced-motion: no-preference)').matches && CSS.support
         <div class="method__text">
           <p class="method__step m-text-4">03</p>
           <div class="method__desc">
-            <h3 class="m-text-5">Sub-Second Low Latency</h3>
+            <h3 class="m-text-5">Optimize &amp; Benchmark</h3>
             <p class="m-text-7">Tune HikariCP keepalive pings for cloud transaction poolers, establish 24h SQL caching layers, and harness Groq LPUs for sub-400ms inference.</p>
           </div>
         </div>
       </li>
       <li class="method__frame">
-        <figure class="method__photo"><img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&amp;fit=crop&amp;w=800&amp;q=75" width="1600" height="1067" alt="Global satellite network and deployment" loading="lazy"></figure>
+        <figure class="method__photo"><img src="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?auto=format&amp;fit=crop&amp;w=800&amp;q=75" width="1600" height="1067" alt="Cloud server infrastructure and containerization" loading="lazy"></figure>
         <div class="method__text">
           <p class="method__step m-text-4">04</p>
           <div class="method__desc">
-            <h3 class="m-text-5">Edge Delivery &amp; Reliability</h3>
-            <p class="m-text-7">Package into reproducible Docker images, configure edge reverse proxies, and verify cross-browser compatibility and zero-downtime health.</p>
+            <h3 class="m-text-5">Containerize &amp; Ship</h3>
+            <p class="m-text-7">Package into reproducible Docker images, configure edge reverse proxies, and automate CI/CD GitHub Actions test workflows.</p>
           </div>
+        </div>
+      </li>
+      <li class="method__frame">
+        <figure class="method__photo"><img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&amp;fit=crop&amp;w=800&amp;q=75" width="1600" height="1067" alt="Global satellite network and live production deployment" loading="lazy"></figure>
+        <div class="method__text">
+          <p class="method__step m-text-4">05</p>
+          <div class="method__desc">
+            <h3 class="m-text-5">Production &amp; Resilient Scale</h3>
+            <p class="m-text-7">Zero-downtime rolling releases, real-time health telemetry streaming, automated error recovery, and robust 99.9% production reliability.</p>
+          </div>
+        </div>
+      </li>
+      <li class="method__frame method__frame--summary">
+        <div class="method__summary-in">
+          <span class="method__summary-badge m-text-3">PRODUCTION SIGN-OFF</span>
+          <h3 class="m-text-5">Built for Real-World Reliability</h3>
+          <p class="m-text-7">Every system is tested under live real-world conditions before release. From initial concept to 24/7 autonomous production.</p>
+          <div style="margin-top: 14px;"><a class="m-btn-2" href="#works"><span class="m-btn-2__label">Explore Selected Work</span></a></div>
         </div>
       </li>
     </ol>
@@ -1233,7 +1272,7 @@ motionKit.scene('method', () => {
   if (!section.querySelector('.method__stage') || !frames.length) throw new Error('method: stage or frames missing');
   motionKit.measure(() => {
     const room = section.clientWidth - parseFloat(getComputedStyle(section).paddingLeft) * 2;
-    const distance = Math.max(0, track.scrollWidth - room);
+    const distance = Math.max(0, track.scrollWidth - room + 180);
     motionKit.set(section, { '--method-distance': `${distance}px`, '--method-d': distance, '--method-w': innerWidth });
     frames.forEach(frame => motionKit.set(frame, { '--method-x': motionKit.box(frame).x }));
   });
